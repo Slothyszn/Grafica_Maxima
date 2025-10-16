@@ -1,0 +1,24 @@
+.titulo{
+    font-size: 20px;
+}
+
+#lista-orcamentos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.orcamento{
+    background-color: gray;
+    width: 70%;
+    height: 40px;
+    margin: 5px;
+}
+
+#botao{
+    background-color: green;
+    font-size: 15px;
+    width: 70%;
+    height: 40px;
+    margin: 10px;
+}
