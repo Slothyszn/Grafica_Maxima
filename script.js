@@ -4,3 +4,11 @@ function novoOrcamento() {
     div.classList.add("orcamento")
     document.getElementById("lista-orcamentos").appendChild(div);
 }
+
+/*Função promtp de "Orçamento criado"*/
+function orcamentoCriado() {
+    swal({
+    title: "Orçamento Criado com sucesso",
+    icon: "success",
+});
+}
