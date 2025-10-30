@@ -23,3 +23,16 @@ Atualmente, os **orçamentos são realizados manualmente**, o que:
 ## 👥 Equipe
 - Projeto desenvolvido por alunos em parceria com **Gráfica Máxima (Rayane Serviços Gráficos)**  
 - Objetivo: aplicar conceitos de **análise de sistemas e desenvolvimento web** para solucionar um problema real de mercado.
+
+---
+
+## Configuração do ambiente
+- para rodar o sistema, é necessário ter o Node.js instalado.
+- Baixe o Node.js acessando https://nodejs.org
+- Rode "npm init -y" na pasta back após a instalação
+
+
+
+
+
+                
