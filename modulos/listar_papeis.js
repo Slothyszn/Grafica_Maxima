@@ -3,3 +3,8 @@ export async function ConsultarPapeis() {
   const dados = await papeis.json();
   document.getElementById("resultado").textContent = JSON.stringify(dados, null, 2);
 }
+
+
+export async function desaparecer() {
+  document.getElementById("resultado").textContent = '';
+}
