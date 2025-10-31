@@ -4,7 +4,7 @@ export async function ConsultarPapeis() {
   document.getElementById("resultado").textContent = JSON.stringify(dados, null, 2);
 }
 
-// Faz as informações dos papeis sumirem
+// Faz as informações dos papeis sumirem após aparecerem
 export async function desaparecer() {
   document.getElementById("resultado").textContent = '';
 }
