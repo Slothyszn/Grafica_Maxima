@@ -30,9 +30,6 @@ Atualmente, os **orçamentos são realizados manualmente**, o que:
 - para rodar o sistema, é necessário ter o Node.js instalado.
 - Baixe o Node.js acessando https://nodejs.org
 - Rode "npm init -y" na pasta back após a instalação
+- Use "npm install express" dentro do diretorio da pasta back
 
 
-
-
-
-                
