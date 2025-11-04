@@ -1,3 +1,5 @@
+import { ConsultarPapeis } from './listar_papeis.js';
+
 export async function InserirPapel(event) {
   event.preventDefault();
 
