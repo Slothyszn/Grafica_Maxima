@@ -26,12 +26,43 @@
         <input id="unit" placeholder="unit" required><br>
         <input id="form" placeholder="form" required>
         <input id="quantPac" placeholder="quantPac" required>
-        <input id="R$pac" placeholder="R$pac" required><br><br>
+        <input id="pac" placeholder="pac" required><br><br>
 
         <button type="submit">Salvar</button>
     </form>
 
+    <br><br>
+
+    <h2>Edita um papel ai:</h2>
+
+    <label for="tipoPapel">Papel que deseja editar:</label>
+    <datalist id="listaPapeis"></datalist>
+    <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
+
+    <br>
     
+    <div id="editar-papel" style="display: none; margin-top: 20px;">
+        <h3>Editar papel</h3>
+        <label for="campoEditar">Escolha o campo para alterar:</label>
+        <select id="campoEditar">
+            <option value="">Selecione...</option>
+            <option value="nome">Nome</option>
+            <option value="form9">form9</option>
+            <option value="form8">form8</option>
+            <option value="form6">form6</option>
+            <option value="form4">form4</option>
+            <option value="form3">form3</option>
+            <option value="form2">form2</option>
+            <option value="unit">unit</option>
+            <option value="form">form</option>
+            <option value="quantPac">quantPac</option>
+            <option value="pac">R$pac</option>
+        </select>
+
+        <input id="novoValor" placeholder="Novo valor">
+        <button id="btnSalvarAlteracao">Salvar alteração</button>
+    </div>
+
 
     <script type="module" src="./main.js"></script>
 </body>

@@ -15,7 +15,7 @@ export async function InserirPapel(event) {
     unit: document.getElementById("unit").value,
     form: document.getElementById("form").value,
     quantPac: document.getElementById("quantPac").value,
-    "R$pac": document.getElementById("R$pac").value
+    "pac": document.getElementById("pac").value
   };
 
   try {
