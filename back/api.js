@@ -66,6 +66,31 @@ app.put('/api/papeis/:id', (req, res) => {
   }
 });
 
+// Rota para deletar um papel pelo nome
+app.delete('/api/papeis/nome/:nome', (req, res) => {
+  try {
+    const { nome } = req.params;
+
+    const dados = JSON.parse(fs.readFileSync('papeis.json', 'utf-8'));
+    const index = dados.Papel.findIndex(p => p.nome === nome);
+
+    if (index === -1) {
+      return res.status(404).json({ mensagem: "Papel não encontrado" });
+    }
+
+    // Remove o papel do array
+    dados.Papel.splice(index, 1);
+
+    // Salva novamente
+    fs.writeFileSync('papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
+
+    res.json({ mensagem: "Papel removido com sucesso" });
+  } catch (erro) {
+    console.error("❌ Erro no DELETE:", erro);
+    res.status(500).json({ mensagem: "Erro interno no servidor" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log("Server rodando na porta: " + PORT);
 });
