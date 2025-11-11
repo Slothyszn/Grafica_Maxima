@@ -16,7 +16,7 @@ body {
     background-color: var(--cor-fundo);
     color: var(--cor-preta);
     margin: 0;
-    padding: 2rem;
+    padding: 0;
 }
 
 .main-header {
@@ -26,6 +26,10 @@ body {
     font-size: 20px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section {
+    margin: 2rem;
 }
 
 h2 {

@@ -11,63 +11,64 @@
     <header class="main-header">
         Papeis
     </header>
-    <div class="container-bloco">
-        <button id="btn-consulta">Apareça</button>
-        <button id="btn-desapareca">Desapareça</button>
-        <pre id="resultado"></pre>
-    </div>
-
-    <form id="form-papel">
-        <h2>Salvar novo papel:</h2>
-        
-        <input id="id_papel" placeholder="Id do papel" required>
-        <input id="nome" placeholder="Nome do papel" required>
-        <input id="form9" placeholder="form9" required>
-        <input id="form8" placeholder="form8" required>
-        <input id="form6" placeholder="form6" required>
-        <input id="form4" placeholder="form4" required>
-        <input id="form3" placeholder="form3" required>
-        <input id="form2" placeholder="form2" required>
-        <input id="unit" placeholder="unit" required>
-        <input id="form" placeholder="form" required>
-        <input id="quantPac" placeholder="quantPac" required>
-        <input id="pac" placeholder="pac" required>
-
-        <button type="submit">Salvar</button>
-    </form>
-
-
-    <div class="container-bloco">
-        <h2>Editar papel:</h2>
-
-        <label for="tipoPapel">Papel que deseja editar:</label>
-        <datalist id="listaPapeis"></datalist>
-        <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
-        
-        <div id="editarPapel" style="display: none; margin-top: 20px;">
-            <h3>Editar campo</h3>
-            <label for="campoEditar">Escolha o campo para alterar:</label>
-            <select id="campoEditar">
-                <option value="">Selecione...</option>
-                <option value="nome">Nome</option>
-                <option value="pac">R$pac</option>
-            </select>
-
-            <input id="novoValor" placeholder="Novo valor">
-            <button id="btnSalvarAlteracao">Salvar alteração</button>
+    <section>
+        <div class="container-bloco">
+            <button id="btn-consulta">Apareça</button>
+            <button id="btn-desapareca">Desapareça</button>
+            <pre id="resultado"></pre>
         </div>
-    </div>
 
-    <div class="container-bloco">
-        <h2>Deletar papel</h2>
-        
-        <label for="papelExcluir">Papel que deseja excluir:</label>
-        <datalist id="listaPapeisExcluir"></datalist>
-        <input list="listaPapeisExcluir" id="papelExcluir" placeholder="Escolha o papel">
+        <form id="form-papel">
+            <h2>Salvar novo papel:</h2>
+            
+            <input id="id_papel" placeholder="Id do papel" required>
+            <input id="nome" placeholder="Nome do papel" required>
+            <input id="form9" placeholder="form9" required>
+            <input id="form8" placeholder="form8" required>
+            <input id="form6" placeholder="form6" required>
+            <input id="form4" placeholder="form4" required>
+            <input id="form3" placeholder="form3" required>
+            <input id="form2" placeholder="form2" required>
+            <input id="unit" placeholder="unit" required>
+            <input id="form" placeholder="form" required>
+            <input id="quantPac" placeholder="quantPac" required>
+            <input id="pac" placeholder="pac" required>
 
-        <button id="btnExcluir">Excluir</button>
-    </div>
+            <button type="submit">Salvar</button>
+        </form>
 
+
+        <div class="container-bloco">
+            <h2>Editar papel:</h2>
+
+            <label for="tipoPapel">Papel que deseja editar:</label>
+            <datalist id="listaPapeis"></datalist>
+            <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
+            
+            <div id="editarPapel" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+                <label for="campoEditar">Escolha o campo para alterar:</label>
+                <select id="campoEditar">
+                    <option value="">Selecione...</option>
+                    <option value="nome">Nome</option>
+                    <option value="pac">R$pac</option>
+                </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div>
+        </div>
+
+        <div class="container-bloco">
+            <h2>Deletar papel</h2>
+            
+            <label for="papelExcluir">Papel que deseja excluir:</label>
+            <datalist id="listaPapeisExcluir"></datalist>
+            <input list="listaPapeisExcluir" id="papelExcluir" placeholder="Escolha o papel">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
 
     <script type="module" src="./main.js"></script>
 </body>
