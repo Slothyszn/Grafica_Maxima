@@ -21,38 +21,59 @@
         <form id="form-papel">
             <h2>Salvar novo papel:</h2>
             
-            <input id="id_papel" placeholder="Id do papel" required>
             <input id="nome" placeholder="Nome do papel" required>
-            <input id="form9" placeholder="form9" required>
-            <input id="form8" placeholder="form8" required>
-            <input id="form6" placeholder="form6" required>
-            <input id="form4" placeholder="form4" required>
-            <input id="form3" placeholder="form3" required>
-            <input id="form2" placeholder="form2" required>
-            <input id="unit" placeholder="unit" required>
-            <input id="form" placeholder="form" required>
-            <input id="quantPac" placeholder="quantPac" required>
-            <input id="pac" placeholder="pac" required>
+            <input id="form9" placeholder="Formato 9" required>
+            <input id="form8" placeholder="Formato 8" required>
+            <input id="form6" placeholder="Formato 6" required>
+            <input id="form4" placeholder="Formato 4" required>
+            <input id="form3" placeholder="Formato 3" required>
+            <input id="form2" placeholder="Formato 2" required>
+            <input id="unit" placeholder="Unidade de medida" required>
+            <input id="form" placeholder="Formato padrão" required>
+            <input id="quantPac" placeholder="Quantidade por pacote" required>
+            <input id="pac" placeholder="Tipo de pacote" required>
 
             <button type="submit">Salvar</button>
-        </form>
+            </form>
 
 
-        <div class="container-bloco">
-            <h2>Editar papel:</h2>
+            <div class="container-bloco">
+                <h2>Editar papel:</h2>
 
-            <label for="tipoPapel">Papel que deseja editar:</label>
-            <datalist id="listaPapeis"></datalist>
-            <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
-            
-            <div id="editarPapel" style="display: none; margin-top: 20px;">
-                <h3>Editar campo</h3>
-                <label for="campoEditar">Escolha o campo para alterar:</label>
-                <select id="campoEditar">
-                    <option value="">Selecione...</option>
-                    <option value="nome">Nome</option>
-                    <option value="pac">R$pac</option>
-                </select>
+                <label for="tipoPapel">Papel que deseja editar:</label>
+                <datalist id="listaPapeis"></datalist>
+                <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
+                
+                <div id="editar-papel" style="display: none; margin-top: 20px;">
+                    <h3>Editar campo</h3>
+                    <label for="campoEditar">Escolha o campo para alterar:</label>
+                    <select id="campoEditar">
+        <option value="">Selecione o campo...</option>
+
+        <optgroup label="Identificação">
+            <option value="id_papel">ID do Papel</option>
+            <option value="nome">Nome do Papel</option>
+            <option value="form">Formato (ex: 66x96)</option>
+        </optgroup>
+
+        <optgroup label="Formatos">
+            <option value="form9">Formato 9</option>
+            <option value="form8">Formato 8</option>
+            <option value="form6">Formato 6</option>
+            <option value="form4">Formato 4</option>
+            <option value="form3">Formato 3</option>
+            <option value="form2">Formato 2</option>
+        </optgroup>
+
+        <optgroup label="Valores">
+            <option value="unit">Valor Unitário</option>
+            <option value="pac">Preço por Pacote (R$)</option>
+        </optgroup>
+
+        <optgroup label="Pacote">
+            <option value="quantPac">Quantidade por Pacote</option>
+        </optgroup>
+    </select>
 
                 <input id="novoValor" placeholder="Novo valor">
                 <button id="btnSalvarAlteracao">Salvar alteração</button>

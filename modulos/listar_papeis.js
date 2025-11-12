@@ -1,7 +1,9 @@
 export async function ConsultarPapeis() {
   const papeis = await fetch("http://localhost:3000/api/papeis");
   const dados = await papeis.json();
-  document.getElementById("resultado").textContent = JSON.stringify(dados, null, 2);
+  const lista = dados.Papel.map(p => p.nome).join("<br> ");
+  document.getElementById("resultado").innerHTML = lista;
+  //JSON.stringify(dados, null, 2);
 }
 
 // Faz as informações dos papeis sumirem após aparecerem

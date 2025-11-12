@@ -4,7 +4,6 @@ export async function InserirPapel(event) {
   event.preventDefault();
 
   const novoPapel = {
-    id_papel: document.getElementById("id_papel").value,
     nome: document.getElementById("nome").value,
     form9: document.getElementById("form9").value,
     form8: document.getElementById("form8").value,
