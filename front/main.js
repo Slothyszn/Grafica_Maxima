@@ -7,12 +7,15 @@ import { habilitarEdicao } from '../modulos/modulos-papeis/editar_papel.js';
 import { carregarPapeisParaExcluir, excluirPapel } from '../modulos/modulos-papeis/deletar_papel.js';
 
 import { InserirMaquina } from '../modulos/modulos-maquina/inserir_maquina.js';
-import { ConsultarMaquinas, desaparecerMaquinas} from '../modulos/modulos-maquina/listar_maquina.js'
+import { ConsultarMaquinas, desaparecerMaquinas, carregarOpcoesMaquinas} from '../modulos/modulos-maquina/listar_maquina.js'
 import { habilitarEdicaoMaquina } from '../modulos/modulos-maquina/editar_maquina.js'
-import { carregarOpcoesMaquinas } from '../modulos/modulos-maquina/listar_maquina.js'
 import { carregarMaquinasParaExcluir, excluirMaquina } from '../modulos/modulos-maquina/deletar_maquina.js'
-// quando adicionar serviços, segue o mesmo padrão de import
 
+import { carregarFornecedoresParaExcluir, excluirFornecedor} from '../modulos/modulos-fornecedor/deletar_fornecedor.js'
+import { habilitarEdicaoFornecedor } from '../modulos/modulos-fornecedor/editar_fornecedor.js'
+import { InserirFornecedor } from '../modulos/modulos-fornecedor/inserir_fornecedor.js'
+import { ConsultarFornecedores, carregarOpcoesFornecedores, desaparecerFornecedores } from '../modulos/modulos-fornecedor/listar_fornecedor.js'
+ 
 
 // ------------------------------
 // 📑 Detectar qual página está sendo carregada
@@ -67,4 +70,23 @@ if (url.includes("maquinas")) {
 // ------------------------------
 // 🔧 Próximas páginas (Serviços, Clientes, etc.)
 // ------------------------------
-// Só copiar a estrutura acima, trocando os imports e IDs correspondentes.
+// 
+
+
+if (url.includes("fornecedores")) {
+
+  const formFornecedor = document.getElementById("form-fornecedor");
+  const btnConsulta = document.getElementById("btn-consulta-fornecedores");
+  const btnDesapareca = document.getElementById("btn-desapareca-fornecedores");
+  const tipoFornecedor = document.getElementById("tipoFornecedor");
+  const btnExcluir = document.getElementById("btnExcluir");
+
+  if (formFornecedor) formFornecedor.addEventListener("submit", InserirFornecedor);
+  if (btnConsulta) btnConsulta.addEventListener("click", ConsultarFornecedores);
+  if (btnDesapareca) btnDesapareca.addEventListener("click", desaparecerFornecedores);
+  if (tipoFornecedor) tipoFornecedor.addEventListener("change", habilitarEdicaoFornecedor);
+  if (btnExcluir) btnExcluir.addEventListener("click", excluirFornecedor);
+
+  window.addEventListener("DOMContentLoaded", carregarOpcoesFornecedores);
+  window.onload = carregarFornecedoresParaExcluir;
+}

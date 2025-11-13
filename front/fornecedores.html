@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-fornecedores.css">
+    <title>Fornecedores</title>
+</head>
+<body>
+    <header class="main-header">
+        Fornecedores
+    </header>
+    <section>
+        <div class="container-bloco">
+            <button id="btn-consulta-fornecedores">Apareça</button>
+            <button id="btn-desapareca-fornecedores">Desapareça</button>
+            <pre id="resultado-fornecedores"></pre>
+        </div>
+
+        <form id="form-fornecedor">
+            <h2>Salvar novo fornecedor:</h2>
+            
+            <input id="nome" placeholder="Nome do Fornecedor" required>
+            <input id="contato" placeholder="Contato do Fornecedor" required>
+
+            <button type="submit">Salvar</button>
+            </form>
+
+
+            <div class="container-bloco">
+                <h2>Editar fornecedor:</h2>
+
+                <label for="tipoFornecedor">Fornecedor que deseja editar:</label>
+                <datalist id="listaFornecedores"></datalist>
+                <input list="listaFornecedores" id="tipoFornecedor" name="tipoFornecedor">
+                
+                <div id="editar-fornecedor" style="display: none; margin-top: 20px;">
+                    <h3>Editar campo</h3>
+                    <label for="campoEditar">Escolha o campo para alterar:</label>
+                    <select id="campoEditar">
+                        <option value="">Selecione o campo...</option>
+                        <option value="nome">Nome</option>
+                        <option value="contato">Contato</option>
+                    </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div> 
+        </div> 
+
+        <div class="container-bloco">
+            <h2>Deletar fornecedor</h2>
+            
+            <label for="fornecedorExcluir">Fornecedor que deseja excluir:</label>
+            <datalist id="listaFornecedoresExcluir"></datalist>
+            <input list="listaFornecedoresExcluir" id="fornecedorExcluir" placeholder="Escolha o fornecedor">
+
+            <button id="btnExcluir">Excluir</button>
+        </div> 
+    </section> 
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
