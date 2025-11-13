@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-maquinas.css">
+    <title>Maquinas</title>
+</head>
+<body>
+    <header class="main-header">
+        Maquinas
+    </header>
+    <section>
+        <div class="container-bloco">
+            <button id="btn-consulta-maquinas">Apareça</button>
+            <button id="btn-desapareca-maquinas">Desapareça</button>
+            <pre id="resultado-maquinas"></pre>
+        </div>
+
+        <form id="form-maquina">
+            <h2>Salvar nova maquina:</h2>
+            
+            <input id="tipo" placeholder="Tipo de maquina" required>
+            <input id="variacao" placeholder="variacao" required>
+            <input id="marca" placeholder="marca da maquina">
+            <input id="modelo" placeholder="modelo da maquina" required>
+            <input id="comprimento_maximo" placeholder="comprimento maximo" required>
+            <input id="largura_maxima" placeholder="largura maxima" required>
+
+            <button type="submit">Salvar</button>
+            </form>
+
+
+            <div class="container-bloco">
+                <h2>Editar maquina:</h2>
+
+                <label for="tipoMaquina">Maquina que deseja editar:</label>
+                <datalist id="listaMaquinas"></datalist>
+                <input list="listaMaquinas" id="tipoMaquina" name="tipoMaquina">
+                
+                <div id="editar-maquina" style="display: none; margin-top: 20px;">
+                    <h3>Editar campo</h3>
+                    <label for="campoEditar">Escolha o campo para alterar:</label>
+                    <select id="campoEditar">
+                        <option value="">Selecione o campo...</option>
+                        <option value="tipo">Tipo</option>
+                        <option value="variacao">variacao</option>
+                        <option value="marca">marca</option>
+                        <option value="modelo">modelo</option>
+                        <option value="comprimento_maximo">comprimento_maximo</option>
+                        <option value="largura_maxima">largura_maxima</option>
+                    </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div> 
+        </div> 
+
+        <div class="container-bloco">
+            <h2>Deletar maquina</h2>
+            
+            <label for="maquinaExcluir">Papel que deseja excluir:</label>
+            <datalist id="listaMaquinasExcluir"></datalist>
+            <input list="listaMaquinasExcluir" id="maquinaExcluir" placeholder="Escolha a maquina">
+
+            <button id="btnExcluir">Excluir</button>
+        </div> 
+    </section> 
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

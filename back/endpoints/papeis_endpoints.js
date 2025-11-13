@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/papeis', (req, res) => {
   try {
-    const dados = JSON.parse(fs.readFileSync('papeis.json', 'utf-8'));
+    const dados = JSON.parse(fs.readFileSync('dados/papeis.json', 'utf-8'));
     res.json(dados);
   } catch (erro) {
     console.error("Erro no GET:", erro);
@@ -17,7 +17,7 @@ router.get('/papeis', (req, res) => {
 router.post('/papeis', (req, res) => {
   try {
     const novoPapel = req.body;
-    const dados = JSON.parse(fs.readFileSync('papeis.json', 'utf-8'));
+    const dados = JSON.parse(fs.readFileSync('dados/papeis.json', 'utf-8'));
 
     if (!Array.isArray(dados.Papel)) dados.Papel = [];
 
@@ -49,7 +49,7 @@ router.post('/papeis', (req, res) => {
 
     dados.Papel.push(papelOrdenado);
 
-    fs.writeFileSync('papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
+    fs.writeFileSync('dados/papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
 
     console.log(`✅ Novo papel ${novoId} adicionado com sucesso!`);
     res.json({ mensagem: `Papel ${novoId} salvo com sucesso!`, id: novoId });
@@ -64,14 +64,14 @@ router.put('/papeis/:id', (req, res) => {
     const { id } = req.params;
     const { campo, novoValor } = req.body;
 
-    const dados = JSON.parse(fs.readFileSync('papeis.json', 'utf-8'));
+    const dados = JSON.parse(fs.readFileSync('dados/papeis.json', 'utf-8'));
     const papel = dados.Papel.find(p => p.id_papel == id);
 
     if (!papel) return res.status(404).json({ mensagem: "Papel não encontrado" });
 
     papel[campo] = novoValor;
 
-    fs.writeFileSync('papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
+    fs.writeFileSync('dados/papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
     res.json({ mensagem: "Papel atualizado com sucesso" });
   } catch (erro) {
     console.error("❌ Erro no PUT:", erro);
@@ -84,7 +84,7 @@ router.delete('/papeis/nome/:nome', (req, res) => {
   try {
     const { nome } = req.params;
 
-    const dados = JSON.parse(fs.readFileSync('papeis.json', 'utf-8'));
+    const dados = JSON.parse(fs.readFileSync('dados/papeis.json', 'utf-8'));
     const index = dados.Papel.findIndex(p => p.nome === nome);
 
     if (index === -1) {
@@ -95,7 +95,7 @@ router.delete('/papeis/nome/:nome', (req, res) => {
     dados.Papel.splice(index, 1);
 
     // Salva novamente
-    fs.writeFileSync('papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
+    fs.writeFileSync('dados/papeis.json', JSON.stringify(dados, null, 2), 'utf-8');
 
     res.json({ mensagem: "Papel removido com sucesso" });
   } catch (erro) {

@@ -7,7 +7,7 @@ export async function ConsultarPapeis() {
 }
 
 // Faz as informações dos papeis sumirem após aparecerem
-export async function desaparecer() {
+export async function desaparecerPapeis() {
   document.getElementById("resultado").textContent = '';
 }
 
