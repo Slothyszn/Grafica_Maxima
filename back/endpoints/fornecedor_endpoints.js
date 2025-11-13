@@ -70,7 +70,7 @@ router.put('/fornecedores/:id', (req, res) => {
     fornecedor[campo] = novoValor;
 
     fs.writeFileSync('dados/fornecedores.json', JSON.stringify(dados, null, 2), 'utf-8');
-    res.json({ mensagem: "Fornecedor atualizada com sucesso" });
+    res.json({ mensagem: "Fornecedor atualizado com sucesso" });
 
   } catch (erro) {
     console.error("❌ Erro no PUT:", erro);

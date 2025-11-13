@@ -15,6 +15,11 @@ import { carregarFornecedoresParaExcluir, excluirFornecedor} from '../modulos/mo
 import { habilitarEdicaoFornecedor } from '../modulos/modulos-fornecedor/editar_fornecedor.js'
 import { InserirFornecedor } from '../modulos/modulos-fornecedor/inserir_fornecedor.js'
 import { ConsultarFornecedores, carregarOpcoesFornecedores, desaparecerFornecedores } from '../modulos/modulos-fornecedor/listar_fornecedor.js'
+
+import { carregarMaterialParaExcluir, excluirMaterial} from '../modulos/modulos-materiais/deletar_material.js'
+import { habilitarEdicaoMaterial } from '../modulos/modulos-materiais/editar_material.js'
+import { InserirMaterial } from '../modulos/modulos-materiais/inserir_material.js'
+import { ConsultarMateriais, carregarOpcoesMateriais, desaparecerMateriais } from '../modulos/modulos-materiais/listar_material.js'
  
 
 // ------------------------------
@@ -68,9 +73,8 @@ if (url.includes("maquinas")) {
 }
 
 // ------------------------------
-// 🔧 Próximas páginas (Serviços, Clientes, etc.)
+// Página de Fornecedores
 // ------------------------------
-// 
 
 
 if (url.includes("fornecedores")) {
@@ -89,4 +93,29 @@ if (url.includes("fornecedores")) {
 
   window.addEventListener("DOMContentLoaded", carregarOpcoesFornecedores);
   window.onload = carregarFornecedoresParaExcluir;
+}
+
+
+
+// ------------------------------
+// ⚙️ Página de Materiais
+// ------------------------------
+
+
+if (url.includes("materiais")) {
+
+  const formFornecedor = document.getElementById("form-material");
+  const btnConsulta = document.getElementById("btn-consulta-materiais");
+  const btnDesapareca = document.getElementById("btn-desapareca-materiais");
+  const tipoFornecedor = document.getElementById("tipoMaterial");
+  const btnExcluir = document.getElementById("btnExcluir");
+
+  if (formFornecedor) formFornecedor.addEventListener("submit", InserirMaterial);
+  if (btnConsulta) btnConsulta.addEventListener("click", ConsultarMateriais);
+  if (btnDesapareca) btnDesapareca.addEventListener("click", desaparecerMateriais);
+  if (tipoFornecedor) tipoFornecedor.addEventListener("change", habilitarEdicaoMaterial);
+  if (btnExcluir) btnExcluir.addEventListener("click", excluirMaterial);
+
+  window.addEventListener("DOMContentLoaded", carregarOpcoesMateriais);
+  window.onload = carregarMaterialParaExcluir;
 }
