@@ -20,6 +20,12 @@ import { carregarMaterialParaExcluir, excluirMaterial} from '../modulos/modulos-
 import { habilitarEdicaoMaterial } from '../modulos/modulos-materiais/editar_material.js'
 import { InserirMaterial } from '../modulos/modulos-materiais/inserir_material.js'
 import { ConsultarMateriais, carregarOpcoesMateriais, desaparecerMateriais } from '../modulos/modulos-materiais/listar_material.js'
+
+
+import { ConsultarFornecimentos, desaparecerFornecimentos, carregarOpcoesFornecimentos } from '../modulos/modulos-fornecimento/listar_fornecimento.js';
+import { InserirFornecimento } from '../modulos/modulos-fornecimento/inserir_fornecimento.js';
+import { habilitarEdicaoFornecimento } from '../modulos/modulos-fornecimento/editar_fornecimento.js';
+import { carregarFornecimentosParaExcluir, excluirFornecimento } from '../modulos/modulos-fornecimento/deletar_fornecimento.js';
  
 
 // ------------------------------
@@ -118,4 +124,34 @@ if (url.includes("materiais")) {
 
   window.addEventListener("DOMContentLoaded", carregarOpcoesMateriais);
   window.onload = carregarMaterialParaExcluir;
+}
+
+// ------------------------------
+// ⚙️ Página de Fornecimentos
+// ------------------------------
+
+
+if (url.includes("fornecimentos")) {
+
+  const formFornecimento = document.getElementById("form-fornecimento");
+  const btnConsulta = document.getElementById("btn-consulta-fornecimentos");
+  const btnDesapareca = document.getElementById("btn-desapareca-fornecimentos");
+  const tipoFornecimento = document.getElementById("fornecimentoEditar");
+  const btnExcluir = document.getElementById("btnExcluir");
+
+  if (formFornecimento) formFornecimento.addEventListener("submit", InserirFornecimento);
+  if (btnConsulta) btnConsulta.addEventListener("click", ConsultarFornecimentos);
+  if (btnDesapareca) btnDesapareca.addEventListener("click", desaparecerFornecimentos);
+  if (tipoFornecimento) tipoFornecimento.addEventListener("change", habilitarEdicaoFornecimento);
+  if (btnExcluir) btnExcluir.addEventListener("click", excluirFornecimento);
+
+  // ------------------------------
+  // Carregar datalists de inserção e edição
+  // ------------------------------
+  window.addEventListener("DOMContentLoaded", () => {
+    carregarOpcoesFornecimentos();       // datalist de edição/exclusão
+    carregarFornecimentosParaExcluir();  // datalist de exclusão
+    carregarOpcoesFornecedores();        // datalist do formulário de adicionar (fornecedor)
+    carregarOpcoesMateriais();           // datalist do formulário de adicionar (material)
+  });
 }

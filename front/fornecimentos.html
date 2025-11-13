@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-fornecimentos.css">
+    <title>Fornecimentos</title>
+</head>
+<body>
+    <header class="main-header">
+        Fornecimentos
+    </header>
+
+    <section>
+        <!-- Consulta de fornecimentos -->
+        <div class="container-bloco">
+            <button id="btn-consulta-fornecimentos">Apareça</button>
+            <button id="btn-desapareca-fornecimentos">Desapareça</button>
+            <pre id="resultado-fornecimentos"></pre>
+        </div>
+
+        <!-- Formulário para criar novo fornecimento -->
+        <form id="form-fornecimento">
+            <h2>Salvar novo fornecimento:</h2>
+
+            <!-- Escolher fornecedor por nome -->
+            <input list="listaFornecedores" id="nome_fornecedor" placeholder="Escolha o fornecedor" required>
+            <datalist id="listaFornecedores"></datalist>
+
+            <!-- Escolher material por nome -->
+            <input list="listaMateriais" id="nome_material" placeholder="Escolha o material" required>
+            <datalist id="listaMateriais"></datalist>
+
+            <input id="comprimento_base" placeholder="Comprimento Base" required>
+            <input id="largura_base" placeholder="Largura Base" required>
+            <input id="unidades" placeholder="Unidades" required>
+            <input id="custo_total" placeholder="Custo Total" required>
+            <input id="custo_unitario_estimado" placeholder="Custo Unitário Estimado" required>
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- Editar fornecimento -->
+        <div class="container-bloco">
+            <h2>Editar fornecimento:</h2>
+
+            <input list="listaFornecimentos" id="fornecimentoEditar" placeholder="Escolha o fornecimento">
+            <datalist id="listaFornecimentos"></datalist>
+
+            <div id="editar-fornecimento" style="display: none; margin-top: 20px;">
+                <select id="campoEditar">
+                    <option value="">Selecione o campo...</option>
+                    <option value="id_fornecedor">Fornecedor</option>
+                    <option value="id_material">Material</option>
+                    <option value="comprimento_base">Comprimento Base</option>
+                    <option value="largura_base">Largura Base</option>
+                    <option value="unidades">Unidades</option>
+                    <option value="custo_total">Custo Total</option>
+                    <option value="custo_unitario_estimado">Custo Unitário Estimado</option>
+                </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div>
+        </div>
+
+        <!-- Deletar fornecimento -->
+        <div class="container-bloco">
+            <h2>Deletar fornecimento</h2>
+
+            <input list="listaFornecimentosExcluir" id="fornecimentoExcluir" placeholder="Escolha o fornecimento">
+            <datalist id="listaFornecimentosExcluir"></datalist>
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
