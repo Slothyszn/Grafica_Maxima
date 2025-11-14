@@ -1,32 +1,47 @@
 // ------------------------------
 // 📦 Importações dos módulos
 // ------------------------------
+
+// Papeis
 import { ConsultarPapeis, desaparecerPapeis, carregarOpcoesPapeis } from '../modulos/modulos-papeis/listar_papeis.js';
 import { InserirPapel } from '../modulos/modulos-papeis/inserir_papel.js';
 import { habilitarEdicao } from '../modulos/modulos-papeis/editar_papel.js';
 import { carregarPapeisParaExcluir, excluirPapel } from '../modulos/modulos-papeis/deletar_papel.js';
+
+// Maquinas
 
 import { InserirMaquina } from '../modulos/modulos-maquina/inserir_maquina.js';
 import { ConsultarMaquinas, desaparecerMaquinas, carregarOpcoesMaquinas} from '../modulos/modulos-maquina/listar_maquina.js'
 import { habilitarEdicaoMaquina } from '../modulos/modulos-maquina/editar_maquina.js'
 import { carregarMaquinasParaExcluir, excluirMaquina } from '../modulos/modulos-maquina/deletar_maquina.js'
 
+// Fornecedores
+
 import { carregarFornecedoresParaExcluir, excluirFornecedor} from '../modulos/modulos-fornecedor/deletar_fornecedor.js'
 import { habilitarEdicaoFornecedor } from '../modulos/modulos-fornecedor/editar_fornecedor.js'
 import { InserirFornecedor } from '../modulos/modulos-fornecedor/inserir_fornecedor.js'
 import { ConsultarFornecedores, carregarOpcoesFornecedores, desaparecerFornecedores } from '../modulos/modulos-fornecedor/listar_fornecedor.js'
+
+// Materiais
 
 import { carregarMaterialParaExcluir, excluirMaterial} from '../modulos/modulos-materiais/deletar_material.js'
 import { habilitarEdicaoMaterial } from '../modulos/modulos-materiais/editar_material.js'
 import { InserirMaterial } from '../modulos/modulos-materiais/inserir_material.js'
 import { ConsultarMateriais, carregarOpcoesMateriais, desaparecerMateriais } from '../modulos/modulos-materiais/listar_material.js'
 
+// Fornecimentos
 
-import { ConsultarFornecimentos, desaparecerFornecimentos, carregarOpcoesFornecimentos } from '../modulos/modulos-fornecimento/listar_fornecimento.js';
-import { InserirFornecimento } from '../modulos/modulos-fornecimento/inserir_fornecimento.js';
-import { habilitarEdicaoFornecimento } from '../modulos/modulos-fornecimento/editar_fornecimento.js';
 import { carregarFornecimentosParaExcluir, excluirFornecimento } from '../modulos/modulos-fornecimento/deletar_fornecimento.js';
+import { habilitarEdicaoFornecimento } from '../modulos/modulos-fornecimento/editar_fornecimento.js';
+import { InserirFornecimento } from '../modulos/modulos-fornecimento/inserir_fornecimento.js';
+import { ConsultarFornecimentos, desaparecerFornecimentos, carregarOpcoesFornecimentos } from '../modulos/modulos-fornecimento/listar_fornecimento.js';
  
+// Serviços
+
+import { carregarServicosParaExcluir, excluirServico} from '../modulos/modulos-servico/deletar_servico.js'
+import { habilitarEdicaoServico } from '../modulos/modulos-servico/editar_servico.js'
+import { InserirServico } from '../modulos/modulos-servico/inserir_servico.js'
+import { ConsultarServicos, carregarOpcoesServicos, desaparecerServicos} from '../modulos/modulos-servico/listar_servico.js'
 
 // ------------------------------
 // 📑 Detectar qual página está sendo carregada
@@ -154,4 +169,28 @@ if (url.includes("fornecimentos")) {
     carregarOpcoesFornecedores();        // datalist do formulário de adicionar (fornecedor)
     carregarOpcoesMateriais();           // datalist do formulário de adicionar (material)
   });
+}
+
+// ------------------------------
+// Página de Fornecedores
+// ------------------------------
+
+if (url.includes("servicos")) {
+
+  const formServico = document.getElementById("form-servico");
+  const btnConsulta = document.getElementById("btn-consulta-servicos");
+  const btnDesapareca = document.getElementById("btn-desapareca-servicos");
+  const tipoServico = document.getElementById("tipoServico");
+  const btnExcluir = document.getElementById("btnExcluir");
+
+  if (formServico) formServico.addEventListener("submit", InserirServico);
+  if (btnConsulta) btnConsulta.addEventListener("click", ConsultarServicos);
+  if (btnDesapareca) btnDesapareca.addEventListener("click", desaparecerServicos);
+  if (tipoServico) tipoServico.addEventListener("change", habilitarEdicaoServico);
+  if (btnExcluir) btnExcluir.addEventListener("click", excluirServico);
+
+
+  window.addEventListener("DOMContentLoaded", carregarOpcoesServicos);
+  window.onload = carregarServicosParaExcluir;
+
 }

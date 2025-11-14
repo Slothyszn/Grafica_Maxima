@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-servicos.css">
+    <title>Serviços</title>
+</head>
+<body>
+    <header class="main-header">
+        Serviços
+    </header>
+    <section>
+        <div class="container-bloco">
+            <button id="btn-consulta-servicos">Apareça</button>
+            <button id="btn-desapareca-servicos">Desapareça</button>
+            <pre id="resultado-servicos"></pre>
+        </div>
+
+        <form id="form-servico">
+            <h2>Salvar novo serviço:</h2>
+            
+            <input id="nome" placeholder="Nome do material" required>
+            <input id="tipo" placeholder="Tipo do Material" required>
+            <input id="variacao" placeholder="variacao do Material" required>
+            <input id="custo_fixo" placeholder="Custo fixo do Material" required>
+            <input id="custo_area" placeholder="Custo por Ára do material" required>
+            <input id="custo_quantidade" placeholder="Custo quantidade do material" required>
+
+            <button type="submit">Salvar</button>
+            </form>
+
+
+            <div class="container-bloco">
+                <h2>Editar serviço:</h2>
+
+                <label for="tipoServico">Serviço que deseja editar:</label>
+                <datalist id="listaServicos"></datalist>
+                <input list="listaServicos" id="tipoServico" name="tipoServico">
+                
+                <div id="editar-servico" style="display: none; margin-top: 20px;">
+                    <h3>Editar campo</h3>
+                    <label for="campoEditar">Escolha o campo para alterar:</label>
+                    <select id="campoEditar">
+                        <option value="">Selecione o campo...</option>
+                        <option value="nome">Nome</option>
+                        <option value="tipo">Tipo de serviço</option>
+                        <option value="variacao">Variação do serviço</option>
+                        <option value="custo_area">Custo por Area do serviço</option>
+                        <option value="custo_fixo">Custo Fixo do serviço</option>
+                        <option value="custo_quantidade">Custo quantidade do serviço</option>
+                    </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div> 
+        </div> 
+
+        <div class="container-bloco">
+            <h2>Deletar serviço</h2>
+            
+            <label for="servicoExcluir">Serviço que deseja excluir:</label>
+            <datalist id="listaServicosExcluir"></datalist>
+            <input list="listaServicosExcluir" id="servicoExcluir" placeholder="Escolha o serviço">
+
+            <button id="btnExcluir">Excluir</button>
+        </div> 
+    </section> 
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
