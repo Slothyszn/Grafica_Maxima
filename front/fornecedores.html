@@ -12,9 +12,20 @@
     </header>
     <section>
         <div class="container-bloco">
-            <button id="btn-consulta-fornecedores">Apareça</button>
-            <button id="btn-desapareca-fornecedores">Desapareça</button>
-            <pre id="resultado-fornecedores"></pre>
+            <input type="text" id="busca" placeholder="Pesquisar fornecedor..." />
+
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Contato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas de fornecedores vão aparecer aqui -->
+                </tbody>
+            </table>
         </div>
 
         <form id="form-fornecedor">
