@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-categoria.css">
+    <title>Fornecedores</title>
+</head>
+<body>
+    <header class="main-header">
+        Categorias
+    </header>
+    <section>
+        <div class="container-bloco">
+            <input type="text" id="busca" placeholder="Pesquisar categoria..." />
+
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID_Categoria</th>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas de fornecedores vão aparecer aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <form id="form-categoria">
+            <h2>Salvar nova categoria:</h2>
+            
+            <input id="nome" placeholder="Nome da Categoria" required>
+
+            <button type="submit">Salvar</button>
+            </form>
+
+
+            <div class="container-bloco">
+                <h2>Editar categoria:</h2>
+
+                <label for="tipoCategoria">Categoria que deseja editar:</label>
+                <datalist id="listaCategorias"></datalist>
+                <input list="listaCategorias" id="tipoCategoria" name="tipoCategoria">
+                
+                <div id="editar-categoria" style="display: none; margin-top: 20px;">
+                    <h3>Editar campo</h3>
+                    <label for="campoEditar">Escolha o campo para alterar:</label>
+                    <select id="campoEditar">
+                        <option value="">Selecione o campo...</option>
+                        <option value="nome">Nome</option>
+                    </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div> 
+        </div> 
+
+        <div class="container-bloco">
+            <h2>Deletar categoria</h2>
+            
+            <label for="fornecedorExcluir">Categoria que deseja excluir:</label>
+            <datalist id="listaCategoriasExcluir"></datalist>
+            <input list="listaCategoriasExcluir" id="categoriaExcluir" placeholder="Escolha a categoria...">
+
+            <button id="btnExcluir">Excluir</button>
+        </div> 
+    </section> 
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

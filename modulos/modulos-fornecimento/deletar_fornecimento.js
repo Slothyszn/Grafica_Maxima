@@ -1,23 +1,38 @@
+// ==========================
+// CARREGAR FORNECIMENTOS PARA EXCLUIR
+// ==========================
 export async function carregarFornecimentosParaExcluir() {
   try {
     const resposta = await fetch("http://localhost:3000/api/fornecimentos");
     const dados = await resposta.json();
 
+    const fornecimentos = Array.isArray(dados.Fornecimento) ? dados.Fornecimento : [];
+
     const datalist = document.getElementById("listaFornecimentosExcluir");
+    if (!datalist) return;
     datalist.innerHTML = "";
 
-    dados.Fornecimento.forEach(f => {
+    fornecimentos.forEach(f => {
       const option = document.createElement("option");
-      option.value = f.id;
+      // Opção legível: "ID | Fornecedor | Substrato"
+      const fornecedorNome = f.id_forn || f.nome || "N/A";
+      const substratoNome = f.id_sub || f.substrato || "N/A";
+      option.value = `${f.id_fornec} | ${fornecedorNome} | ${substratoNome}`;
       datalist.appendChild(option);
     });
+
   } catch (erro) {
     console.error("Erro ao carregar fornecimentos para excluir:", erro);
   }
 }
 
+// ==========================
+// EXCLUIR FORNECIMENTO
+// ==========================
 export async function excluirFornecimento() {
-  let valor = document.getElementById("fornecimentoExcluir").value;
+  const input = document.getElementById("fornecimentoExcluir");
+  if (!input) return;
+  const valor = input.value.trim();
   if (!valor) return alert("Escolha o fornecimento que deseja excluir.");
 
   // Pega só o ID antes do primeiro " | "
@@ -30,11 +45,16 @@ export async function excluirFornecimento() {
       method: "DELETE"
     });
 
-    if (!resposta.ok) throw new Error(await resposta.text());
+    if (!resposta.ok) {
+      const textoErro = await resposta.text();
+      throw new Error(textoErro || "Falha ao excluir fornecimento.");
+    }
+
     const data = await resposta.json();
-    alert(data.mensagem);
+    alert(data.mensagem || "Fornecimento excluído com sucesso!");
+
   } catch (erro) {
-    console.error(erro);
+    console.error("Erro ao excluir fornecimento:", erro);
     alert("Ocorreu um erro ao tentar excluir o fornecimento.");
   }
 }

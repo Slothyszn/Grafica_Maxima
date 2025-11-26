@@ -1,14 +1,25 @@
 export async function carregarServicosParaExcluir() {
-  const resposta = await fetch("http://localhost:3000/api/servicos");
-  const dados = await resposta.json();
+  try {
+    const resposta = await fetch("http://localhost:3000/api/servicos");
+    if (!resposta.ok) {
+      console.warn('carregarServicosParaExcluir: resposta não OK', resposta.status);
+      return;
+    }
+    const dados = await resposta.json();
 
-  const datalist = document.getElementById("listaServicosExcluir");
-  datalist.innerHTML = "";
-  dados.Servico.forEach(p => {
-    const option = document.createElement("option");
-    option.value = p.nome;
-    datalist.appendChild(option);
-  });
+    const datalist = document.getElementById("listaServicosExcluir");
+    if (!datalist) return;
+    datalist.innerHTML = "";
+
+    const lista = Array.isArray(dados && dados.Servico) ? dados.Servico : [];
+    lista.forEach(p => {
+      const option = document.createElement("option");
+      option.value = p.nome;
+      datalist.appendChild(option);
+    });
+  } catch (erro) {
+    console.error('Erro ao carregar servicos para excluir:', erro);
+  }
 }
 
 export async function excluirServico() {
@@ -18,11 +29,22 @@ export async function excluirServico() {
   const confirmacao = confirm(`Tem certeza que deseja excluir o servico "${nome}"?`);
   if (!confirmacao) return;
 
-  const resposta = await fetch(`http://localhost:3000/api/servicos/nome/${encodeURIComponent(nome)}`, {
-    method: "DELETE"
-  });
+  try {
+    const resposta = await fetch(`http://localhost:3000/api/servicos/nome/${encodeURIComponent(nome)}`, {
+      method: "DELETE"
+    });
 
-  const data = await resposta.json();
-  alert(data.mensagem);
-  carregarServicosParaExcluir(); // atualiza lista
+    if (!resposta.ok) {
+      const err = await resposta.json().catch(() => ({}));
+      throw new Error(err.mensagem || 'Erro ao excluir');
+    }
+
+    const data = await resposta.json();
+    alert(data.mensagem || 'Serviço excluído');
+    carregarServicosParaExcluir(); // atualiza lista
+    if (window.ConsultarServicos) window.ConsultarServicos();
+  } catch (erro) {
+    console.error('Erro ao excluir serviço:', erro);
+    alert('Erro ao excluir serviço: ' + (erro.message || erro));
+  }
 }

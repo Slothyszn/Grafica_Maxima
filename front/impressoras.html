@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-impressora.css">
+    <title>Impressoras</title>
+</head>
+<body>
+    <header class="main-header">Impressoras</header>
+
+    <section>
+        <div class="container-bloco">
+            <input type="text" id="busca" placeholder="Pesquisar impressora (id/nome)..." />
+
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Tecnologia</th>
+                        <th>Tipo</th>
+                        <th>Med. Velo</th>
+                        <th>Velo Max</th>
+                        <th>Compr. Max</th>
+                        <th>Larg. Max</th>
+                        <th>Gram. Max</th>
+                        <th>Esp. Max</th>
+                        <th>Custo Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas de impressoras vão aparecer aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <form id="form-impressora">
+            <h2>Salvar nova impressora:</h2>
+
+            <label for="tecno">Tecnologia</label>
+            <select id="tecno">
+                <option value="">Selecione...</option>
+                <option value="offset">offset</option>
+                <option value="digital">digital</option>
+            </select>
+
+            <label for="tipo">Tipo</label>
+            <select id="tipo">
+                <option value="">Selecione...</option>
+                <option value="folha">folha</option>
+                <option value="rolo">rolo</option>
+            </select>
+            <br>
+            <label for="med_velo">Medida de Velocidade</label>
+            <select id="med_velo">
+                <option value="">Selecione...</option>
+                <option value="iph">iph</option>
+                <option value="mph">mph</option>
+                <option value="m2ph">m2ph</option>
+            </select>
+
+            <input id="velo_max" placeholder="Velo Max (opcional)">
+            <input id="compr_max" placeholder="Compr. Max (opcional)">
+            <input id="larg_max" placeholder="Larg. Max (opcional)">
+            <input id="gram_max" placeholder="Gram. Max (opcional)">
+            <input id="esp_max" placeholder="Esp. Max (opcional)">
+
+            <input id="nome_impressora" placeholder="Nome da Impressora" required>
+            <input id="custo_hora" placeholder="Custo por hora (opcional)">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <div class="container-bloco">
+            <h2>Editar impressora:</h2>
+
+            <label for="tipoImpressora">Impressora que deseja editar:</label>
+            <datalist id="listaImpressoras"></datalist>
+            <input list="listaImpressoras" id="tipoImpressora" name="tipoImpressora">
+
+            <div id="editar-impressora" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+                <label for="campoEditarImpr">Escolha o campo para alterar:</label>
+                <select id="campoEditarImpr">
+                    <option value="">Selecione o campo...</option>
+                    <option value="nome">Nome</option>
+                    <option value="tipo">Tipo</option>
+                    <option value="tecno">Tecnologia</option>
+                    <option value="med_velo">Medida de Velocidade</option>
+                    <option value="custo_hora">Custo Hora</option>
+                </select>
+                <input id="novoValorImpr" placeholder="Novo valor">
+                <select id="novoValorImprSelect" style="display:none; margin-top:8px;">
+                    <!-- Opções serão mostradas dependendo do campo selecionado -->
+                </select>
+                <button id="btnSalvarAlteracaoImpr">Salvar alteração</button>
+            </div>
+        </div>
+
+        <div class="container-bloco">
+            <h2>Deletar impressora</h2>
+
+            <label for="impressoraExcluir">Impressora que deseja excluir:</label>
+            <datalist id="listaImpressorasExcluir"></datalist>
+            <input list="listaImpressorasExcluir" id="impressoraExcluir" placeholder="Escolha a impressora...">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

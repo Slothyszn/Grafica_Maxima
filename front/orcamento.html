@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-orcamento.css">
+    <title>Orçamentos</title>
+</head>
+<body>
+    <header class="main-header">Orçamentos</header>
+
+    <section>
+
+        <!-- ======================== -->
+        <!-- LISTAR ORÇAMENTOS -->
+        <!-- ======================== -->
+        <div class="container-bloco">
+            <table id="tabela-orcamento" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>% Lucro</th>
+                        <th>Adicional</th>
+                        <th>Total</th>
+                        <th>Data Criação</th>
+                        <th>Data Limite</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- ======================== -->
+        <!-- INSERIR ORÇAMENTO -->
+        <!-- ======================== -->
+        <form id="form-orcamento">
+            <h2>Criar novo orçamento</h2>
+
+            <label for="nome_cli_inserir">Cliente</label>
+            <input id="nome_cli_inserir" placeholder="Nome do cliente" required>
+
+            <label for="telefone">Telefone</label>
+            <input id="telefone" placeholder="Telefone cliente">
+
+            <label for="perc_lucro_inserir">% Lucro</label>
+            <input id="perc_lucro_inserir" placeholder="Ex: 10.5">
+
+            <label for="adicional_inserir">Adicional</label>
+            <input id="adicional_inserir" placeholder="Ex: 50.00">
+
+            <label for="dt_criacao_inserir">Data Criação</label>
+            <input type="date" id="dt_criacao_inserir">
+
+            <label for="dt_limite_inserir">Data Limite</label>
+            <input type="date" id="dt_limite_inserir">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- ======================== -->
+        <!-- EDITAR ORÇAMENTO -->
+        <!-- ======================== -->
+        <div class="container-bloco">
+            <h2>Editar orçamento</h2>
+
+            <label for="orcEditar">Orçamento que deseja editar:</label>
+            <datalist id="listaOrcamentosEditar"></datalist>
+            <input list="listaOrcamentosEditar" id="orcEditar" placeholder="Escolha um orçamento">
+
+            <div id="editar-orcamento" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+
+                <label for="campoEditarOrc">Campo</label>
+                <select id="campoEditarOrc">
+                    <option value="">Selecione...</option>
+                    <option value="nome_cli">Cliente</option>
+                    <option value="perc_lucro">% Lucro</option>
+                    <option value="adicional">Adicional</option>
+                    <option value="total">Total</option>
+                    <option value="dt_criacao">Data Criação</option>
+                    <option value="dt_limite">Data Limite</option>
+                </select>
+
+                <input id="novoValorOrc" placeholder="Novo valor">
+                <button id="btnSalvarAlteracaoOrc">Salvar alteração</button>
+            </div>
+        </div>
+
+        <!-- ======================== -->
+        <!-- EXCLUIR ORÇAMENTO -->
+        <!-- ======================== -->
+        <div class="container-bloco">
+            <h2>Excluir orçamento</h2>
+
+            <label for="orcExcluir">Orçamento que deseja excluir:</label>
+            <datalist id="listaOrcamentosExcluir"></datalist>
+            <input list="listaOrcamentosExcluir" id="orcExcluir" placeholder="Escolha o orçamento">
+
+            <button id="btnExcluirOrc">Excluir</button>
+        </div>
+
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-colorimetria.css">
+    <title>Colorimetria</title>
+</head>
+<body>
+    <header class="main-header">Colorimetria</header>
+
+    <section>
+        <div class="container-bloco">
+            <input type="text" id="busca" placeholder="Pesquisar colorimetria (cód/id)..." />
+
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Código</th>
+                        <th>Nº de Cores</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas de colorimetria vão aparecer aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <form id="form-colorimetria">
+            <h2>Salvar nova colorimetria:</h2>
+
+            <input id="cod" placeholder="Código (ex: C01)" required>
+            <input id="num_cores" placeholder="Número de cores" required>
+            <input id="descricao" placeholder="Descrição (opcional)">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <div class="container-bloco">
+            <h2>Editar colorimetria:</h2>
+
+            <label for="tipoColorimetria">Colorimetria que deseja editar:</label>
+            <datalist id="listaColorimetria"></datalist>
+            <input list="listaColorimetria" id="tipoColorimetria" name="tipoColorimetria">
+
+            <div id="editar-colorimetria" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+                <label for="campoEditarColor">Escolha o campo para alterar:</label>
+                <select id="campoEditarColor">
+                    <option value="">Selecione o campo...</option>
+                    <option value="cod">Código</option>
+                    <option value="num_cores">Número de cores</option>
+                    <option value="descricao">Descrição</option>
+                </select>
+
+                <input id="novoValorColor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracaoColor">Salvar alteração</button>
+            </div>
+        </div>
+
+        <div class="container-bloco">
+            <h2>Deletar colorimetria</h2>
+
+            <label for="colorimetriaExcluir">Colorimetria que deseja excluir:</label>
+            <datalist id="listaColorimetriaExcluir"></datalist>
+            <input list="listaColorimetriaExcluir" id="colorimetriaExcluir" placeholder="Escolha a colorimetria...">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

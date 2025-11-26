@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-impressao.css">
+    <title>Impressão</title>
+</head>
+<body>
+    <header class="main-header">Impressão</header>
+
+    <section>
+
+        <!-- ===================================== -->
+        <!-- LISTAR IMPRESSÕES -->
+        <!-- ===================================== -->
+        <div class="container-bloco">
+            <h2>Lista de Impressões</h2>
+            <input type="text" id="busca" placeholder="Pesquisar por ID ou valor...">
+
+            <table id="resultado">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Substrato</th>
+                        <th>Frente</th>
+                        <th>Verso</th>
+                        <th>Impressora</th>
+                        <th>Velocidade</th>
+                        <th>Passes</th>
+                        <th>Custo/Hora</th>
+                        <th>Custo Excedente</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- INSERIR IMPRESSÃO -->
+        <!-- ===================================== -->
+        <form id="form-impressao">
+            <h2>Inserir nova Impressão</h2>
+
+            <label>Substrato (id)</label>
+            <datalist id="listaSubstratos"></datalist>
+            <input id="id_sub" list="listaSubstratos" placeholder="Escolha o substrato" required>
+
+            <label>Colorimetria Frente (id)</label>
+            <datalist id="listaFrente"></datalist>
+            <input id="cod_frente" list="listaFrente" placeholder="Escolha a cor da frente" required>
+
+            <label>Colorimetria Verso (id)</label>
+            <datalist id="listaVerso"></datalist>
+            <input id="cod_verso" list="listaVerso" placeholder="Escolha a cor do verso" required>
+
+            <label>Impressora (id)</label>
+            <datalist id="listaImpressoras"></datalist>
+            <input id="id_impres" list="listaImpressoras" placeholder="Escolha a impressora" required>
+
+            <label>Velocidade</label>
+            <input id="velo" placeholder="Velocidade" />
+
+            <label>Passes</label>
+            <input id="n_pass" placeholder="Número de passes" />
+
+            <button type="submit">Salvar</button>
+        </form>
+
+
+        <!-- ===================================== -->
+        <!-- EDITAR IMPRESSÃO -->
+        <!-- ===================================== -->
+        <div class="container-bloco">
+            <h2>Editar Impressão</h2>
+
+            <label>Escolha a impressão:</label>
+            <datalist id="listaImpressaoEditar"></datalist>
+            <input id="impressaoEditar" list="listaImpressaoEditar" placeholder="Escolha uma impressão">
+
+            <div id="editar-impressao" style="display:none">
+                <label>Campo</label>
+                <select id="campoEditarImpressao">
+                    <option value="">Selecione...</option>
+                    <option value="id_sub">Substrato</option>
+                    <option value="cod_frente">Frente</option>
+                    <option value="cod_verso">Verso</option>
+                    <option value="id_impres">Impressora</option>
+                    <option value="velo">Velocidade</option>
+                    <option value="n_pass">Passes</option>
+                </select>
+
+                <label>Novo valor</label>
+                <input id="novoValorImpressao">
+
+                <button id="btnSalvarAlteracaoImpressao">Salvar</button>
+            </div>
+        </div>
+
+
+        <!-- ===================================== -->
+        <!-- DELETAR IMPRESSÃO -->
+        <!-- ===================================== -->
+        <div class="container-bloco">
+            <h2>Excluir Impressão</h2>
+
+            <label>Escolha a impressão</label>
+            <datalist id="listaImpressaoExcluir"></datalist>
+            <input id="impressaoExcluir" list="listaImpressaoExcluir" placeholder="Escolha a impressão">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

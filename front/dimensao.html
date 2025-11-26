@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-dimensao.css">
+    <title>Dimensões</title>
+</head>
+<body>
+    <header class="main-header">Dimensões</header>
+
+    <section>
+        <!-- Tabela -->
+        <div class="container-bloco">
+            <table id="tabelaDimensao" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Comprimento</th>
+                        <th>Largura</th>
+                        <th>Margem Interna</th>
+                        <th>Margem Sangria</th>
+                        <th>Margem Branca</th>
+                        <th>Margem Espaço</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Formulário de inserção -->
+        <form id="form-dimensao">
+            <h2>Adicionar nova dimensão</h2>
+
+            <label for="cmpr">Comprimento</label>
+            <input id="cmpr" placeholder="Comprimento" required type="number" step="0.01">
+
+            <label for="larg">Largura</label>
+            <input id="larg" placeholder="Largura" required type="number" step="0.01">
+
+            <label for="mrg_interna">Margem Interna</label>
+            <input id="mrg_interna" placeholder="Margem Interna" type="number" step="0.01">
+
+            <label for="mrg_sangria">Margem Sangria</label>
+            <input id="mrg_sangria" placeholder="Margem Sangria" type="number" step="0.01">
+
+            <label for="mrg_branca">Margem Branca</label>
+            <input id="mrg_branca" placeholder="Margem Branca" type="number" step="0.01">
+
+            <label for="mrg_espaco">Margem Espaço</label>
+            <input id="mrg_espaco" placeholder="Margem Espaço" type="number" step="0.01">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- Edição -->
+        <div class="container-bloco">
+            <h2>Editar dimensão</h2>
+            <label for="dimensaoSelecionada">Dimensão que deseja editar:</label>
+            <datalist id="listaDimensoes"></datalist>
+            <input list="listaDimensoes" id="dimensaoSelecionada" name="dimensaoSelecionada">
+
+            <div id="editar-dimensao" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+                <label for="campoEditarDimensao">Campo</label>
+                <select id="campoEditarDimensao">
+                    <option value="">Selecione o campo...</option>
+                    <option value="cmpr">Comprimento</option>
+                    <option value="larg">Largura</option>
+                    <option value="mrg_interna">Margem Interna</option>
+                    <option value="mrg_sangria">Margem Sangria</option>
+                    <option value="mrg_branca">Margem Branca</option>
+                    <option value="mrg_espaco">Margem Espaço</option>
+                </select>
+
+                <input id="novoValorDimensao" placeholder="Novo valor" type="number" step="0.01">
+                <button id="btnSalvarAlteracaoDimensao">Salvar alteração</button>
+            </div>
+        </div>
+
+        <!-- Exclusão -->
+        <div class="container-bloco">
+            <h2>Deletar dimensão</h2>
+            <label for="dimensaoExcluir">Dimensão que deseja excluir:</label>
+            <datalist id="listaDimensoesExcluir"></datalist>
+            <input list="listaDimensoesExcluir" id="dimensaoExcluir" placeholder="Escolha a dimensão">
+
+            <button id="btnExcluirDimensao">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

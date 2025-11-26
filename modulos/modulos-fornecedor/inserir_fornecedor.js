@@ -1,10 +1,17 @@
 export async function InserirFornecedor(event) {
   event.preventDefault();
 
-  const novoFornecedor = {
-    nome: document.getElementById("nome").value,
-    contato: document.getElementById("contato").value
-  };
+  // Pegando valores do formulário
+  const nome = document.getElementById("nome").value.trim();
+  const contato = document.getElementById("contato").value.trim();
+
+  if (!nome || !contato) {
+    alert("Preencha todos os campos obrigatórios!");
+    return;
+  }
+
+
+  const novoFornecedor = { nome, contato };
 
   try {
     const resposta = await fetch("http://localhost:3000/api/fornecedores", {
@@ -13,12 +20,20 @@ export async function InserirFornecedor(event) {
       body: JSON.stringify(novoFornecedor)
     });
 
-    if (!resposta.ok) throw new Error("Erro ao inserir Fornecedor");
+    if (!resposta.ok) {
+      const erroData = await resposta.json();
+      throw new Error(erroData.erro || "Erro ao inserir fornecedor");
+    }
 
     const data = await resposta.json();
-    alert(data.mensagem); // mostra mensagem de sucesso
+    alert(`Fornecedor inserido com sucesso!\nNome: ${data.nome}\nContato: ${data.contato}`);
+
+    // Opcional: limpar formulário
+    document.getElementById("nome").value = "";
+    document.getElementById("contato").value = "";
+
   } catch (erro) {
     console.error("Erro ao inserir fornecedor:", erro);
-    alert("Não foi possível inserir o fornecedor.");
+    alert(`Não foi possível inserir o fornecedor: ${erro.message}`);
   }
 }

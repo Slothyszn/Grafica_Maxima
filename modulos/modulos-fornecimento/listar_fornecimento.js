@@ -1,107 +1,259 @@
-// listar_fornecimento.js
-
 // ==========================
-// CONSULTAR fornecimentos
+// LISTAR fornecimentos
 // ==========================
 export async function ConsultarFornecimentos() {
+  try {
+    const [resFornc, resFornec, resSubs, resForm] = await Promise.all([
+      fetch("http://localhost:3000/api/fornecimentos"),
+      fetch("http://localhost:3000/api/fornecedores"),
+      fetch("http://localhost:3000/api/substratos"),
+      fetch("http://localhost:3000/api/formatos")
+    ]);
+
+    const dadosFornc = await resFornc.json();
+    const dadosForn = await resFornec.json();
+    const dadosSub = await resSubs.json();
+    const dadosForm = await resForm.json();
+
+    const fornecimentos = Array.isArray(dadosFornc.Fornecimento)
+      ? dadosFornc.Fornecimento
+      : [];
+
+    const fornecedores = Array.isArray(dadosForn.Fornecedor)
+      ? dadosForn.Fornecedor
+      : [];
+
+    const substratos = Array.isArray(dadosSub.Substrato)
+      ? dadosSub.Substrato
+      : [];
+
+    const formatos = Array.isArray(dadosForm.Formato)
+      ? dadosForm.Formato
+      : [];
+
+    const tabela = document.querySelector("#resultado tbody");
+    if (!tabela) return;
+
+    if (!fornecimentos.length) {
+      tabela.innerHTML =
+        `<tr><td colspan="6" style="text-align:center;">Nenhum fornecimento encontrado</td></tr>`;
+      return;
+    }
+
+    tabela.innerHTML = fornecimentos.map(f => {
+      const forn = fornecedores.find(x => x.id_forn == f.id_fornecedor);
+      const sub = substratos.find(x => x.id_sub == f.id_sub);
+      const form = formatos.find(x => x.id_form == f.id_form);
+
+      return `
+        <tr>
+          <td>${f.id}</td>
+          <td>${forn ? forn.nome : f.id_fornecedor}</td>
+          <td>${sub ? sub.id_sub : f.id_sub}</td>
+          <td>${form ? form.nome : f.id_form}</td>
+          <td>${f.forma || ""}</td>
+          <td>${f.custo_pro_m2 || ""}</td>
+        </tr>`;
+    }).join("");
+
+  } catch (erro) {
+    console.error("Erro ao consultar fornecimentos:", erro);
+    const tabela = document.querySelector("#resultado tbody");
+    if (tabela)
+      tabela.innerHTML =
+        `<tr><td colspan="6">Erro ao carregar fornecimentos</td></tr>`;
+  }
+}
+
+// ==========================
+// SUMIR DA TABELA
+// ==========================
+export function desaparecerFornecimentos() {
+  const tabela = document.querySelector("#resultado tbody");
+  if (tabela) tabela.textContent = "";
+}
+
+// ==========================
+// BUSCA DINÂMICA (padrão configs)
+// ==========================
+export async function configurarBuscaFornecimentos() {
+  const input = document.getElementById("busca");
+  const tabela = document.querySelector("#resultado tbody");
+  if (!input || !tabela) return;
+
+  function renderTabela(arr, fornecedores, substratos, formatos) {
+    if (!arr.length) {
+      tabela.innerHTML =
+        `<tr><td colspan="6" style="text-align:center;">Nenhum resultado encontrado</td></tr>`;
+      return;
+    }
+
+    tabela.innerHTML = arr.map(f => {
+      const forn = fornecedores.find(x => x.id_forn == f.id_fornecedor);
+      const sub = substratos.find(x => x.id_sub == f.id_sub);
+      const form = formatos.find(x => x.id_fmt == f.id_fmt);
+
+      return `
+      <tr>
+        <td>${f.id_fornec}</td>
+        <td>${forn ? forn.id_forn : f.id_forn}</td>
+        <td>${sub ? sub.id_sub : f.id_sub}</td>
+        <td>${form ? form.nome : f.id_fmt}</td>
+        <td>${f.forma || ""}</td>
+        <td>${f.custo_m2 || ""}</td>
+      </tr>`;
+    }).join("");
+  }
+
+  // Carrega inicial
+  let fornecimentos = [];
+  let fornecedores = [];
+  let substratos = [];
+  let formatos = [];
+
+  try {
+    const [resFornc, resForn, resSubs, resForm] = await Promise.all([
+      fetch("http://localhost:3000/api/fornecimentos"),
+      fetch("http://localhost:3000/api/fornecedores"),
+      fetch("http://localhost:3000/api/substratos"),
+      fetch("http://localhost:3000/api/formatos")
+    ]);
+
+    const dadosFornc = await resFornc.json();
+    const dadosFornec = await resForn.json();
+    const dadosSub = await resSubs.json();
+    const dadosFormat = await resForm.json();
+
+    fornecimentos = Array.isArray(dadosFornc.Fornecimento) ? dadosFornc.Fornecimento : [];
+    fornecedores = Array.isArray(dadosFornec.Fornecedor) ? dadosFornec.Fornecedor : [];
+    substratos = Array.isArray(dadosSub.Substrato) ? dadosSub.Substrato : [];
+    formatos = Array.isArray(dadosFormat.Formato) ? dadosFormat.Formato : [];
+
+    renderTabela(fornecimentos, fornecedores, substratos, formatos);
+
+  } catch (erro) {
+    tabela.innerHTML = `<tr><td colspan="6">Erro ao carregar</td></tr>`;
+    console.error(erro);
+  }
+
+  // Busca dinâmica
+  input.addEventListener("input", () => {
+    const termo = input.value.toLowerCase().trim();
+
+    if (!termo) {
+      renderTabela(fornecimentos, fornecedores, substratos, formatos);
+      return;
+    }
+
+    const filtradas = fornecimentos.filter(f => {
+      const forn = fornecedores.find(x => x.id_forn == f.id_fornecedor);
+      const sub = substratos.find(x => x.id_sub == f.id_sub);
+      const form = formatos.find(x => x.id_form == f.id_form);
+
+      return (
+        String(f.id).includes(termo) ||
+        (forn?.nome || "").toLowerCase().includes(termo) ||
+        (sub?.id_sub || "").toLowerCase().includes(termo) ||
+        (form?.nome || "").toLowerCase().includes(termo) ||
+        (f.forma || "").toLowerCase().includes(termo)
+      );
+    });
+
+    renderTabela(filtradas, fornecedores, substratos, formatos);
+  });
+}
+
+// ==========================
+// DATALISTS (padrão configs)
+// ==========================
+export async function carregarOpcoesFornecimentos() {
   try {
     const resposta = await fetch("http://localhost:3000/api/fornecimentos");
     const dados = await resposta.json();
 
-    const respostaFornecedores = await fetch("http://localhost:3000/api/fornecedores");
-    const fornecedores = await respostaFornecedores.json();
+    const fornecimentos = Array.isArray(dados.Fornecimento)
+      ? dados.Fornecimento
+      : [];
 
-    const respostaMateriais = await fetch("http://localhost:3000/api/materiais");
-    const materiais = await respostaMateriais.json();
+    const list1 = document.getElementById("listaFornecimentos");
+    const list2 = document.getElementById("listaFornecimentosExcluir");
 
-    const fornecimentos = Array.isArray(dados.Fornecimento) ? dados.Fornecimento : [];
+    if (list1) list1.innerHTML = "";
+    if (list2) list2.innerHTML = "";
 
-    const lista = fornecimentos.map(f => {
-      const nomeFornecedor = fornecedores.Fornecedor.find(x => x.id == f.id_fornecedor)?.nome || "N/A";
-      const nomeMaterial = materiais.Material.find(x => x.id == f.id_material)?.nome || "N/A";
+    fornecimentos.forEach(f => {
+      const texto = `${f.id_fornec} | ${f.id_forn} | ${f.id_sub} | ${f.id_fmt} | ${f.forma}`;
 
-      return `ID: ${f.id} | Fornecedor: ${nomeFornecedor} | Material: ${nomeMaterial} | Comp: ${f.comprimento_base} | Larg: ${f.largura_base} | Unidades: ${f.unidades} | Custo Total: ${f.custo_total} | Custo Unitário: ${f.custo_unitario_estimado}`;
-    }).join("<br>");
+      const op1 = document.createElement("option");
+      op1.value = texto;
 
-    document.getElementById("resultado-fornecimentos").innerHTML = lista;
+      const op2 = document.createElement("option");
+      op2.value = texto;
+
+      list1.appendChild(op1);
+      list2.appendChild(op2);
+    });
   } catch (erro) {
-    console.error("❌ Erro ao consultar fornecimentos:", erro);
+    console.error("Erro ao carregar opções:", erro);
   }
 }
 
-// ==========================
-// FAZER INFORMAÇÕES SUMIREM
-// ==========================
-export function desaparecerFornecimentos() {
-  const resultado = document.getElementById("resultado-fornecimentos");
-  if (resultado) resultado.textContent = '';
-}
 
 // ==========================
-// CARREGAR opções de datalists para edição
+// Carregar fornecedores, substratos e formatos
 // ==========================
-export async function carregarOpcoesFornecimentos() {
+export async function carregarTabelasExternasFornecimento() {
   try {
-    const respostaFornecimentos = await fetch("http://localhost:3000/api/fornecimentos");
-    const dadosFornecimentos = await respostaFornecimentos.json();
+    const [resF, resS, resFo] = await Promise.all([
+      fetch("http://localhost:3000/api/fornecedores"),
+      fetch("http://localhost:3000/api/substratos"),
+      fetch("http://localhost:3000/api/formatos")
+    ]);
 
-    const respostaFornecedores = await fetch("http://localhost:3000/api/fornecedores");
-    const fornecedores = await respostaFornecedores.json();
+    const dadosForn = await resF.json();
+    const dadosSub = await resS.json();
+    const dadosForm = await resFo.json();
 
-    const respostaMateriais = await fetch("http://localhost:3000/api/materiais");
-    const materiais = await respostaMateriais.json();
+    const fornecedores = Array.isArray(dadosForn.Fornecedor)
+      ? dadosForn.Fornecedor
+      : [];
 
-    const datalistEditar = document.getElementById("listaFornecimentos");
-    const datalistExcluir = document.getElementById("listaFornecimentosExcluir");
-    datalistEditar.innerHTML = "";
-    datalistExcluir.innerHTML = "";
+    const substratos = Array.isArray(dadosSub.Substrato)
+      ? dadosSub.Substrato
+      : [];
 
-    if (!Array.isArray(dadosFornecimentos.Fornecimento)) return;
+    const formatos = Array.isArray(dadosForm.Formato)
+      ? dadosForm.Formato
+      : [];
 
-    dadosFornecimentos.Fornecimento.forEach(f => {
-      const nomeFornecedor = fornecedores.Fornecedor.find(x => x.id == f.id_fornecedor)?.nome || "N/A";
-      const nomeMaterial = materiais.Material.find(x => x.id == f.id_material)?.nome || "N/A";
+    const listF = document.getElementById("listaFornecedores");
+    const listS = document.getElementById("listaSubstratos");
+    const listFo = document.getElementById("listaFormatos");
 
-      const textoLegivel = `${f.id} | ${nomeFornecedor} | ${nomeMaterial}`;
+    if (listF) listF.innerHTML = "";
+    if (listS) listS.innerHTML = "";
+    if (listFo) listFo.innerHTML = "";
 
-      const optionEditar = document.createElement("option");
-      optionEditar.value = textoLegivel;
-      datalistEditar.appendChild(optionEditar);
-
-      const optionExcluir = document.createElement("option");
-      optionExcluir.value = textoLegivel;
-      datalistExcluir.appendChild(optionExcluir);
+    fornecedores.forEach(f => {
+      const op = document.createElement("option");
+      op.value = f.nome;
+      listF.appendChild(op);
     });
+
+    substratos.forEach(s => {
+      const op = document.createElement("option");
+      op.value = s.id_sub;
+      op.textContent = `Substrato #${s.id_sub}`; // só para o usuário ver algo mais amigável
+      listS.appendChild(op);
+    });
+
+    formatos.forEach(f => {
+      const op = document.createElement("option");
+      op.value = f.nome;
+      listFo.appendChild(op);
+    });
+
   } catch (erro) {
-    console.error("❌ Erro ao carregar opções de fornecimentos:", erro);
-  }
-}
-
-// ==========================
-// CARREGAR fornecedores e materiais para inserir novo fornecimento
-// ==========================
-export async function carregarOpcoesParaNovoFornecimento() {
-  try {
-    const respostaF = await fetch("http://localhost:3000/api/fornecedores");
-    const fornecedores = await respostaF.json();
-    const datalistF = document.getElementById("listaFornecedores");
-    datalistF.innerHTML = "";
-    fornecedores.Fornecedor.forEach(f => {
-      const option = document.createElement("option");
-      option.value = f.nome;
-      datalistF.appendChild(option);
-    });
-
-    const respostaM = await fetch("http://localhost:3000/api/materiais");
-    const materiais = await respostaM.json();
-    const datalistM = document.getElementById("listaMateriais");
-    datalistM.innerHTML = "";
-    materiais.Material.forEach(m => {
-      const option = document.createElement("option");
-      option.value = m.nome;
-      datalistM.appendChild(option);
-    });
-  } catch (erro) {
-    console.error("❌ Erro ao carregar fornecedores/materiais:", erro);
+    console.error("Erro ao carregar tabelas:", erro);
   }
 }

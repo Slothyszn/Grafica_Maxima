@@ -1,0 +1,94 @@
+/* Estilo para página de itens - segue padrão do projeto */
+:root {
+  --cor-preta: #111111;
+  --cor-branca: #ffffff;
+  --cor-fundo: #f4f4f4;
+  --cor-azul: #0056b3;
+  --cor-cinza: #d7d7d7;
+  --cor-verde: #35a020;
+  --cor-vermelha: #f10000;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-preta);
+  margin: 0;
+  padding: 0;
+}
+
+.main-header {
+  background-color: var(--cor-azul);
+  color: var(--cor-branca);
+  padding: 15px 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+section {
+  margin: 2rem;
+}
+
+form,
+div.container-bloco {
+  background-color: var(--cor-branca);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: var(--cor-preta);
+}
+
+input:not([type="hidden"]),
+select,
+textarea {
+  width: 95%;
+  max-width: 320px;
+  padding: 10px;
+  margin: 5px 5px 5px 0;
+  border: 1px solid var(--cor-cinza);
+  border-radius: 4px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-preta);
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  color: var(--cor-branca);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+button[type="submit"],
+button#btnSalvarAlteracao {
+  background-color: var(--cor-verde);
+}
+
+button#btnExcluir {
+  background-color: var(--cor-vermelha);
+}
+
+/* estilo da tabela */
+#resultado-item thead th {
+  background-color: var(--cor-azul);
+  color: var(--cor-branca);
+  padding: 10px;
+  text-align: left;
+}
+
+#resultado-item tbody td {
+  padding: 8px;
+  border-bottom: 1px solid var(--cor-cinza);
+}

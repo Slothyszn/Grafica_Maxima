@@ -1,12 +1,19 @@
 export async function habilitarEdicaoServico() {
-  const nomeSelecionado = document.getElementById("tipoServico").value;
-  if (!nomeSelecionado) return;
+  const selecionado = document.getElementById("tipoServico").value;
+  if (!selecionado) return;
+
+  // pega só o ID antes do " | "
+  const idSelecionado = selecionado.split(" | ")[0].trim();
 
   try {
     const resposta = await fetch("http://localhost:3000/api/servicos");
+    if (!resposta.ok) {
+      alert('Erro ao carregar serviços para edição');
+      return;
+    }
     const dados = await resposta.json();
 
-    const servico = dados.Servico.find(p => p.nome === nomeSelecionado);
+    const servico = dados.Servico.find(p => String(p.id_serv) === idSelecionado);
     if (!servico) {
       alert("Serviço não encontrado!");
       return;
@@ -23,14 +30,25 @@ export async function habilitarEdicaoServico() {
       }
 
       // envia o PUT para o back
-      await fetch(`http://localhost:3000/api/servicos/${servico.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ campo, novoValor })
-      });
+      try {
+        const res = await fetch(`http://localhost:3000/api/servicos/${servico.id_serv}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ campo, novoValor })
+        });
 
-      alert("Serviço atualizado!");
-      document.getElementById("editar-servico").style.display = "none";
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.mensagem || 'Erro ao atualizar serviço');
+        }
+
+        alert('Serviço atualizado!');
+        document.getElementById('editar-servico').style.display = 'none';
+        if (window.ConsultarServicos) await window.ConsultarServicos();
+      } catch (erro) {
+        console.error('Erro ao atualizar serviço:', erro);
+        alert('Erro ao atualizar serviço: ' + (erro.message || erro));
+      }
     };
   } catch (erro) {
     console.error("Erro ao carregar servico:", erro);

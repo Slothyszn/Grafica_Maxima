@@ -14,9 +14,20 @@
     <section>
         <!-- Consulta de fornecimentos -->
         <div class="container-bloco">
-            <button id="btn-consulta-fornecimentos">Apareça</button>
-            <button id="btn-desapareca-fornecimentos">Desapareça</button>
-            <pre id="resultado-fornecimentos"></pre>
+            <input type="text" id="busca" placeholder="Pesquisar serviço..." />
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Fornecedor</th>
+                        <th>ID Substrato</th>
+                        <th>Nome Formato</th>
+                        <th>Forma</th>
+                        <th>Custo por M2</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
 
         <!-- Formulário para criar novo fornecimento -->
@@ -27,16 +38,20 @@
             <input list="listaFornecedores" id="nome_fornecedor" placeholder="Escolha o fornecedor" required>
             <datalist id="listaFornecedores"></datalist>
 
-            <!-- Escolher material por nome -->
-            <input list="listaMateriais" id="nome_material" placeholder="Escolha o material" required>
-            <datalist id="listaMateriais"></datalist>
+            <!-- Escolher substrato por nome -->
+            <input list="listaSubstratos" id="nome_substrato" placeholder="Escolha o Substrato" required>
+            <datalist id="listaSubstratos"></datalist>
 
-            <input id="comprimento_base" placeholder="Comprimento Base" required>
-            <input id="largura_base" placeholder="Largura Base" required>
-            <input id="unidades" placeholder="Unidades" required>
-            <input id="custo_total" placeholder="Custo Total" required>
-            <input id="custo_unitario_estimado" placeholder="Custo Unitário Estimado" required>
+            <input list="listaFormatos" id="nome_formato" placeholder="Escolha o Formato" required>
+            <datalist id="listaFormatos"></datalist>
 
+            <select id="forma">
+                <option value="">Selecione a forma...</option>
+                <option value="folha">Folha</option>
+                <option value="rolo">Rolo</option>
+            </select>
+
+            <input type="text" id="custo_pro_m2" placeholder="Custo pro M2">
             <button type="submit">Salvar</button>
         </form>
 
@@ -50,13 +65,12 @@
             <div id="editar-fornecimento" style="display: none; margin-top: 20px;">
                 <select id="campoEditar">
                     <option value="">Selecione o campo...</option>
-                    <option value="id_fornecedor">Fornecedor</option>
-                    <option value="id_material">Material</option>
-                    <option value="comprimento_base">Comprimento Base</option>
-                    <option value="largura_base">Largura Base</option>
-                    <option value="unidades">Unidades</option>
-                    <option value="custo_total">Custo Total</option>
-                    <option value="custo_unitario_estimado">Custo Unitário Estimado</option>
+                    <option value="id_forn">Fornecedor</option>
+                    <option value="id_sub">Substrato</option>
+                    <option value="id_fmt">Formato</option>
+                    <option value="forma">Forma</option>
+                    <option value="custo_m2">Custo por m2</option>
+                    
                 </select>
 
                 <input id="novoValor" placeholder="Novo valor">

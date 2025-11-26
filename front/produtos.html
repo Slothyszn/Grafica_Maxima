@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-produto.css">
+    <title>Produto</title>
+</head>
+<body>
+    <header class="main-header">
+        Produto
+    </header>
+
+    <section>
+        <!-- TABELA -->
+        <div class="container-bloco">
+            <input type="text" id="busca" placeholder="Pesquisar produto..." />
+
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Família</th>
+                        <th>ID Categoria</th>
+                        <th>Custo m²</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- INSERIR -->
+        <form id="form-produto">
+            <h2>Salvar novo produto:</h2>
+
+            <input id="id_familia" list="listaFamilias" placeholder="ID Família" required />
+            <datalist id="listaFamilias"></datalist>
+
+            <input id="id_categoria" list="listaCategorias" placeholder="ID Categoria" required />
+            <datalist id="listaCategorias"></datalist>
+
+            <input id="custo_m2" type="number" step="0.01" placeholder="Custo m²" required />
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- EDITAR -->
+        <div class="container-bloco">
+            <h2>Editar produto:</h2>
+
+            <label>Escolha o ID:</label>
+            <input list="listaProdutos" id="tipoProduto">
+            <datalist id="listaProdutos"></datalist>
+
+            <div id="editar-produto" style="display:none; margin-top:20px;">
+                <h3>Editar campo</h3>
+
+                <select id="campoEditar">
+                    <option value="">Selecione...</option>
+                    <option value="id_fam">ID Família</option>
+                    <option value="id_categ">ID Categoria</option>
+                    <option value="custo_m2">Custo m²</option>
+                </select>
+
+                <input id="novoValor" placeholder="Novo valor" />
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div>
+        </div>
+
+        <!-- EXCLUIR -->
+        <div class="container-bloco">
+            <h2>Deletar produto</h2>
+
+            <input list="listaProdutosExcluir" id="produtoExcluir" placeholder="ID para excluir" />
+            <datalist id="listaProdutosExcluir"></datalist>
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -52,19 +52,7 @@ pre#resultado-fornecimentos {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"],
-input[type="number"],
-input[id="nome_fornecedor"],
-input[id="nome_material"],
-input[id="comprimento_base"],
-input[id="largura_base"],
-input[id="unidades"],
-input[id="custo_total"],
-input[id="custo_unitario_estimado"],
-input[id="fornecimentoEditar"],
-input[id="novoValor"],
-input[id="fornecimentoExcluir"],
-select {
+input, select {
     width: 95%;
     max-width: 300px;
     padding: 10px;
@@ -120,4 +108,68 @@ pre#resultado-fornecimentos {
     word-wrap: break-word;
     min-height: 50px;
     border: 1px dashed var(--cor-cinza);
+}
+
+
+input[id="busca"] {
+    max-width: none; 
+    margin: 10px 0 15px 0;
+    transition: border-color 0.2s ease;
+}
+
+input[id="busca"]:focus {
+    border-color: var(--cor-azul); 
+    outline: none; 
+    box-shadow: 0 0 0 1px var(--cor-azul);
+}
+
+#resultado {
+    border: 1px solid var(--cor-azul); 
+    border-radius: 4px; 
+    overflow: hidden; 
+}
+
+#resultado thead th {
+    background-color: var(--cor-azul); 
+    color: var(--cor-branca); 
+    padding: 12px 10px; 
+    text-align: left; 
+    font-size: 15px;
+    border: none; 
+}
+
+input[id="busca"] {
+    max-width: none; 
+    margin: 10px 0 15px 0;
+    transition: border-color 0.2s ease;
+}
+
+input[id="busca"]:focus {
+    border-color: var(--cor-azul); 
+    outline: none; 
+    box-shadow: 0 0 0 1px var(--cor-azul);
+}
+
+#resultado {
+    border: 1px solid var(--cor-azul); 
+    border-radius: 4px; 
+    overflow: hidden; 
+}
+
+#resultado thead th {
+    background-color: var(--cor-azul); 
+    color: var(--cor-branca); 
+    padding: 12px 10px; 
+    text-align: left; 
+    font-size: 15px;
+    border: none; 
+}
+
+#resultado tbody td {
+    padding: 10px;
+    border-bottom: 1px solid var(--cor-cinza); 
+}
+
+#resultado tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
 }

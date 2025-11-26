@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-formatos.css">
+    <title>Formatos</title>
+</head>
+<body>
+    <header class="main-header">Formatos</header>
+
+    <section>
+        <!-- Lista de formatos -->
+        <div class="container-bloco">
+            <table id="resultado" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID Formato</th>
+                        <th>Tipo</th>
+                        <th>Nome</th>
+                        <th>Comprimento</th>
+                        <th>Largura</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- Formulário para adicionar novo formato -->
+        <form id="form-formato">
+            <h2>Salvar novo formato</h2>
+
+            <select id="tipo" required>
+                <option value="">Selecione o tipo...</option>
+                <option value="fornecimento">Fornecimento</option>
+                <option value="item">Item</option>
+            </select>
+
+            <input id="nome" placeholder="Nome do formato" required>
+            <input id="comprimento" placeholder="Comprimento">
+            <input id="largura" placeholder="Largura">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <!-- Formulário para editar formato -->
+        <div class="container-bloco">
+            <h2>Editar formato</h2>
+
+            <label for="formatoEditar">Formato que deseja editar:</label>
+            <datalist id="listaFormatos"></datalist>
+            <input list="listaFormatos" id="formatoEditar" placeholder="Escolha o formato">
+
+            <div id="editar-formato" style="display: none; margin-top: 20px;">
+                <h3>Editar campos</h3>
+
+                <select id="campoEditar">
+                    <option value="">Selecione o campo...</option>
+                    <option value="tipo">Tipo</option>
+                    <option value="nome">Nome</option>
+                    <option value="comprimento">Comprimento</option>
+                    <option value="largura">Largura</option>
+                </select>
+
+                <input id="novoValor" placeholder="Novo valor">
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+            </div>
+        </div>
+
+        <!-- Formulário para deletar formato -->
+        <div class="container-bloco">
+            <h2>Deletar formato</h2>
+
+            <label for="formatoExcluir">Formato que deseja excluir:</label>
+            <datalist id="listaFormatosExcluir"></datalist>
+            <input list="listaFormatosExcluir" id="formatoExcluir" placeholder="Escolha o formato">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

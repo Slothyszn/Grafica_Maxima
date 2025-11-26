@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style-itens.css">
+    <title>Itens</title>
+</head>
+<body>
+    <header class="main-header">Itens do Orçamento</header>
+
+    <section>
+        <!-- LISTAGEM -->
+        <div class="container-bloco">
+            <table id="resultado-item" border="1" style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th>ID Item</th>
+                        <th>ID Orçamento</th>
+                        <th>Tipo</th>     
+                        <th>ID Referência</th>                   
+                        <th>Quantidade</th>
+                        <th>Custo Parcial</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <!-- FORMULÁRIO DE CADASTRO DE ITEM -->
+        <form id="form-item">
+        <h2>Salvar novo item</h2>
+
+        <label for="id_orc">ID Orçamento</label>
+        <input list="listaOrc" id="id_orc" placeholder="ID do orçamento" required>
+        <datalist id="listaOrc"></datalist>
+
+        <label for="tipo">Tipo</label>
+        <select id="tipo" required>
+            <option value="">Selecione...</option>
+            <option value="impressao">Impressão</option>
+            <option value="produto">Produto</option>
+            <option value="servico">Serviço</option>
+        </select>
+
+        <label for="id_ref">ID Referência</label>
+        <input list="listaIds" id="id_ref" placeholder="Escolha o ID correspondente" required>
+        <datalist id="listaIds"></datalist>
+
+        <div id="dimensao-editar" style="display: none; margin-top: 20px;">
+            <label>Dimensões</label>
+            <input id="cmpr" placeholder="Comprimento" required type="number" step="0.01" name="cmpr">
+            <input id="larg" placeholder="Largura" required type="number" step="0.01" name="larg">
+            <input id="mrg_interna" placeholder="Margem Interna" type="number" step="0.01">
+            <input id="mrg_sangria" placeholder="Margem Sangria" type="number" step="0.01">
+            <input id="mrg_branca" placeholder="Margem Branca" type="number" step="0.01">
+            <input id="mrg_espaco" placeholder="Margem Espaço" type="number" step="0.01">
+        </div>
+
+        <div id="impressao-editar" style="display: none; margin-top: 20px;">
+            <label>Impressão:</label>
+            <datalist id="listaSubstratos"></datalist>
+            <input id="id_sub" list="listaSubstratos" placeholder="Escolha o substrato" required>
+
+            <datalist id="listaFrente"></datalist>
+            <input id="cod_frente" list="listaFrente" placeholder="Escolha a cor da frente" required>
+
+            <datalist id="listaVerso"></datalist>
+            <input id="cod_verso" list="listaVerso" placeholder="Escolha a cor do verso" required>
+
+            <datalist id="listaImpressoras"></datalist>
+            <input id="id_impres" list="listaImpressoras" placeholder="Escolha a impressora" required>
+
+            <input id="velo" placeholder="Velocidade" />
+        </div>
+        <div id="impressao-dimensao" style="display: none; margin-top: 20px;">
+            <label>Dimensão de Impressão:</label>
+            <input type="number" id="cmpr_imp" name="cmpr_imp" step="0.1" placeholder="Comprimento">
+            <input type="number" id="larg_imp" name="larg_imp" step="0.1" placeholder="Largura">
+            <input type="number" id="mrg_interna_imp" name="mrg_interna_imp" step="0.1" placeholder="Margem interna">
+            <input type="number" id="mrg_sangria_imp" name="mrg_sangria_imp" step="0.1" placeholder="Margem sangria">
+            <input type="number" id="mrg_branca_imp" name="mrg_branca_imp" step="0.1" placeholder="Margem branca">
+            <input type="number" id="mrg_espaco_imp" name="mrg_espaco_imp" step="0.1" placeholder="Margem espaço">
+        </div>
+
+        <label for="quant">Quantidade</label>
+        <input id="quant" placeholder="Quantidade" required>
+
+        <label for="custo_parcial">Custo Parcial</label>
+        <input id="custo_parcial" placeholder="Custo parcial" required>
+
+        <button type="submit">Salvar</button>
+        </form>
+
+        <!-- EDITAR ITEM -->
+        <div class="container-bloco">
+            <h2>Editar item</h2>
+            <label for="itemEditar">Item que deseja editar:</label>
+            <input list="listaItens" id="itemEditar" name="itemEditar">
+            <datalist id="listaItens"></datalist>
+
+            <div id="editar-item" style="display: none; margin-top: 20px;">
+                <h3>Editar campo</h3>
+
+                <label for="campoEditar">Campo</label>
+                <select id="campoEditar">
+                    <option value="">Selecione o campo...</option>
+                    <option value="id_orc">ID Orçamento</option>
+                    <option value="tipo">Tipo</option>
+                    <option value="id_ref">ID Referência</option>
+                    <option value="quant">Quantidade</option>
+                    <option value="custo_parcial">Custo Parcial</option>
+                </select>
+
+                <!-- este input vai mudar automaticamente o datalist dependendo do campo -->
+                <input id="novoValor" placeholder="Novo valor">
+
+                <!-- Lista de orçamentos -->
+                <datalist id="listaOrcEdit"></datalist>
+
+                <!-- Lista de IDs de impressão -->
+                <datalist id="listaImpEdit"></datalist>
+
+                <!-- Lista de IDs de produtos -->
+                <datalist id="listaProdEdit"></datalist>
+
+                <!-- Lista de IDs de serviços -->
+                <datalist id="listaServEdit"></datalist>
+
+                <button id="btnSalvarAlteracao">Salvar alteração</button>
+
+            </div>
+        </div>
+
+        <!-- EXCLUIR ITEM -->
+        <div class="container-bloco">
+            <h2>Deletar item</h2>
+            <label for="itemExcluir">Item que deseja excluir:</label>
+            <datalist id="listaItensExcluir"></datalist>
+            <input list="listaItensExcluir" id="itemExcluir" placeholder="Escolha o item">
+
+            <button id="btnExcluir">Excluir</button>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
