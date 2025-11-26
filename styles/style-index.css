@@ -19,13 +19,6 @@ table {
     border: none;
 }
 
-.titulo {
-    font-size: 24px;
-    color: var(--cor-titulo);
-    font-weight: bold;
-    padding: 10px;
-}
-
 #centro {
     display: flex;
     align-items: flex-start;
