@@ -31,9 +31,9 @@
         <form id="form-colorimetria">
             <h2>Salvar nova colorimetria:</h2>
 
-            <input id="cod" placeholder="Código (ex: C01)" required>
-            <input id="num_cores" placeholder="Número de cores" required>
-            <input id="descricao" placeholder="Descrição (opcional)">
+            <input id="cod" placeholder="Código (ex: C01)" autocomplete="off" required>
+            <input id="num_cores" placeholder="Número de cores" autocomplete="off" required>
+            <input id="descricao" placeholder="Descrição (opcional)" autocomplete="off">
 
             <button type="submit">Salvar</button>
         </form>
@@ -43,7 +43,7 @@
 
             <label for="tipoColorimetria">Colorimetria que deseja editar:</label>
             <datalist id="listaColorimetria"></datalist>
-            <input list="listaColorimetria" id="tipoColorimetria" name="tipoColorimetria">
+            <input list="listaColorimetria" id="tipoColorimetria" name="tipoColorimetria" autocomplete="off">
 
             <div id="editar-colorimetria" style="display: none; margin-top: 20px;">
                 <h3>Editar campo</h3>

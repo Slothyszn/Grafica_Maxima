@@ -21,17 +21,17 @@
         <form id="form-papel">
             <h2>Salvar novo papel:</h2>
             
-            <input id="nome" placeholder="Nome do papel" required>
-            <input id="form9" placeholder="Formato 9" required>
-            <input id="form8" placeholder="Formato 8" required>
-            <input id="form6" placeholder="Formato 6" required>
-            <input id="form4" placeholder="Formato 4" required>
-            <input id="form3" placeholder="Formato 3" required>
-            <input id="form2" placeholder="Formato 2" required>
-            <input id="unit" placeholder="Unidade de medida" required>
-            <input id="form" placeholder="Formato padrão" required>
-            <input id="quantPac" placeholder="Quantidade por pacote" required>
-            <input id="pac" placeholder="Tipo de pacote" required>
+            <input id="nome" placeholder="Nome do papel" autocomplete="off" required>
+            <input id="form9" placeholder="Formato 9" autocomplete="off" required>
+            <input id="form8" placeholder="Formato 8" autocomplete="off" required>
+            <input id="form6" placeholder="Formato 6" autocomplete="off" required>
+            <input id="form4" placeholder="Formato 4" autocomplete="off" required>
+            <input id="form3" placeholder="Formato 3" autocomplete="off" required>
+            <input id="form2" placeholder="Formato 2" autocomplete="off" required>
+            <input id="unit" placeholder="Unidade de medida" autocomplete="off" required>
+            <input id="form" placeholder="Formato padrão" autocomplete="off" required>
+            <input id="quantPac" placeholder="Quantidade por pacote" autocomplete="off" required>
+            <input id="pac" placeholder="Tipo de pacote" autocomplete="off" required>
 
             <button type="submit">Salvar</button>
             </form>
@@ -42,7 +42,7 @@
 
                 <label for="tipoPapel">Papel que deseja editar:</label>
                 <datalist id="listaPapeis"></datalist>
-                <input list="listaPapeis" id="tipoPapel" name="tipoPapel">
+                <input list="listaPapeis" id="tipoPapel" name="tipoPapel" autocomplete="off">
                 
                 <div id="editar-papel" style="display: none; margin-top: 20px;">
                     <h3>Editar campo</h3>
@@ -75,7 +75,7 @@
                         </optgroup>
                     </select>
 
-                <input id="novoValor" placeholder="Novo valor">
+                <input id="novoValor" placeholder="Novo valor" autocomplete="off">
                 <button id="btnSalvarAlteracao">Salvar alteração</button>
             </div>
         </div>

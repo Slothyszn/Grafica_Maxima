@@ -26,10 +26,10 @@
         <form id="form-servico">
             <h2>Salvar novo serviço</h2>
             <label for="nome">Nome</label>
-            <input id="nome" placeholder="Nome do serviço" required>
+            <input id="nome" placeholder="Nome do serviço" autocomplete="off" required>
 
             <label for="custo_fixo">Custo Fixo</label>
-            <input id="custo_fixo" placeholder="Custo fixo (opcional)">
+            <input id="custo_fixo" placeholder="Custo fixo (opcional)" autocomplete="off">
 
             <button type="submit">Salvar</button>
         </form>
@@ -49,7 +49,7 @@
                     <option value="custo_fixo">Custo Fixo</option>
                 </select>
 
-                <input id="novoValor" placeholder="Novo valor">
+                <input id="novoValor" placeholder="Novo valor" autocomplete="off">
                 <button id="btnSalvarAlteracao">Salvar alteração</button>
             </div>
         </div>

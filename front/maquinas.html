@@ -20,12 +20,12 @@
         <form id="form-maquina">
             <h2>Salvar nova máquina:</h2>
             
-            <input id="tipo" placeholder="Tipo de máquina" required>
-            <input id="variacao" placeholder="variação" required>
-            <input id="marca" placeholder="marca da máquina">
-            <input id="modelo" placeholder="modelo da máquina" required>
-            <input id="comprimento_maximo" placeholder="comprimento máximo" required>
-            <input id="largura_maxima" placeholder="largura máxima" required>
+            <input id="tipo" placeholder="Tipo de máquina"autocomplete="off"  required>
+            <input id="variacao" placeholder="variação" autocomplete="off" required>
+            <input id="marca" placeholder="marca da máquina" autocomplete="off">
+            <input id="modelo" placeholder="modelo da máquina" autocomplete="off" required>
+            <input id="comprimento_maximo" placeholder="comprimento máximo" autocomplete="off" required>
+            <input id="largura_maxima" placeholder="largura máxima" autocomplete="off" required>
 
             <button type="submit">Salvar</button>
             </form>
@@ -36,7 +36,7 @@
 
                 <label for="tipoMaquina">Máquina que deseja editar:</label>
                 <datalist id="listaMaquinas"></datalist>
-                <input list="listaMaquinas" id="tipoMaquina" name="tipoMaquina">
+                <input list="listaMaquinas" id="tipoMaquina" name="tipoMaquina" autocomplete="off">
                 
                 <div id="editar-maquina" style="display: none; margin-top: 20px;">
                     <h3>Editar campo</h3>
@@ -51,7 +51,7 @@
                         <option value="largura_maxima">largura_maxima</option>
                     </select>
 
-                <input id="novoValor" placeholder="Novo valor">
+                <input id="novoValor" placeholder="Novo valor" autocomplete="off">
                 <button id="btnSalvarAlteracao">Salvar alteração</button>
             </div> 
         </div> 

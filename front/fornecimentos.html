@@ -35,14 +35,14 @@
             <h2>Salvar novo fornecimento:</h2>
 
             <!-- Escolher fornecedor por nome -->
-            <input list="listaFornecedores" id="nome_fornecedor" placeholder="Escolha o fornecedor" required>
+            <input list="listaFornecedores" id="nome_fornecedor" placeholder="Escolha o fornecedor" autocomplete="off" required>
             <datalist id="listaFornecedores"></datalist>
 
             <!-- Escolher substrato por nome -->
-            <input list="listaSubstratos" id="nome_substrato" placeholder="Escolha o Substrato" required>
+            <input list="listaSubstratos" id="nome_substrato" placeholder="Escolha o Substrato" autocomplete="off" required>
             <datalist id="listaSubstratos"></datalist>
 
-            <input list="listaFormatos" id="nome_formato" placeholder="Escolha o Formato" required>
+            <input list="listaFormatos" id="nome_formato" placeholder="Escolha o Formato" autocomplete="off" required>
             <datalist id="listaFormatos"></datalist>
 
             <select id="forma">
@@ -51,7 +51,7 @@
                 <option value="rolo">Rolo</option>
             </select>
 
-            <input type="text" id="custo_pro_m2" placeholder="Custo pro M2">
+            <input type="text" id="custo_pro_m2" placeholder="Custo pro M2" autocomplete="off">
             <button type="submit">Salvar</button>
         </form>
 
@@ -73,7 +73,7 @@
                     
                 </select>
 
-                <input id="novoValor" placeholder="Novo valor">
+                <input id="novoValor" placeholder="Novo valor" autocomplete="off">
                 <button id="btnSalvarAlteracao">Salvar alteração</button>
             </div>
         </div>

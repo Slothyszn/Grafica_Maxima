@@ -34,10 +34,10 @@
         <form id="form-substrato">
             <h2>Salvar novo substrato:</h2>
 
-            <input id="id_familia" list="listaFamilias" placeholder="ID Família" required>
+            <input id="id_familia" list="listaFamilias" placeholder="ID Família" autocomplete="off"  required>
             <datalist id="listaFamilias"></datalist>
 
-            <input id="id_categoria" list="listaCategorias" placeholder="ID Categoria" required />
+            <input id="id_categoria" list="listaCategorias" placeholder="ID Categoria" autocomplete="off" required />
             <datalist id="listaCategorias"></datalist>
 
             <select id="med_sub" required>
@@ -56,7 +56,7 @@
             <h2>Editar substrato:</h2>
 
             <label>Escolha o ID:</label>
-            <input list="listaSubstratos" id="tipoSubstrato" />
+            <input list="listaSubstratos" id="tipoSubstrato" autocomplete="off" />
             <datalist id="listaSubstratos"></datalist>
 
             <div id="editar-substrato" style="display:none; margin-top:20px;">
@@ -70,7 +70,7 @@
                     <option value="valor">Valor</option>
                 </select>
 
-                <input id="novoValor" placeholder="Novo valor" />
+                <input id="novoValor" placeholder="Novo valor" autocomplete="off" />
                 <button id="btnSalvarAlteracao">Salvar alteração</button>
             </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="container-bloco">
             <h2>Deletar substrato</h2>
 
-            <input list="listaSubstratosExcluir" id="substratoExcluir" placeholder="ID para excluir" />
+            <input list="listaSubstratosExcluir" id="substratoExcluir" placeholder="ID para excluir" autocomplete="off" />
             <datalist id="listaSubstratosExcluir"></datalist>
 
             <button id="btnExcluir">Excluir</button>
