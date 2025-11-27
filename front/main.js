@@ -303,6 +303,7 @@ if (formSubstrato) formSubstrato.addEventListener("submit", InserirSubstrato);
   window.addEventListener("DOMContentLoaded", carregarOpcoesSubstratos);
   window.addEventListener("DOMContentLoaded", ConsultarSubstratos);
   window.addEventListener("DOMContentLoaded", carregarTabelasExternasSubstrato);
+  window.addEventListener("DOMContentLoaded", carregarOpcoesCategorias);
 }
 
 
