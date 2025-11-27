@@ -1,127 +1,148 @@
-import fs from "fs";
-import path from "path";
 import express from "express";
+import fs from "fs";
 
 const router = express.Router();
+const caminho = "dados/categorias.json";
 
-// Caminhos dos JSONs
-const caminhoItens = path.join("dados", "itens.json");
-const caminhoImp = path.join("dados", "impressao.json");
-const caminhoDim = path.join("dados", "dimensoes.json");
-const caminhoConfig = path.join("dados", "config.json");
-const caminhoImpres = path.join("dados", "impressoras.json");
-
-// ---------------------------
-// Função auxiliar para ler JSON
-// ---------------------------
-function lerJSON(caminho, chave) {
+// -------------------------------------------------
+// GET – Buscar todas as categorias
+// -------------------------------------------------
+router.get("/categorias", (req, res) => {
   try {
     const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
-    return dados[chave] ?? [];
-  } catch {
-    return [];
-  }
-}
-
-// ---------------------------
-// Função de cálculo
-// ---------------------------
-function calcularCustoItem(id_item) {
-  const itens = lerJSON(caminhoItens, "Item");
-  const item = itens.find(i => i.id_item == id_item);
-  if (!item || item.tipo !== "impressao") {
-    throw new Error("Item não encontrado ou não é impressão");
-  }
-
-  const impressoes = lerJSON(caminhoImp, "Impressao");
-  const impressao = impressoes.find(i => i.id_imp == item.id_ref);
-  if (!impressao) throw new Error("Impressão não encontrada");
-
-  const dimensoes = lerJSON(caminhoDim, "Dimensao");
-  const dim = dimensoes.find(d => d.id_item == item.id_item);
-  if (!dim) throw new Error("Dimensão não encontrada");
-
-  const impresoras = lerJSON(caminhoImpres, "Impressora");
-  const impres = impresoras.find(i => i.id_impres == impressao.id_impres);
-  if (!impres) throw new Error("Impressora não encontrada");
-
-  const configs = lerJSON(caminhoConfig, "Config");
-  const config = configs.find(c => c.id_impres == impres.id_impres && c.id_color == impressao.cod_frente);
-  if (!config) throw new Error("Configuração não encontrada");
-
-  let custo_hora_calc = 0;
-  const cmpr = dim.cmpr;
-  const larg = dim.larg;
-  const velo = impressao.velo;
-
-  switch (impres.med_velo) {
-    case "iph":
-      const mrg_espaco = dim.mrg_espaco || 0;
-      const mrg_sangria = dim.mrg_sangria || 0;
-      const area_tecnica = (cmpr + mrg_espaco + mrg_sangria) * (larg + mrg_espaco + mrg_sangria);
-      const marg_borda = dim.mrg_branca || 0;
-      const qtd_folhas = ((cmpr - marg_borda) * (larg - marg_borda)) / area_tecnica;
-      custo_hora_calc = (impres.custo_hora * qtd_folhas) / velo;
-      break;
-
-    case "mph":
-      custo_hora_calc = (impres.custo_hora * cmpr) / velo;
-      break;
-
-    case "m2ph":
-      const area_impressao = cmpr * larg;
-      custo_hora_calc = (impres.custo_hora * area_impressao) / velo;
-      break;
-
-    default:
-      throw new Error("Medida de velocidade inválida");
-  }
-
-  const custo_total = custo_hora_calc + (config.custo_acerto || 0) + ((config.custo_m2i || 0) * (cmpr * larg));
-
-  return {
-    id_item,
-    custo_unitario: custo_total,
-    detalhe: {
-      custo_hora_calc,
-      custo_acerto: config.custo_acerto || 0,
-      custo_m2i: config.custo_m2i || 0,
-      n_pass: impressao.n_pass
-    }
-  };
-}
-
-// ---------------------------
-// POST /calculo
-// ---------------------------
-router.post("/calculo", (req, res) => {
-  try {
-    const { id_item } = req.body;
-    if (!id_item) return res.status(400).json({ mensagem: "id_item é obrigatório" });
-
-    const resultado = calcularCustoItem(Number(id_item));
-    res.json(resultado);
-
+    res.json(dados.Categoria || []);
   } catch (erro) {
-    console.error("❌ Erro no POST /calculo:", erro.message);
-    res.status(500).json({ mensagem: erro.message });
+    res.status(500).json({ erro: "Erro ao ler Categorias" });
   }
 });
 
-// ---------------------------
-// GET /calculo/:id_item
-// ---------------------------
-router.get("/calculo/:id_item", (req, res) => {
+// -------------------------------------------------
+// GET – Buscar categorias por nome (query ?q=...)
+// -------------------------------------------------
+router.get("/categorias/buscar", (req, res) => {
+  const query = req.query.q?.toLowerCase() || "";
+
   try {
-    const { id_item } = req.params;
-    if (!id_item) return res.status(400).json({ mensagem: "id_item é obrigatório" });
+    const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
+    const categorias = dados.Categoria || [];
 
-    const resultado = calcularCustoItem(Number(id_item));
+    const resultado = categorias.filter(c =>
+      c.nome.toLowerCase().includes(query)
+    );
+
     res.json(resultado);
-
   } catch (erro) {
-    console.error("❌ Erro no GET /calculo/:id_item:", erro.message);
-    res.status(500).json({ mensagem: erro.message });
+    res.status(500).json({ erro: "Erro ao buscar Categorias" });
+  }
+});
+
+// -------------------------------------------------
+// GET – Buscar categoria por ID
+// -------------------------------------------------
+router.get("/categorias/:id_categ", (req, res) => {
+  try {
+    const { id_categ } = req.params;
+    const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
+    const categoria = dados.Categoria.find(c => c.id_categ == id_categ);
+
+    if (!categoria) {
+      return res.status(404).json({ mensagem: "Categoria não encontrada" });
+    }
+
+    res.json(categoria);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao buscar Categoria" });
+  }
+});
+
+// -------------------------------------------------
+// POST – Criar nova categoria
+// -------------------------------------------------
+router.post("/categorias", (req, res) => {
+  try {
+    const { nome } = req.body;
+
+    if (!nome) {
+      return res.status(400).json({ erro: "Campo obrigatório 'nome' faltando" });
+    }
+
+    const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
+    const categorias = dados.Categoria || [];
+
+    // Verificar duplicado
+    if (categorias.some(c => c.nome.toLowerCase() === nome.toLowerCase())) {
+      return res.status(400).json({ erro: "Categoria já existe" });
+    }
+
+    const novoId =
+      categorias.length > 0
+        ? Math.max(...categorias.map(c => c.id_categ)) + 1
+        : 1;
+
+    const nova = { id_categ: novoId, nome };
+
+    categorias.push(nova);
+    dados.Categoria = categorias;
+
+    fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
+
+    res.status(201).json(nova);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao salvar Categoria" });
+  }
+});
+
+// -------------------------------------------------
+// PUT – Atualizar categoria
+// -------------------------------------------------
+router.put("/categorias/:id_categ", (req, res) => {
+  try {
+    const { id_categ } = req.params;
+    const { campo, novoValor } = req.body;
+
+    const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
+
+    const index = dados.Categoria.findIndex(c => c.id_categ == id_categ);
+
+    if (index === -1) {
+      return res.status(404).json({ mensagem: "Categoria não encontrada" });
+    }
+
+    if (campo !== "nome") {
+      return res.status(400).json({ mensagem: "Campo inválido" });
+    }
+
+    dados.Categoria[index][campo] = novoValor;
+
+    fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
+
+    res.json(dados.Categoria[index]);
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao atualizar Categoria" });
+  }
+});
+
+// -------------------------------------------------
+// DELETE – Remover categoria
+// -------------------------------------------------
+router.delete("/categorias/:id_categ", (req, res) => {
+  try {
+    const { id_categ } = req.params;
+
+    const dados = JSON.parse(fs.readFileSync(caminho, "utf-8"));
+    const novaLista = dados.Categoria.filter(c => c.id_categ != id_categ);
+
+    if (novaLista.length === dados.Categoria.length) {
+      return res.status(404).json({ mensagem: "Categoria não encontrada" });
+    }
+
+    dados.Categoria = novaLista;
+
+    fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
+
+    res.json({ mensagem: "Categoria removida com sucesso" });
+  } catch (erro) {
+    res.status(500).json({ erro: "Erro ao remover Categoria" });
   }
 });
 

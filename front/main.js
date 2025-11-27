@@ -404,30 +404,46 @@ if (url.includes("item")) {
   const itemEditar = document.getElementById("itemEditar");
   const btnExcluir = document.getElementById("btnExcluir");
 
+  
+
   if (formItem) {
     formItem.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      await InserirItem(event);
-      await InserirDimensao(event);
+      const tipo = document.getElementById("tipo").value;
 
-      const tipo = document.getElementById("tipoItem").value;
       const id_ref = document.getElementById("id_ref").value;
       const quant = Number(document.getElementById("quant").value);
 
-      // 🔥 Conversão corrigida: cm → metros
-      const dimensao = {
-        cmpr: Number(document.getElementById("cmpr")?.value || 0) / 100,
-        larg: Number(document.getElementById("larg")?.value || 0) / 100,
-        mrg_branca: Number(document.getElementById("mrg_branca")?.value || 0),
-        mrg_interna: Number(document.getElementById("mrg_interna")?.value || 0),
-        mrg_sangria: Number(document.getElementById("mrg_sangria")?.value || 0),
-        mrg_espaco: Number(document.getElementById("mrg_espaco")?.value || 0),
-      };
+      const cmpr = Number(document.getElementById("cmpr")?.value || document.getElementById("cmpr_imp")?.value || 0);
+      const larg = Number(document.getElementById("larg")?.value || document.getElementById("larg_imp")?.value || 0);
+
+      if (cmpr <= 0 || larg <= 0) {
+        alert("Preencha comprimento e largura corretamente!");
+        return;
+      }
+
+      const dimensao = tipo === "produto"
+        ? {
+            cmpr: cmpr / 100,
+            larg: larg / 100,
+            mrg_branca: Number(document.getElementById("mrg_branca")?.value || 0),
+            mrg_interna: Number(document.getElementById("mrg_interna")?.value || 0),
+            mrg_sangria: Number(document.getElementById("mrg_sangria")?.value || 0),
+            mrg_espaco: Number(document.getElementById("mrg_espaco")?.value || 0),
+          }
+        : {
+            cmpr,
+            larg,
+            mrg_branca: Number(document.getElementById("mrg_branca_imp")?.value || 0),
+            mrg_interna: Number(document.getElementById("mrg_interna_imp")?.value || 0),
+            mrg_sangria: Number(document.getElementById("mrg_sangria_imp")?.value || 0),
+            mrg_espaco: Number(document.getElementById("mrg_espaco_imp")?.value || 0),
+          };
 
       let refImpressao = null;
 
-      if (tipo === 'impressao') {
+      if (tipo === "impressao") {
         refImpressao = {
           impressora: Number(document.getElementById("id_impres").value),
           cod_frente: Number(document.getElementById("cod_frente").value),
@@ -436,41 +452,45 @@ if (url.includes("item")) {
         };
       }
 
+      const id_item = document.getElementById("id_item")?.value 
+                  || document.getElementById("itemEditar")?.value 
+                  || null;
+
       const payload = {
+        id_item: Number(id_item),   // 🔥 obrigatório
         tipo,
-        id_ref: tipo === 'impressao' ? refImpressao : id_ref,
+        id_ref: tipo === "impressao" ? refImpressao : Number(id_ref),
         quant,
         dimensao
       };
 
-      try {
-        const res = await fetch("http://localhost:3000/api/calculo", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.mensagem || "Erro no cálculo");
+      // ===============================
+      // 🔥 1) CALCULAR ITEM
+      // ===============================
+      const res = await fetch("http://localhost:3000/api/calculo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-        const tbody = document.querySelector("#resultado-item tbody");
-        const tr = document.createElement("tr");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.mensagem || "Erro no cálculo");
 
-        tr.innerHTML = `
-          <td>${tipo}</td>
-          <td>${tipo === 'impressao' ? JSON.stringify(refImpressao) : id_ref}</td>
-          <td>${quant}</td>
-          <td>${data.custo_unitario.toFixed(2)}</td>
-          <td>${data.custo_parcial.toFixed(2)}</td>
-        `;
+      // ===============================
+      // 🔥 2) SOMAR AO ORÇAMENTO
+      // ===============================
+      const id_orc_raw = document.getElementById("id_orc").value;
+      const id_orc = id_orc_raw.split("|")[0].trim();
 
-        tbody.appendChild(tr);
+      await fetch(`http://localhost:3000/api/orcamentos/${id_orc}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-      } catch (err) {
-        console.error(err);
-        alert(err.message);
-      }
     });
+
   }
 
   if (itemEditar) itemEditar.addEventListener("change", habilitarEdicaoItem);
@@ -562,18 +582,3 @@ if (url.includes("impressao")) {
   })
 }
 
-
-// Mao de obra
-
-if (url.includes("maoObra")) {
-
-  const formMao = document.getElementById("form-maoobra");
-
-  if (formMao) formMao.addEventListener("submit", InserirMaoObra);
-
-  window.addEventListener("DOMContentLoaded", () => {
-    ConsultarMaoObra();
-    carregarOpcoesMaoObra();
-    carregarTabelasExternasMaoObra();
-  })
-}

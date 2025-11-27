@@ -21,8 +21,7 @@ export async function InserirImpressao(event) {
     Number.isNaN(cod_frente) ||
     Number.isNaN(cod_verso) ||
     Number.isNaN(id_impres) ||
-    Number.isNaN(velo) ||
-    Number.isNaN(n_pass)
+    Number.isNaN(velo)
   ) {
     alert("Preencha todos os campos!");
     return;
@@ -34,7 +33,6 @@ export async function InserirImpressao(event) {
     cod_verso,
     id_impres,
     velo,
-    n_pass,
     // custo_hora,
     // custo_exced ///////// POR ENQUANTO NAO, MAS VC VAI USAR, depois que fizer o calculo
   };

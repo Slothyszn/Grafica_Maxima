@@ -155,22 +155,34 @@ export async function carregarTabelasExternasItens() {
 
           // Label específico para serviço
           if (selectTipo.value === "servico") {
+            
             const custo = obj.custo_fixo != null ? obj.custo_fixo : "";
             option.label = `${id} - ${nome} - R$ ${custo}`;
+
           } else if (selectTipo.value === "produto"){
-              const dimensao = document.getElementById("dimensao-editar");
-              if (dimensao) dimensao.style.display = "block";
+              const dimensao4 = document.getElementById("dimensao-editar");
+              if (dimensao4) dimensao4.style.display = "block";
+
+              const dimensao = document.getElementById("impressao-editar");
+              if (dimensao) dimensao.style.display = "none";
+              const dimensao2 = document.getElementById("impressao-dimensao");
+              if (dimensao2) dimensao2.style.display = "none";
 
               const familia = famArray.find(f => f.id_fam === obj.id_fam);
               const nomeFamilia = familia ? familia.nome : "Família não encontrada";
               const preco = obj.custo_m2 != null ? obj.custo_m2 : "";
 
-              const option = document.createElement("option");
+              //const option = document.createElement("option");
               option.value = `${obj.id_prod} - ${nomeFamilia} - R$ ${preco}`; // o que aparece
               datalistIds.appendChild(option);
+
           } else if (selectTipo.value === "impressao") {
+              const dimensao4 = document.getElementById("dimensao-editar");
+              if (dimensao4) dimensao4.style.display = "none";
               const dimensao = document.getElementById("impressao-editar");
               if (dimensao) dimensao.style.display = "block";
+              const dimensao2 = document.getElementById("impressao-dimensao");
+              if (dimensao2) dimensao2.style.display = "block";
           } else {
               option.label = nome ? `${id} - ${nome}` : String(id);
           }

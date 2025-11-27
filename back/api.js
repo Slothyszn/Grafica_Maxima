@@ -15,7 +15,6 @@ import dimensao from './endpoints/dimensao_endpoints.js'
 import orcamento from './endpoints/orcamento_endpoints.js'
 import produtos from './endpoints/produtos_endpoints.js'
 import impressao from './endpoints/impressao_endpoint.js'
-import maoObra from './endpoints/maoObra_endpoints.js'
 import calculo from './endpoints/calculos.js'
 const PORT = 3000;
 
@@ -35,7 +34,6 @@ app.use('/api', dimensao);
 app.use('/api', orcamento);
 app.use('/api', produtos);
 app.use('/api', impressao);
-app.use('/api', maoObra);
 app.use('/api', calculo);
 
 app.listen(PORT, () => {

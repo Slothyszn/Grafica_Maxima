@@ -5,8 +5,8 @@ import path from 'path';
 const router = express.Router();
 
 // Caminhos dos dados
-const CAMINHO_SERV = path.join("dados", "servico.json");
-const CAMINHO_PROD = path.join("dados", "produto.json");
+const CAMINHO_SERV = path.join("dados", "servicos.json");
+const CAMINHO_PROD = path.join("dados", "produtos.json");
 const CAMINHO_IMPRES = path.join("dados", "impressoras.json");
 const CAMINHO_CONFIG = path.join("dados", "config.json");
 
@@ -23,9 +23,14 @@ function lerJSON(caminho, chave) {
 // ==========================
 // POST /calculo
 // ==========================
+
 router.post('/calculo', (req, res) => {
   try {
     const item = req.body;
+
+  console.log("### RECEBI NO /calculo:", JSON.stringify(item, null, 2));
+
+
 
     if (!item.tipo || !item.quant) {
       return res.status(400).json({ mensagem: "Tipo e quantidade são obrigatórios" });
@@ -34,6 +39,11 @@ router.post('/calculo', (req, res) => {
     let custo_unitario = 0;
     let custo_parcial = 0;
     let detalhes = {};
+
+    const dim = item.dimensao || {};
+    const mrg_sangria = dim.mrg_sangria || 0;
+    const cmpr_m = dim.cmpr || 0;
+    const larg_m = dim.larg || 0;
 
     // ---------------------
     // SERVIÇO
@@ -55,10 +65,8 @@ router.post('/calculo', (req, res) => {
       const prod = produtos.find(p => p.id_prod === item.id_ref || p.nome === item.id_ref);
       if (!prod) return res.status(404).json({ mensagem: "Produto não encontrado" });
 
-      const dim = item.dimensao;
-      if (!dim) return res.status(400).json({ mensagem: "Dimensões do produto são obrigatórias" });
-
-      const area_m2 = (dim.cmpr / 100) * (dim.larg / 100); // converte cm para m
+      // Cálculo do custo unitário
+      const area_m2 = (cmpr_m + mrg_sangria) * (larg_m + mrg_sangria); 
       custo_unitario = area_m2 * Number(prod.custo_m2 || 0);
       custo_parcial = custo_unitario * item.quant;
       detalhes = { preco_m2: Number(prod.custo_m2), area_m2 };
@@ -70,24 +78,17 @@ router.post('/calculo', (req, res) => {
       const impressores = lerJSON(CAMINHO_IMPRES, "Impressora");
       const configs = lerJSON(CAMINHO_CONFIG, "Config");
 
-      const dim = item.dimensao;
       const ref = item.id_ref;
-
-      if (!dim || !ref) return res.status(400).json({ mensagem: "Dimensões e referência da impressão são obrigatórias" });
+      if (!dim || !ref) return res.status(400).json({ mensagem: "Dimensões e referência obrigatórias" });
 
       const impres = impressores.find(i => i.id_impres == ref.impressora);
       if (!impres) return res.status(404).json({ mensagem: "Impressora não encontrada" });
 
       const config = configs.find(c => c.id_impres == impres.id_impres && c.id_color == ref.cod_frente) || {};
 
-      // Medidas e margens
-      const cmpr_m = dim.cmpr; // metros
-      const larg_m = dim.larg;  // metros
-      const mrg_branca = dim.mrg_branca || 0;
-      const mrg_espaco = dim.mrg_espaco || 0;
-      const mrg_sangria = dim.mrg_sangria || 0;
-
-      // Velocidade
+      // =========================
+      // CUSTO HORA
+      // =========================
       const veloRaw = ref.velo || "1 iph";
       const velo = Number(veloRaw.split(" ")[0]);
       const tipo_velo = veloRaw.split(" ")[1] || "iph";
@@ -96,27 +97,37 @@ router.post('/calculo', (req, res) => {
 
       switch(tipo_velo) {
         case "iph":
-          const area_tecnica = (cmpr_m + mrg_espaco + mrg_sangria) * (larg_m + mrg_espaco + mrg_sangria);
-          const qtd_folhas = ((cmpr_m - mrg_branca) * (larg_m - mrg_branca)) / area_tecnica;
+          const area_tecnica = (cmpr_m + (dim.mrg_espaco || 0) + mrg_sangria) * (larg_m + (dim.mrg_espaco || 0) + mrg_sangria);
+          const qtd_folhas = ((cmpr_m - (dim.mrg_branca || 0)) * (larg_m - (dim.mrg_branca || 0))) / area_tecnica;
           custo_hora_calc = (impres.custo_hora * qtd_folhas) / velo;
           break;
-
         case "mph":
           custo_hora_calc = (impres.custo_hora * cmpr_m) / velo;
           break;
-
         case "m2ph":
-          const area_impressao = cmpr_m * larg_m;
-          custo_hora_calc = (impres.custo_hora * area_impressao) / velo;
+          custo_hora_calc = (impres.custo_hora * cmpr_m * larg_m) / velo;
           break;
-
         default:
           return res.status(400).json({ mensagem: "Tipo de velocidade inválido" });
       }
 
-      custo_unitario = custo_hora_calc + (config.custo_acerto || 0) + ((config.custo_m2i || 0) * cmpr_m * larg_m);
+      // =========================
+      // CUSTO DE IMPRESSÃO
+      // =========================
+      const custo_impressao = (config.custo_m2i || 0) * (cmpr_m + mrg_sangria) * (larg_m + mrg_sangria);
+
+      // =========================
+      // CUSTO DE SUBSTRATO
+      // =========================
+      const custo_substrato = (ref.custo_m2_subs || 0) * (ref.fmt_cmpr || cmpr_m) * (ref.fmt_larg || larg_m);
+
+      // =========================
+      // CUSTO UNITÁRIO E PARCIAL
+      // =========================
+      custo_unitario = custo_hora_calc + (config.custo_acerto || 0) + custo_impressao + custo_substrato;
       custo_parcial = custo_unitario * item.quant;
-      detalhes = { custo_hora_calc, custo_acerto: config.custo_acerto || 0, custo_m2i: config.custo_m2i || 0 };
+
+      detalhes = { custo_hora_calc, custo_acerto: config.custo_acerto || 0, custo_m2i: config.custo_m2i || 0, custo_impressao, custo_substrato };
     }
 
     return res.json({ tipo: item.tipo, custo_unitario, custo_parcial, detalhes });
@@ -126,5 +137,6 @@ router.post('/calculo', (req, res) => {
     return res.status(500).json({ mensagem: "Erro interno" });
   }
 });
+
 
 export default router;

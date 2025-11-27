@@ -40,7 +40,7 @@ router.get("/orcamentos/:id_orc", (req, res) => {
 // -----------------------------------------------
 router.post("/orcamentos", (req, res) => {
   try {
-    const { nome_cli, telefone, perc_lucro, adicional, total, dt_criacao, dt_limite } = req.body;
+    const { nome_cli, telefone, perc_lucro, adicional, dt_criacao, dt_limite } = req.body;
 
     if (!nome_cli) {
       return res.status(400).json({ erro: "Campo 'nome_cli' é obrigatório" });
@@ -59,7 +59,7 @@ router.post("/orcamentos", (req, res) => {
       telefone: telefone || "",
       perc_lucro,
       adicional,
-      total,
+      total: 0,
       dt_criacao,
       dt_limite
     };
@@ -72,6 +72,35 @@ router.post("/orcamentos", (req, res) => {
     res.status(500).json({ erro: "Erro ao criar Orçamento" });
   }
 });
+
+router.post("/orcamentos/:id_orc", (req, res) => {
+  try {
+    const id = Number(req.params.id_orc); // string -> número
+    const { tipo, custo_parcial, detalhes } = req.body;
+
+    console.log(`DEBUGGG tipo: ${tipo}, custo_parcial: ${custo_parcial}, detalhes: ${JSON.stringify(detalhes)}`);
+
+    // lê todos os orçamentos
+    const todosOrcamentos = JSON.parse(fs.readFileSync(caminho, "utf-8")).Orcamento;
+
+    // encontra o orçamento
+    const orcamento = todosOrcamentos.find(i => i.id_orc === id);
+    if (!orcamento) return res.status(404).json({ mensagem: "Orçamento não encontrado" });
+
+    // soma o custo parcial
+    orcamento.total += Number(custo_parcial || 0);
+
+    // salva de volta
+    fs.writeFileSync(caminho, JSON.stringify({ Orcamento: todosOrcamentos }, null, 2));
+
+    res.json({ mensagem: "Orçamento atualizado", orcamento });
+
+  } catch (erro) {
+    console.error(erro);
+    res.status(500).json({ erro: "Erro ao atualizar orçamento" });
+  }
+});
+
 
 // -----------------------------------------------
 // PUT – Atualizar orçamento

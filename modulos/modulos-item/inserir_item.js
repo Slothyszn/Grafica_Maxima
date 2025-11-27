@@ -78,6 +78,8 @@ export async function InserirDimensao(event) {
   const mrg_branca = document.getElementById("mrg_branca").value.trim();
   const mrg_espaco = document.getElementById("mrg_espaco").value.trim();
 
+  console.log(cmpr, larg);
+
   // validação mínima
   if (!cmpr || !larg) {
     alert("Preencha comprimento e largura!");

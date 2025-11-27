@@ -38,22 +38,22 @@
             <h2>Criar novo orçamento</h2>
 
             <label for="nome_cli_inserir">Cliente</label>
-            <input id="nome_cli_inserir" placeholder="Nome do cliente" required>
+            <input id="nome_cli_inserir" placeholder="Nome do cliente" autocomplete="off" required>
 
             <label for="telefone">Telefone</label>
-            <input id="telefone" placeholder="Telefone cliente">
+            <input id="telefone" placeholder="Telefone cliente" autocomplete="off">
 
             <label for="perc_lucro_inserir">% Lucro</label>
-            <input id="perc_lucro_inserir" placeholder="Ex: 10.5">
+            <input id="perc_lucro_inserir" placeholder="Ex: 10.5" autocomplete="off">
 
             <label for="adicional_inserir">Adicional</label>
-            <input id="adicional_inserir" placeholder="Ex: 50.00">
+            <input id="adicional_inserir" placeholder="Ex: 50.00" autocomplete="off">
 
-            <label for="dt_criacao_inserir">Data Criação</label>
-            <input type="date" id="dt_criacao_inserir">
+            <label for="dt_criacao_inserir">Data Criação</label >
+            <input type="date" id="dt_criacao_inserir" autocomplete="off">
 
             <label for="dt_limite_inserir">Data Limite</label>
-            <input type="date" id="dt_limite_inserir">
+            <input type="date" id="dt_limite_inserir" autocomplete="off">
 
             <button type="submit">Salvar</button>
         </form>
@@ -82,7 +82,7 @@
                     <option value="dt_limite">Data Limite</option>
                 </select>
 
-                <input id="novoValorOrc" placeholder="Novo valor">
+                <input id="novoValorOrc" placeholder="Novo valor" autocomplete="off">
                 <button id="btnSalvarAlteracaoOrc">Salvar alteração</button>
             </div>
         </div>
@@ -95,7 +95,7 @@
 
             <label for="orcExcluir">Orçamento que deseja excluir:</label>
             <datalist id="listaOrcamentosExcluir"></datalist>
-            <input list="listaOrcamentosExcluir" id="orcExcluir" placeholder="Escolha o orçamento">
+            <input list="listaOrcamentosExcluir" id="orcExcluir" placeholder="Escolha o orçamento" autocomplete="off">
 
             <button id="btnExcluirOrc">Excluir</button>
         </div>

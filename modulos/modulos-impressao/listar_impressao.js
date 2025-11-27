@@ -24,7 +24,6 @@ export async function ConsultarImpressao() {
         <td>${i.cod_verso || ""}</td>
         <td>${i.id_impres || ""}</td>
         <td>${i.velo || ""}</td>
-        <td>${i.n_pass || ""}</td>
         <td>${i.custo_hora || ""}</td>
         <td>${i.custo_exced || ""}</td>
       </tr>
@@ -102,7 +101,6 @@ export async function configurarBuscaImpressao() {
         <td>${i.cod_verso || ""}</td>
         <td>${i.id_impres || ""}</td>
         <td>${i.velo || ""}</td>
-        <td>${i.n_pass || ""}</td>
         <td>${i.custo_hora || ""}</td>
         <td>${i.custo_exced || ""}</td>
       </tr>

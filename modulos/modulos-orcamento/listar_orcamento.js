@@ -24,7 +24,7 @@ export async function ConsultarOrcamentos() {
           <td>${o.nome_cli}</td>
           <td>${o.perc_lucro}</td>
           <td>${o.adicional}</td>
-          <td>${o.total}</td>
+          <td>${o.total.toFixed(2)}</td>
           <td>${o.dt_criacao}</td>
           <td>${o.dt_limite}</td>
         </tr>
