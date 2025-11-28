@@ -1,0 +1,14 @@
+{
+  "Fornecedor": [
+    {
+      "id_forn": 1,
+      "nome": "Risk",
+      "contato": "556787654"
+    },
+    {
+      "id_forn": 2,
+      "nome": "Papelaria Brasil",
+      "contato": "5567997654"
+    }
+  ]
+}

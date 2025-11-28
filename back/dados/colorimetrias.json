@@ -1,0 +1,16 @@
+{
+  "Colorimetria": [
+    {
+      "id_color": 1,
+      "cod": "011",
+      "num_cores": "10",
+      "descricao": "blabla"
+    },
+    {
+      "id_color": 2,
+      "cod": "CMYK",
+      "num_cores": "4",
+      "descricao": "Colorido Padrão"
+    }
+  ]
+}

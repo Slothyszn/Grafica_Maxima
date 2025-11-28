@@ -1,0 +1,16 @@
+{
+  "Categoria": [
+    {
+      "id_categ": 2,
+      "nome": "Oficio"
+    },
+    {
+      "id_categ": 3,
+      "nome": "Couchê"
+    },
+    {
+      "id_categ": 4,
+      "nome": "Colorido"
+    }
+  ]
+}

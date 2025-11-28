@@ -1,0 +1,16 @@
+{
+  "Produto": [
+    {
+      "id_prod": 1,
+      "id_fam": 1,
+      "id_categ": 1,
+      "custo_m2": 250
+    },
+    {
+      "id_prod": 2,
+      "id_fam": 1,
+      "id_categ": 2,
+      "custo_m2": 2
+    }
+  ]
+}

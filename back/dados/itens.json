@@ -1,0 +1,22 @@
+{
+  "Item": [
+    {
+      "id_item": 1,
+      "id_orc": 3,
+      "id_orcRaw": "3 | Abraao | 0005-02-25",
+      "tipo": "impressao",
+      "id_ref": "1",
+      "quant": 5,
+      "custo_parcial": 11
+    },
+    {
+      "id_item": 2,
+      "id_orc": 3,
+      "id_orcRaw": "3 | Abraao | 0005-02-25",
+      "tipo": "impressao",
+      "id_ref": "1",
+      "quant": 51,
+      "custo_parcial": 15
+    }
+  ]
+}

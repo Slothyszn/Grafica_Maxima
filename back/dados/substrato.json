@@ -1,0 +1,11 @@
+{
+  "Substrato": [
+    {
+      "id_sub": 1,
+      "id_fam": "1",
+      "id_categ": "Couchê",
+      "med_sub": "gramatura",
+      "valor": "55"
+    }
+  ]
+}

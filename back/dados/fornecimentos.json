@@ -1,0 +1,36 @@
+{
+  "Fornecimento": [
+    {
+      "id_fornec": 1,
+      "id_forn": 1,
+      "id_sub": 2,
+      "id_fmt": 2,
+      "forma": "folha",
+      "custo_m2": 150
+    },
+    {
+      "id_fornec": 2,
+      "id_forn": 1,
+      "id_sub": 2,
+      "id_fmt": 2,
+      "forma": "folha",
+      "custo_m2": 250
+    },
+    {
+      "id_fornec": 3,
+      "id_forn": 1,
+      "id_sub": 1,
+      "id_fmt": 2,
+      "forma": "folha",
+      "custo_m2": 1
+    },
+    {
+      "id_fornec": 4,
+      "id_forn": 2,
+      "id_sub": 1,
+      "id_fmt": 2,
+      "forma": "folha",
+      "custo_m2": 1.25
+    }
+  ]
+}

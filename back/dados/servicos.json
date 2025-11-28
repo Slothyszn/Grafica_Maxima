@@ -1,0 +1,9 @@
+{
+  "Servico": [
+    {
+      "id_serv": 2,
+      "nome": "pintar",
+      "custo_fixo": "150"
+    }
+  ]
+}

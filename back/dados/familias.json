@@ -1,0 +1,19 @@
+{
+  "Familia": [
+    {
+      "id_fam": 1,
+      "tipo": "substrato",
+      "nome": "Papel"
+    },
+    {
+      "id_fam": 2,
+      "tipo": "produto",
+      "nome": "Lona"
+    },
+    {
+      "id_fam": 3,
+      "tipo": "substrato",
+      "nome": "Lona"
+    }
+  ]
+}

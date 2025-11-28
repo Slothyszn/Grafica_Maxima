@@ -1,0 +1,43 @@
+{
+  "Impressora": [
+    {
+      "id_impres": 1,
+      "tecno": "offset",
+      "tipo": "folha",
+      "nome": "HP 12345",
+      "custo_hora": "25",
+      "med_velo": "iph",
+      "velo_max": "25",
+      "compr_max": "25",
+      "larg_max": "25",
+      "gram_max": "25",
+      "esp_max": "25"
+    },
+    {
+      "id_impres": 2,
+      "tecno": "offset",
+      "tipo": "folha",
+      "nome": "15",
+      "custo_hora": "15",
+      "med_velo": "m2ph",
+      "velo_max": "250",
+      "compr_max": "15",
+      "larg_max": "15",
+      "gram_max": "15",
+      "esp_max": "15"
+    },
+    {
+      "id_impres": 3,
+      "tecno": "offset",
+      "tipo": "folha",
+      "nome": "HP456789",
+      "custo_hora": "50",
+      "med_velo": "iph",
+      "velo_max": "",
+      "compr_max": "",
+      "larg_max": "",
+      "gram_max": "",
+      "esp_max": ""
+    }
+  ]
+}

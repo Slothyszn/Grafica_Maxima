@@ -1,0 +1,24 @@
+{
+  "Orcamento": [
+    {
+      "id_orc": 1,
+      "nome_cli": "Nayara",
+      "telefone": "574445454",
+      "perc_lucro": 15,
+      "adicional": 30,
+      "total": 233.02656418554474,
+      "dt_criacao": "2025-11-03",
+      "dt_limite": "2025-11-05"
+    },
+    {
+      "id_orc": 2,
+      "nome_cli": "Gio",
+      "telefone": "44644646",
+      "perc_lucro": 10,
+      "adicional": 20,
+      "total": 0,
+      "dt_criacao": "2025-11-27",
+      "dt_limite": "2025-11-30"
+    }
+  ]
+}
