@@ -14,7 +14,7 @@ export async function InserirConfig(event) {
   const novo = { id_color, id_impres, custo_acerto, custo_m2i };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/configs", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/configs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novo)

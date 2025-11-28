@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function carregarDimensoesParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/dimensoes");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes");
     const dados = await resposta.json();
     const dimensoes = Array.isArray(dados.Dimensao) ? dados.Dimensao : [];
 
@@ -33,7 +33,7 @@ export async function excluirDimensao() {
   if (!confirmacao) return;
 
   try {
-    const del = await fetch(`http://localhost:3000/api/dimensoes/${valor}`, {
+    const del = await fetch(`https://grafica-maxima.onrender.com/api/dimensoes/${valor}`, {
       method: "DELETE"
     });
 

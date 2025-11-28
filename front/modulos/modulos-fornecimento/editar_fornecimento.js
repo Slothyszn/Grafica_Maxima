@@ -44,10 +44,10 @@ export async function habilitarEdicaoFornecimento() {
 
   try {
     const [resFornc, resFornec, resSubs, resForm] = await Promise.all([
-      fetch("http://localhost:3000/api/fornecimentos"),
-      fetch("http://localhost:3000/api/fornecedores"),
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/formatos")
+      fetch("https://grafica-maxima.onrender.com/api/fornecimentos"),
+      fetch("https://grafica-maxima.onrender.com/api/fornecedores"),
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/formatos")
     ]);
 
     const dadosFornc = await resFornc.json();
@@ -112,7 +112,7 @@ export async function habilitarEdicaoFornecimento() {
       }
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/fornecimentos/${idFornec}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/fornecimentos/${idFornec}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(corpoPut)

@@ -3,7 +3,7 @@
 // ===============================
 export async function ConsultarImpressao() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressao");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressao");
     const dados = await resposta.json();
 
     const impressoes = Array.isArray(dados) ? dados : dados.Impressao || [];
@@ -53,7 +53,7 @@ export function desaparecerImpressao() {
 // ===============================
 export async function carregarOpcoesImpressao() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressao");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressao");
     const dados = await resposta.json();
 
     const impressoes = Array.isArray(dados) ? dados : dados.Impressao || [];
@@ -108,7 +108,7 @@ export async function configurarBuscaImpressao() {
   }
 
   async function carregarTudo() {
-    const resposta = await fetch("http://localhost:3000/api/impressao");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressao");
     const dados = await resposta.json();
     return Array.isArray(dados) ? dados : dados.Impressao || [];
   }
@@ -147,9 +147,9 @@ export async function configurarBuscaImpressao() {
 export async function carregarTabelasExternasImpressao() {
   try {
     const [resSub, resCor, resImp] = await Promise.all([
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/colorimetria"),
-      fetch("http://localhost:3000/api/impressoras")
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/colorimetria"),
+      fetch("https://grafica-maxima.onrender.com/api/impressoras")
     ]);
 
     const dadosSub = await resSub.json();

@@ -18,7 +18,7 @@ export async function InserirPapel(event) {
   };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/papeis", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/papeis", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoPapel)

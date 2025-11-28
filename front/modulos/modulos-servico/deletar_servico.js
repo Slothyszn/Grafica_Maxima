@@ -1,6 +1,6 @@
 export async function carregarServicosParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/servicos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/servicos");
     if (!resposta.ok) {
       console.warn('carregarServicosParaExcluir: resposta não OK', resposta.status);
       return;
@@ -30,7 +30,7 @@ export async function excluirServico() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/servicos/nome/${encodeURIComponent(nome)}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/servicos/nome/${encodeURIComponent(nome)}`, {
       method: "DELETE"
     });
 

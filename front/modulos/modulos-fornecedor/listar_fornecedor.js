@@ -3,7 +3,7 @@
 // Consulta e exibe todos os fornecedores
 export async function ConsultarFornecedores() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/fornecedores");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
     const dados = await resposta.json();
     const fornecedores = Array.isArray(dados) ? dados : dados.Fornecedor || [];
 
@@ -23,7 +23,7 @@ export async function desaparecerFornecedores() {
 // Carrega opções do datalist para o input
 export async function carregarOpcoesFornecedores() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/fornecedores");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
     const dados = await resposta.json();
     const fornecedores = Array.isArray(dados) ? dados : dados.Fornecedor || [];
 
@@ -65,7 +65,7 @@ export async function configurarBuscaFornecedores() {
 
     // 1️⃣ Carrega todos inicialmente
     try {
-        const resInicial = await fetch("http://localhost:3000/api/fornecedores");
+        const resInicial = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
         const dados = await resInicial.json();
         const fornecedores = Array.isArray(dados) ? dados : dados.Fornecedor || [];
         renderizarTabela(fornecedores);
@@ -80,7 +80,7 @@ export async function configurarBuscaFornecedores() {
 
         if (!termo) {
             try {
-                const res = await fetch("http://localhost:3000/api/fornecedores");
+                const res = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
                 const dados = await res.json();
                 const fornecedores = Array.isArray(dados) ? dados : dados.Fornecedor || [];
                 renderizarTabela(fornecedores);
@@ -92,7 +92,7 @@ export async function configurarBuscaFornecedores() {
         }
 
         try {
-            const res = await fetch(`http://localhost:3000/api/fornecedores/buscar?q=${encodeURIComponent(termo)}`);
+            const res = await fetch(`https://grafica-maxima.onrender.com/api/fornecedores/buscar?q=${encodeURIComponent(termo)}`);
             const dados = await res.json();
             renderizarTabela(dados);
         } catch (erro) {

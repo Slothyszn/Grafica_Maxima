@@ -12,7 +12,7 @@ export async function habilitarEdicaoFormato() {
 
   try {
     // Carregar formatos
-    const resFormatos = await fetch("http://localhost:3000/api/formatos");
+    const resFormatos = await fetch("https://grafica-maxima.onrender.com/api/formatos");
     const dadosFormatos = await resFormatos.json();
     const formatos = Array.isArray(dadosFormatos.Formato) ? dadosFormatos.Formato : [];
 
@@ -39,7 +39,7 @@ export async function habilitarEdicaoFormato() {
       }
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/formatos/${idSelecionado}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/formatos/${idSelecionado}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(corpoPut)

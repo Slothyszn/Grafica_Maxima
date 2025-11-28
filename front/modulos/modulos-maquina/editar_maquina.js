@@ -4,7 +4,7 @@ export async function habilitarEdicaoMaquina() {
   console.log("🟢 Função habilitarEdicaoMaquina chamada!");
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/maquinas");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/maquinas");
     const dados = await resposta.json();
 
     console.log("🔍 Resposta do servidor:", dados);
@@ -27,7 +27,7 @@ export async function habilitarEdicaoMaquina() {
       }
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/maquinas/${maquina.id}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/maquinas/${maquina.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ campo, novoValor }) // ✅ ajustado

@@ -4,9 +4,9 @@
 export async function ConsultarProdutos() {
   try {
     const [resProdutos, resFam, resCat] = await Promise.all([
-      fetch("http://localhost:3000/api/produtos"),
-      fetch("http://localhost:3000/api/familias"),
-      fetch("http://localhost:3000/api/categorias")
+      fetch("https://grafica-maxima.onrender.com/api/produtos"),
+      fetch("https://grafica-maxima.onrender.com/api/familias"),
+      fetch("https://grafica-maxima.onrender.com/api/categorias")
     ]);
 
     if (!resProdutos.ok || !resFam.ok || !resCat.ok) throw new Error("Erro ao carregar dados");
@@ -65,7 +65,7 @@ export function desaparecerProdutos() {
 // ---------------------------------------------
 export async function carregarOpcoesProdutos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/produtos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/produtos");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Produto) ? dados.Produto : [];
 
@@ -94,8 +94,8 @@ export async function carregarTabelasExternasProduto() {
   try {
     // ---- Requisições paralelas ----
     const [resFam, resCat] = await Promise.all([
-      fetch("http://localhost:3000/api/familias"),
-      fetch("http://localhost:3000/api/categorias"),
+      fetch("https://grafica-maxima.onrender.com/api/familias"),
+      fetch("https://grafica-maxima.onrender.com/api/categorias"),
     ]);
 
     if (!resFam.ok) throw new Error("Falha ao carregar famílias");

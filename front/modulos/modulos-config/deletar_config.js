@@ -1,6 +1,6 @@
 export async function carregarConfigsParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/configs");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/configs");
     const dados = await resposta.json();
     const configs = Array.isArray(dados) ? dados : dados.Config || [];
 
@@ -26,7 +26,7 @@ export async function excluirConfig() {
   if (!confirmacao) return;
 
   try {
-    const del = await fetch(`http://localhost:3000/api/configs/${valor}`, {
+    const del = await fetch(`https://grafica-maxima.onrender.com/api/configs/${valor}`, {
       method: "DELETE"
     });
 

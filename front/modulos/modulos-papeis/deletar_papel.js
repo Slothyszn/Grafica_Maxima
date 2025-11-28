@@ -1,5 +1,5 @@
 export async function carregarPapeisParaExcluir() {
-  const resposta = await fetch("http://localhost:3000/api/papeis");
+  const resposta = await fetch("https://grafica-maxima.onrender.com/api/papeis");
   const dados = await resposta.json();
 
   const datalist = document.getElementById("listaPapeisExcluir");
@@ -18,7 +18,7 @@ export async function excluirPapel() {
   const confirmacao = confirm(`Tem certeza que deseja excluir o papel "${nome}"?`);
   if (!confirmacao) return;
 
-  const resposta = await fetch(`http://localhost:3000/api/papeis/nome/${encodeURIComponent(nome)}`, {
+  const resposta = await fetch(`https://grafica-maxima.onrender.com/api/papeis/nome/${encodeURIComponent(nome)}`, {
     method: "DELETE"
   });
 

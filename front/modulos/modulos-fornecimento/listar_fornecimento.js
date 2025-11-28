@@ -4,10 +4,10 @@
 export async function ConsultarFornecimentos() {
   try {
     const [resFornc, resFornec, resSubs, resForm] = await Promise.all([
-      fetch("http://localhost:3000/api/fornecimentos"),
-      fetch("http://localhost:3000/api/fornecedores"),
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/formatos")
+      fetch("https://grafica-maxima.onrender.com/api/fornecimentos"),
+      fetch("https://grafica-maxima.onrender.com/api/fornecedores"),
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/formatos")
     ]);
 
     const dadosFornc = await resFornc.json();
@@ -113,10 +113,10 @@ export async function configurarBuscaFornecimentos() {
 
   try {
     const [resFornc, resForn, resSubs, resForm] = await Promise.all([
-      fetch("http://localhost:3000/api/fornecimentos"),
-      fetch("http://localhost:3000/api/fornecedores"),
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/formatos")
+      fetch("https://grafica-maxima.onrender.com/api/fornecimentos"),
+      fetch("https://grafica-maxima.onrender.com/api/fornecedores"),
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/formatos")
     ]);
 
     const dadosFornc = await resFornc.json();
@@ -168,7 +168,7 @@ export async function configurarBuscaFornecimentos() {
 // ==========================
 export async function carregarOpcoesFornecimentos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/fornecimentos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecimentos");
     const dados = await resposta.json();
 
     const fornecimentos = Array.isArray(dados.Fornecimento)
@@ -205,9 +205,9 @@ export async function carregarOpcoesFornecimentos() {
 export async function carregarTabelasExternasFornecimento() {
   try {
     const [resF, resS, resFo] = await Promise.all([
-      fetch("http://localhost:3000/api/fornecedores"),
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/formatos")
+      fetch("https://grafica-maxima.onrender.com/api/fornecedores"),
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/formatos")
     ]);
 
     const dadosForn = await resF.json();

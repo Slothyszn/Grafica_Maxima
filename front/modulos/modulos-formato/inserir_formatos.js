@@ -14,7 +14,7 @@ export async function InserirFormato(event) {
   const payload = { tipo, nome, cmpr, larg };
 
   try {
-    const res = await fetch('http://localhost:3000/api/formatos', {
+    const res = await fetch('https://grafica-maxima.onrender.com/api/formatos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

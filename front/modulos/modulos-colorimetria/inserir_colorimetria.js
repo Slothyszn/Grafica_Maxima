@@ -13,7 +13,7 @@ export async function InserirColorimetria(event) {
   const nova = { cod, num_cores, descricao };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nova)

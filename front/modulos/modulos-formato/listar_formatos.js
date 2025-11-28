@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarFormatos() {
   try {
-    const res = await fetch('http://localhost:3000/api/formatos');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/formatos');
     if (!res.ok) {
       console.warn('ConsultarFormatos: resposta não OK', res.status);
       const tbodyErr = document.querySelector('#resultado tbody');
@@ -50,7 +50,7 @@ export function desaparecerFormatos() {
 // ---------------------------------------------
 export async function carregarOpcoesFormatos() {
   try {
-    const res = await fetch("http://localhost:3000/api/formatos");
+    const res = await fetch("https://grafica-maxima.onrender.com/api/formatos");
     if (!res.ok) return;
     const dados = await res.json();
     const lista = Array.isArray(dados && dados.Formato) ? dados.Formato : [];

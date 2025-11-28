@@ -3,7 +3,7 @@ export async function habilitarEdicaoImpressora() {
   if (!selecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressoras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
     const dados = await resposta.json();
     const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
 
@@ -58,7 +58,7 @@ export async function habilitarEdicaoImpressora() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/impressoras/${impressora.id_impres}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/impressoras/${impressora.id_impres}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

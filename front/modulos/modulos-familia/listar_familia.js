@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarFamilias() {
   try {
-    const res = await fetch('http://localhost:3000/api/familias');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/familias');
 
 
     if (!res.ok) {
@@ -52,7 +52,7 @@ export function desaparecerFamilias() {
 // ---------------------------------------------
 export async function carregarOpcoesFamilias() {
   try {
-    const res = await fetch("http://localhost:3000/api/familias");
+    const res = await fetch("https://grafica-maxima.onrender.com/api/familias");
     if (!res.ok) return;
     const dados = await res.json();
     const lista = Array.isArray(dados && dados.Familia) ? dados.Familia : [];

@@ -7,9 +7,9 @@ export async function InserirFornecimento(event) {
   try {
     // Carregar tabelas necessárias com Promise.all
     const [resForn, resSub, resForm] = await Promise.all([
-      fetch("http://localhost:3000/api/fornecedores"),
-      fetch("http://localhost:3000/api/substratos"),
-      fetch("http://localhost:3000/api/formatos")
+      fetch("https://grafica-maxima.onrender.com/api/fornecedores"),
+      fetch("https://grafica-maxima.onrender.com/api/substratos"),
+      fetch("https://grafica-maxima.onrender.com/api/formatos")
     ]);
 
     const dadosForn = await resForn.json();
@@ -50,7 +50,7 @@ export async function InserirFornecimento(event) {
     console.log("Enviando:", novoFornecimento);
 
     // Enviar para backend
-    const resposta = await fetch("http://localhost:3000/api/fornecimentos", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecimentos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoFornecimento)

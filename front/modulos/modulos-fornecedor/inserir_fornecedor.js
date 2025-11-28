@@ -14,7 +14,7 @@ export async function InserirFornecedor(event) {
   const novoFornecedor = { nome, contato };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/fornecedores", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecedores", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoFornecedor)

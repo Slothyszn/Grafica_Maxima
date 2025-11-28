@@ -3,7 +3,7 @@ export async function habilitarEdicao() {
   if (!nomeSelecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/papeis");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/papeis");
     const dados = await resposta.json();
 
     const papel = dados.Papel.find(p => p.nome === nomeSelecionado);
@@ -23,7 +23,7 @@ export async function habilitarEdicao() {
       }
 
       // envia o PUT para o back
-      await fetch(`http://localhost:3000/api/papeis/${papel.id_papel}`, {
+      await fetch(`https://grafica-maxima.onrender.com/api/papeis/${papel.id_papel}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ campo, novoValor })

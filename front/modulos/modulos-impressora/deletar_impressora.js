@@ -1,6 +1,6 @@
 export async function carregarImpressorasParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressoras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
     const dados = await resposta.json();
     const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
 
@@ -27,7 +27,7 @@ export async function excluirImpressora() {
   if (!confirmacao) return;
 
   try {
-    const del = await fetch(`http://localhost:3000/api/impressoras/${valor}`, {
+    const del = await fetch(`https://grafica-maxima.onrender.com/api/impressoras/${valor}`, {
       method: "DELETE"
     });
 

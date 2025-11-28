@@ -1,5 +1,5 @@
 export async function ConsultarPapeis() {
-  const papeis = await fetch("http://localhost:3000/api/papeis");
+  const papeis = await fetch("https://grafica-maxima.onrender.com/api/papeis");
   const dados = await papeis.json();
   const lista = dados.Papel.map(p => p.nome).join("<br> ");
   document.getElementById("resultado").innerHTML = lista;
@@ -13,7 +13,7 @@ export async function desaparecerPapeis() {
 
 export async function carregarOpcoesPapeis() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/papeis");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/papeis");
     const dados = await resposta.json();
 
     const datalist = document.getElementById("listaPapeis");

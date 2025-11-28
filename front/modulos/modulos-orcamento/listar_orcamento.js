@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarOrcamentos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/orcamentos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/orcamentos");
     const dados = await resposta.json();
 
     // pega o array correto ou cria vazio
@@ -51,7 +51,7 @@ export function desaparecerOrcamentos() {
 // ---------------------------------------------
 export async function carregarOpcoesOrcamentos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/orcamentos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/orcamentos");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Orcamento) ? dados.Orcamento : [];
 

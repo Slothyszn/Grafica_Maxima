@@ -469,7 +469,7 @@ if (url.includes("item")) {
       // ===============================
       // 🔥 1) CALCULAR ITEM
       // ===============================
-      const res = await fetch("http://localhost:3000/api/calculo", {
+      const res = await fetch("https://grafica-maxima.onrender.com/api/calculo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -484,7 +484,7 @@ if (url.includes("item")) {
       const id_orc_raw = document.getElementById("id_orc").value;
       const id_orc = id_orc_raw.split("|")[0].trim();
 
-      await fetch(`http://localhost:3000/api/orcamentos/${id_orc}`, {
+      await fetch(`https://grafica-maxima.onrender.com/api/orcamentos/${id_orc}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)

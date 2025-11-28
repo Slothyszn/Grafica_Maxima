@@ -1,5 +1,5 @@
 export async function carregarMaquinasParaExcluir() {
-  const resposta = await fetch("http://localhost:3000/api/maquinas");
+  const resposta = await fetch("https://grafica-maxima.onrender.com/api/maquinas");
   const dados = await resposta.json();
 
   const datalist = document.getElementById("listaMaquinasExcluir");
@@ -19,7 +19,7 @@ export async function excluirMaquina() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/maquinas/tipo/${encodeURIComponent(tipo)}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/maquinas/tipo/${encodeURIComponent(tipo)}`, {
       method: "DELETE"
     });
 

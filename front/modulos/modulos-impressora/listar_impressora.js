@@ -1,6 +1,6 @@
 export async function ConsultarImpressoras() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressoras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
     const dados = await resposta.json();
     const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
 
@@ -41,7 +41,7 @@ export function desaparecerImpressoras() {
 
 export async function carregarOpcoesImpressoras() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressoras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
     const dados = await resposta.json();
     const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
 
@@ -91,7 +91,7 @@ export async function configurarBuscaImpressoras() {
   }
 
   try {
-    const resInicial = await fetch("http://localhost:3000/api/impressoras");
+    const resInicial = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
     const dados = await resInicial.json();
     const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
     renderizarTabela(impressoras);
@@ -104,7 +104,7 @@ export async function configurarBuscaImpressoras() {
     const termo = input.value.trim();
 
     try {
-      const res = await fetch("http://localhost:3000/api/impressoras");
+      const res = await fetch("https://grafica-maxima.onrender.com/api/impressoras");
       const dados = await res.json();
       const impressoras = Array.isArray(dados) ? dados : dados.Impressora || [];
 

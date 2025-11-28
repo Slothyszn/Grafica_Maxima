@@ -3,7 +3,7 @@
 // ===============================
 export async function ConsultarItens() {
   try {
-    const res = await fetch('http://localhost:3000/api/itens');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/itens');
     if (!res.ok) {
       console.warn('ConsultarItens: resposta não OK', res.status);
       const tbodyErr = document.querySelector('#resultado-item tbody');
@@ -56,7 +56,7 @@ export function desaparecerItens() {
 // ===============================
 export async function carregarOpcoesItens() {
   try {
-    const res = await fetch('http://localhost:3000/api/itens');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/itens');
     if (!res.ok) return;
 
     const dados = await res.json();
@@ -94,14 +94,14 @@ export async function carregarOpcoesItens() {
 export async function carregarTabelasExternasItens() {
   try {
     const [resOrc, resImp, resProd, resServ, resItens] = await Promise.all([
-      fetch("http://localhost:3000/api/orcamentos"),
-      fetch("http://localhost:3000/api/impressao"),
-      fetch("http://localhost:3000/api/produtos"),
-      fetch("http://localhost:3000/api/servicos"),
-      fetch("http://localhost:3000/api/itens")
+      fetch("https://grafica-maxima.onrender.com/api/orcamentos"),
+      fetch("https://grafica-maxima.onrender.com/api/impressao"),
+      fetch("https://grafica-maxima.onrender.com/api/produtos"),
+      fetch("https://grafica-maxima.onrender.com/api/servicos"),
+      fetch("https://grafica-maxima.onrender.com/api/itens")
     ]);
 
-    const resFamilia = await fetch("http://localhost:3000/api/familias")
+    const resFamilia = await fetch("https://grafica-maxima.onrender.com/api/familias")
     const dataFam = await resFamilia.json();
     const famArray = Array.isArray(dataFam) ? dataFam : dataFam.Familia || [];
 

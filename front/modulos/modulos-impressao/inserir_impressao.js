@@ -38,13 +38,13 @@ export async function InserirImpressao(event) {
   };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressao", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressao", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaImpressao)
     });
 
-    const dados = await fetch("http://localhost:3000/api/impressao");
+    const dados = await fetch("https://grafica-maxima.onrender.com/api/impressao");
     const data = await dados.json();
 
     if (!resposta.ok) {

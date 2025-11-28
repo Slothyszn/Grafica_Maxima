@@ -7,7 +7,7 @@ export async function habilitarEdicaoDimensao() {
 
   try {
     // Busca todas as dimensões
-    const resposta = await fetch("http://localhost:3000/api/dimensoes");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Dimensao) ? dados.Dimensao : [];
 
@@ -39,7 +39,7 @@ export async function habilitarEdicaoDimensao() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/dimensoes/${dimensao.id_dim}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/dimensoes/${dimensao.id_dim}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

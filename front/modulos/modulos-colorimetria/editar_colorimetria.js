@@ -3,7 +3,7 @@ export async function habilitarEdicaoColorimetria() {
   if (!selecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resposta.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 
@@ -25,7 +25,7 @@ export async function habilitarEdicaoColorimetria() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/colorimetria/${registro.id_color}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/colorimetria/${registro.id_color}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

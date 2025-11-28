@@ -16,7 +16,7 @@ export async function InserirOrcamento(event) {
   const novoOrcamento = { nome_cli, telefone, perc_lucro, adicional, dt_criacao, dt_limite };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/orcamentos", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/orcamentos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoOrcamento) // NÃO enviamos id_orc

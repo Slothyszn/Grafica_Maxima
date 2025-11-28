@@ -1,5 +1,5 @@
 export async function carregarFornecedoresParaExcluir() {
-  const resposta = await fetch("http://localhost:3000/api/fornecedores");
+  const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
   const dados = await resposta.json();
 
   const datalist = document.getElementById("listaFornecedoresExcluir");
@@ -19,7 +19,7 @@ export async function excluirFornecedor() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/fornecedores/nome/${encodeURIComponent(nome)}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/fornecedores/nome/${encodeURIComponent(nome)}`, {
       method: "DELETE"
     });
 

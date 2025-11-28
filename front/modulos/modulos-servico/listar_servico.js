@@ -4,7 +4,7 @@
 
 export async function ConsultarServicos() {
   try {
-    const res = await fetch('http://localhost:3000/api/servicos');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/servicos');
     if (!res.ok) {
       console.warn('ConsultarServicos: resposta não OK', res.status);
       const tbodyErr = document.querySelector('#resultado tbody');
@@ -49,7 +49,7 @@ export function desaparecerServicos() {
 // ===============================
 export async function carregarOpcoesServicos() {
   try {
-    const res = await fetch('http://localhost:3000/api/servicos');
+    const res = await fetch('https://grafica-maxima.onrender.com/api/servicos');
     if (!res.ok) return;
 
     const dados = await res.json();

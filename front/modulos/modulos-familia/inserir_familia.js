@@ -12,7 +12,7 @@ export async function InserirFamilia(event) {
   const payload = { tipo, nome };
 
   try {
-    const res = await fetch('http://localhost:3000/api/familias', {
+    const res = await fetch('https://grafica-maxima.onrender.com/api/familias', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

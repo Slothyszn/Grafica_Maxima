@@ -12,7 +12,7 @@ export async function habilitarEdicaoFamilia() {
 
   try {
     // Carregar famílias
-    const resFamilias = await fetch("http://localhost:3000/api/familias");
+    const resFamilias = await fetch("https://grafica-maxima.onrender.com/api/familias");
     const dadosFamilias = await resFamilias.json();
     const familias = Array.isArray(dadosFamilias.Familia) ? dadosFamilias.Familia : [];
 
@@ -39,7 +39,7 @@ export async function habilitarEdicaoFamilia() {
       }
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/familias/${idSelecionado}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/familias/${idSelecionado}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(corpoPut)

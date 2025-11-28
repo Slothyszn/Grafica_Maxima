@@ -15,7 +15,7 @@ export async function InserirMaoObra(event) {
   const novo = { id_serv, id_item };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/maoObras", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/maoObras", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novo),

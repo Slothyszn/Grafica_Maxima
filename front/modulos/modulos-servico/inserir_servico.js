@@ -12,7 +12,7 @@ export async function InserirServico(event) {
   const payload = { nome, custo_fixo };
 
   try {
-    const res = await fetch('http://localhost:3000/api/servicos', {
+    const res = await fetch('https://grafica-maxima.onrender.com/api/servicos', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

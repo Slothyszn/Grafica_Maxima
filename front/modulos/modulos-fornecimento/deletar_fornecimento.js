@@ -3,7 +3,7 @@
 // ==========================
 export async function carregarFornecimentosParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/fornecimentos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecimentos");
     const dados = await resposta.json();
 
     const fornecimentos = Array.isArray(dados.Fornecimento) ? dados.Fornecimento : [];
@@ -41,7 +41,7 @@ export async function excluirFornecimento() {
   if (!confirm(`Tem certeza que deseja excluir o fornecimento ${id}?`)) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/fornecimentos/${id}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/fornecimentos/${id}`, {
       method: "DELETE"
     });
 

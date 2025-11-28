@@ -9,7 +9,7 @@ export async function excluirItem() {
   if (!confirm("Tem certeza que deseja excluir este item?")) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/itens/${id}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/itens/${id}`, {
       method: "DELETE",
     });
 

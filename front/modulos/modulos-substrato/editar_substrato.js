@@ -8,9 +8,9 @@ export async function habilitarEdicaoSubstrato() {
     try {
         // Carregar dados externos
         const [resSubs, resFamilias, resCategorias] = await Promise.all([
-            fetch("http://localhost:3000/api/substratos"),
-            fetch("http://localhost:3000/api/familias"),
-            fetch("http://localhost:3000/api/categorias")
+            fetch("https://grafica-maxima.onrender.com/api/substratos"),
+            fetch("https://grafica-maxima.onrender.com/api/familias"),
+            fetch("https://grafica-maxima.onrender.com/api/categorias")
         ]);
 
         const dadosSubs = await resSubs.json();
@@ -111,7 +111,7 @@ export async function habilitarEdicaoSubstrato() {
             const payload = { campo, novoValor };
 
             try {
-                const resposta = await fetch(`http://localhost:3000/api/substratos/${substrato.id_sub}`, {
+                const resposta = await fetch(`https://grafica-maxima.onrender.com/api/substratos/${substrato.id_sub}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)

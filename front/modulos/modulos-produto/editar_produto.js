@@ -8,9 +8,9 @@ export async function habilitarEdicaoProduto() {
     try {
         // Carregar dados externos
         const [resProds, resFamilias, resCategorias] = await Promise.all([
-            fetch("http://localhost:3000/api/produtos"),
-            fetch("http://localhost:3000/api/familias"),
-            fetch("http://localhost:3000/api/categorias")
+            fetch("https://grafica-maxima.onrender.com/api/produtos"),
+            fetch("https://grafica-maxima.onrender.com/api/familias"),
+            fetch("https://grafica-maxima.onrender.com/api/categorias")
         ]);
 
         const dadosProds = await resProds.json();
@@ -90,7 +90,7 @@ export async function habilitarEdicaoProduto() {
             const payload = { campo, novoValor };
 
             try {
-                const resposta = await fetch(`http://localhost:3000/api/produtos/${produto.id_prod}`, {
+                const resposta = await fetch(`https://grafica-maxima.onrender.com/api/produtos/${produto.id_prod}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)

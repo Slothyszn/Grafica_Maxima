@@ -13,7 +13,7 @@ export async function InserirProduto(event) {
   const novo = { id_fam, id_categ, custo_m2 };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/produtos", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/produtos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novo),

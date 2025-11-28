@@ -6,7 +6,7 @@ export async function habilitarEdicaoServico() {
   const idSelecionado = selecionado.split(" | ")[0].trim();
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/servicos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/servicos");
     if (!resposta.ok) {
       alert('Erro ao carregar serviços para edição');
       return;
@@ -31,7 +31,7 @@ export async function habilitarEdicaoServico() {
 
       // envia o PUT para o back
       try {
-        const res = await fetch(`http://localhost:3000/api/servicos/${servico.id_serv}`, {
+        const res = await fetch(`https://grafica-maxima.onrender.com/api/servicos/${servico.id_serv}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ campo, novoValor })

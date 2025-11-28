@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarSubstratos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/substratos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/substratos");
     const dados = await resposta.json();
 
     const lista = Array.isArray(dados.Substrato) ? dados.Substrato : dados;
@@ -48,7 +48,7 @@ export function desaparecerSubstratos() {
 // ---------------------------------------------
 export async function carregarOpcoesSubstratos() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/substratos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/substratos");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Substrato) ? dados.Substrato : [];
 
@@ -77,8 +77,8 @@ export async function carregarTabelasExternasSubstrato() {
   try {
     // ---- Requisições paralelas ----
     const [resFam, resCat] = await Promise.all([
-      fetch("http://localhost:3000/api/familias"),
-      fetch("http://localhost:3000/api/categorias"),
+      fetch("https://grafica-maxima.onrender.com/api/familias"),
+      fetch("https://grafica-maxima.onrender.com/api/categorias"),
     ]);
 
     // ---- Checagem de erros HTTP ----

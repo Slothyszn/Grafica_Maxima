@@ -9,7 +9,7 @@ export async function excluirOrcamento() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/orcamentos/${id}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/orcamentos/${id}`, {
       method: "DELETE",
     });
 

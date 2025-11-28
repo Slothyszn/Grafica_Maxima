@@ -1,6 +1,6 @@
 export async function carregarColorimetriaParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resposta.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 
@@ -26,14 +26,14 @@ export async function excluirColorimetria() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resposta.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 
     const registro = registros.find(r => r.cod === valor || String(r.id_color) === valor);
     if (!registro) return alert("Colorimetria não encontrada");
 
-    const del = await fetch(`http://localhost:3000/api/colorimetria/${registro.id_color}`, {
+    const del = await fetch(`https://grafica-maxima.onrender.com/api/colorimetria/${registro.id_color}`, {
       method: "DELETE"
     });
 

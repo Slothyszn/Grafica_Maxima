@@ -21,7 +21,7 @@ export async function InserirDimensao(event) {
   const novaDimensao = { cmpr, larg, mrg_interna, mrg_sangria, mrg_branca, mrg_espaco };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/dimensoes", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaDimensao)

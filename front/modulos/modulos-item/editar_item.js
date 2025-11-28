@@ -5,7 +5,7 @@ export async function habilitarEdicaoItem() {
   const idSelecionado = selecionado.split(" | ")[0];
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/itens");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/itens");
     const dados = await resposta.json();
     const itens = Array.isArray(dados) ? dados : dados.Item || [];
 
@@ -30,7 +30,7 @@ export async function habilitarEdicaoItem() {
         let datalistId = "";
 
         if (campo === "id_orc") {
-          const res = await fetch("http://localhost:3000/api/orcamentos");
+          const res = await fetch("https://grafica-maxima.onrender.com/api/orcamentos");
           const dadosOrc = await res.json();
           listaId = dadosOrc.Orcamento.map(o => o.id_orc);
           datalistId = "listaOrcEdit";
@@ -39,7 +39,7 @@ export async function habilitarEdicaoItem() {
 
         if (campo === "id_ref") {
           if (item.tipo === "impressao") {
-            const res = await fetch("http://localhost:3000/api/impressao");
+            const res = await fetch("https://grafica-maxima.onrender.com/api/impressao");
             const dadosImp = await res.json();
             listaId = dadosImp.Impressao.map(i => i.id_imp);
             datalistId = "listaImpEdit";
@@ -47,7 +47,7 @@ export async function habilitarEdicaoItem() {
           }
 
           if (item.tipo === "produto") {
-            const res = await fetch("http://localhost:3000/api/produtos");
+            const res = await fetch("https://grafica-maxima.onrender.com/api/produtos");
             const dadosProd = await res.json();
             listaId = dadosProd.Produto.map(p => p.id_prod);
             datalistId = "listaProdEdit";
@@ -55,7 +55,7 @@ export async function habilitarEdicaoItem() {
           }
 
           if (item.tipo === "servico") {
-            const res = await fetch("http://localhost:3000/api/servicos");
+            const res = await fetch("https://grafica-maxima.onrender.com/api/servicos");
             const dadosServ = await res.json();
             listaId = dadosServ.Servico.map(s => s.id_serv);
             datalistId = "listaServEdit";
@@ -93,7 +93,7 @@ export async function habilitarEdicaoItem() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/itens/${item.id_item}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/itens/${item.id_item}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

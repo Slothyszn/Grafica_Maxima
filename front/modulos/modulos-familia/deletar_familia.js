@@ -8,7 +8,7 @@ export async function excluirFamilia() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/familias/${id_fam}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/familias/${id_fam}`, {
       method: "DELETE"
     });
 

@@ -1,5 +1,5 @@
 export async function ConsultarMaquinas() {
-  const resposta = await fetch("http://localhost:3000/api/maquinas");
+  const resposta = await fetch("https://grafica-maxima.onrender.com/api/maquinas");
   const dados = await resposta.json();
 
   // Se o backend retornar { Maquina: [...] }, usa esse campo;
@@ -18,7 +18,7 @@ export async function desaparecerMaquinas() {
 
 export async function carregarOpcoesMaquinas() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/maquinas");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/maquinas");
     const dados = await resposta.json();
 
     const datalist = document.getElementById("listaMaquinas");

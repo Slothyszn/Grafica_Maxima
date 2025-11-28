@@ -10,7 +10,7 @@ export async function excluirSubstrato() {
   if (!confirm("Tem certeza que deseja excluir?")) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/substratos/${id}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/substratos/${id}`, {
       method: "DELETE",
     });
 

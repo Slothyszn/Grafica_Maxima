@@ -5,7 +5,7 @@ export async function habilitarEdicaoFornecedor() {
 
   try {
     // 1️⃣ Buscar todos os fornecedores
-    const resposta = await fetch("http://localhost:3000/api/fornecedores");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/fornecedores");
     const dados = await resposta.json();
     const fornecedores = Array.isArray(dados) ? dados : dados.Fornecedor || [];
 
@@ -36,7 +36,7 @@ export async function habilitarEdicaoFornecedor() {
       const dadosAtualizados = { [campo]: novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/fornecedores/${fornecedor.id_forn}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/fornecedores/${fornecedor.id_forn}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dadosAtualizados)

@@ -3,7 +3,7 @@ export async function habilitarEdicaoConfig() {
   if (!selecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/configs");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/configs");
     const dados = await resposta.json();
     const configs = Array.isArray(dados) ? dados : dados.Config || [];
 
@@ -41,7 +41,7 @@ export async function habilitarEdicaoConfig() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/configs/${config.id_config}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/configs/${config.id_config}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

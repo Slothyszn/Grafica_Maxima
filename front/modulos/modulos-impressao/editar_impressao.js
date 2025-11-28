@@ -8,10 +8,10 @@ export async function habilitarEdicaoImpressao() {
     try {
         // Pegar todas impressões, substratos, colorimetrias e impressoras
         const [resImpressao, resSubs, resColors, resImprs] = await Promise.all([
-            fetch("http://localhost:3000/api/impressao"),
-            fetch("http://localhost:3000/api/substratos"),
-            fetch("http://localhost:3000/api/colorimetria"),
-            fetch("http://localhost:3000/api/impressoras")
+            fetch("https://grafica-maxima.onrender.com/api/impressao"),
+            fetch("https://grafica-maxima.onrender.com/api/substratos"),
+            fetch("https://grafica-maxima.onrender.com/api/colorimetria"),
+            fetch("https://grafica-maxima.onrender.com/api/impressoras")
         ]);
 
         const dataImpressao = await resImpressao.json();
@@ -114,7 +114,7 @@ export async function habilitarEdicaoImpressao() {
             const payload = { campo, novoValor };
 
             try {
-                const resposta = await fetch(`http://localhost:3000/api/impressao/${impressao.id_imp}`, {
+                const resposta = await fetch(`https://grafica-maxima.onrender.com/api/impressao/${impressao.id_imp}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)

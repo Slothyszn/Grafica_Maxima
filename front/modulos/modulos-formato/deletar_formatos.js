@@ -8,7 +8,7 @@ export async function excluirFormato() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch(`http://localhost:3000/api/formatos/${id_form}`, {
+    const resposta = await fetch(`https://grafica-maxima.onrender.com/api/formatos/${id_form}`, {
       method: "DELETE"
     });
 

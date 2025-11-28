@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarMaoObra() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/maoObras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/maoObras");
     const dados = await resposta.json();
 
     const lista = Array.isArray(dados.MaoObra) ? dados.MaoObra : dados;
@@ -45,7 +45,7 @@ export function desaparecerMaoObra() {
 // ---------------------------------------------
 export async function carregarOpcoesMaoObra() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/maoObras");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/maoObras");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.MaoObra) ? dados.MaoObra : [];
 
@@ -72,8 +72,8 @@ export async function carregarTabelasExternasMaoObra() {
   try {
     // ---- Requisições paralelas ----
     const [resServ, resItens] = await Promise.all([
-      fetch("http://localhost:3000/api/servicos"),
-      fetch("http://localhost:3000/api/itens")
+      fetch("https://grafica-maxima.onrender.com/api/servicos"),
+      fetch("https://grafica-maxima.onrender.com/api/itens")
     ]);
 
     if (!resServ.ok) throw new Error("Falha ao carregar serviços");

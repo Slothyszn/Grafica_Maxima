@@ -3,7 +3,7 @@
 // ---------------------------------------------
 export async function ConsultarDimensoes() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/dimensoes");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes");
     const dados = await resposta.json();
 
     // pega o array correto ou cria vazio
@@ -50,7 +50,7 @@ export function desaparecerDimensoes() {
 // ---------------------------------------------
 export async function carregarOpcoesDimensoes() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/dimensoes");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Dimensao) ? dados.Dimensao : [];
 

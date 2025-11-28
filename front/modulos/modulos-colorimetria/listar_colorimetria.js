@@ -1,6 +1,6 @@
 export async function ConsultarColorimetria() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resposta.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 
@@ -34,7 +34,7 @@ export function desaparecerColorimetria() {
 
 export async function carregarOpcoesColorimetria() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/colorimetria");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resposta.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 
@@ -77,7 +77,7 @@ export async function configurarBuscaColorimetria() {
 
   // Carrega todos inicialmente
   try {
-    const resInicial = await fetch("http://localhost:3000/api/colorimetria");
+    const resInicial = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
     const dados = await resInicial.json();
     const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
     renderizarTabela(registros);
@@ -90,7 +90,7 @@ export async function configurarBuscaColorimetria() {
     const termo = input.value.trim().toLowerCase();
 
     try {
-      const res = await fetch("http://localhost:3000/api/colorimetria");
+      const res = await fetch("https://grafica-maxima.onrender.com/api/colorimetria");
       const dados = await res.json();
       const registros = Array.isArray(dados) ? dados : dados.Colorimetria || [];
 

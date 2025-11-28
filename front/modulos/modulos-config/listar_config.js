@@ -2,8 +2,8 @@ export async function ConsultarConfigs() {
   try {
     // buscar configs e impressoras para mostrar o nome da impressora
     const [resConfigs, resImpr] = await Promise.all([
-      fetch("http://localhost:3000/api/configs"),
-      fetch("http://localhost:3000/api/impressoras")
+      fetch("https://grafica-maxima.onrender.com/api/configs"),
+      fetch("https://grafica-maxima.onrender.com/api/impressoras")
     ]);
 
     const dados = await resConfigs.json();
@@ -45,7 +45,7 @@ export function desaparecerConfigs() {
 
 export async function carregarOpcoesConfigs() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/configs");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/configs");
     const dados = await resposta.json();
     const configs = Array.isArray(dados) ? dados : dados.Config || [];
 
@@ -92,8 +92,8 @@ export async function configurarBuscaConfigs() {
   try {
     // carregar configs e impressoras para permitir busca por nome da impressora
     const [resInicial, resImpr] = await Promise.all([
-      fetch("http://localhost:3000/api/configs"),
-      fetch("http://localhost:3000/api/impressoras")
+      fetch("https://grafica-maxima.onrender.com/api/configs"),
+      fetch("https://grafica-maxima.onrender.com/api/impressoras")
     ]);
 
     const dados = await resInicial.json();
@@ -112,8 +112,8 @@ export async function configurarBuscaConfigs() {
 
     try {
       const [res, resImpr] = await Promise.all([
-        fetch("http://localhost:3000/api/configs"),
-        fetch("http://localhost:3000/api/impressoras")
+        fetch("https://grafica-maxima.onrender.com/api/configs"),
+        fetch("https://grafica-maxima.onrender.com/api/impressoras")
       ]);
 
       const dados = await res.json();
@@ -149,8 +149,8 @@ export async function configurarBuscaConfigs() {
 export async function carregarTabelasExternasConfig() {
   try {
     const [resColor, resImpr] = await Promise.all([
-      fetch("http://localhost:3000/api/colorimetria"),
-      fetch("http://localhost:3000/api/impressoras")
+      fetch("https://grafica-maxima.onrender.com/api/colorimetria"),
+      fetch("https://grafica-maxima.onrender.com/api/impressoras")
     ]);
 
     const dataColor = await resColor.json();

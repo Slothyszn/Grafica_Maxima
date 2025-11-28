@@ -14,7 +14,7 @@ export async function InserirSubstrato(event) {
   const novo = { id_fam, id_categ, med_sub, valor };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/substratos", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/substratos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novo),

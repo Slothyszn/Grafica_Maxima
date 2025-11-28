@@ -20,7 +20,7 @@ export async function InserirImpressora(event) {
   const nova = { tecno, tipo, med_velo, nome, custo_hora, velo_max, compr_max, larg_max, gram_max, esp_max };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressoras", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressoras", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nova)

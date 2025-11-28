@@ -6,7 +6,7 @@ export async function habilitarEdicaoOrcamento() {
   if (!selecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/orcamentos");
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/orcamentos");
     const dados = await resposta.json();
     const lista = Array.isArray(dados.Orcamento) ? dados.Orcamento : [];
 
@@ -24,7 +24,7 @@ export async function habilitarEdicaoOrcamento() {
       const payload = { [campo]: novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/orcamentos/${orc.id_orc}`, {
+        const respostaPut = await fetch(`https://grafica-maxima.onrender.com/api/orcamentos/${orc.id_orc}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

@@ -32,7 +32,7 @@ export async function InserirItem(event) {
   console.log("Novo item enviado:", novoItem);
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/itens", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/itens", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novoItem)
@@ -98,7 +98,7 @@ export async function InserirDimensao(event) {
   const novaDimensao = { id_item: id_itemm, cmpr, larg, mrg_interna, mrg_sangria, mrg_branca, mrg_espaco };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/dimensoes", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/dimensoes", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaDimensao)
@@ -164,13 +164,13 @@ export async function InserirImpressao(event) {
   };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/impressao", {
+    const resposta = await fetch("https://grafica-maxima.onrender.com/api/impressao", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaImpressao)
     });
 
-    const dados = await fetch("http://localhost:3000/api/impressao");
+    const dados = await fetch("https://grafica-maxima.onrender.com/api/impressao");
     const data = await dados.json();
 
     if (!resposta.ok) {
