@@ -3,7 +3,7 @@ export async function habilitarEdicaoCategoria() {
   if (!nomeSelecionado) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/categorias");
+    const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias");
     const dados = await resposta.json();
     const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
@@ -28,7 +28,7 @@ export async function habilitarEdicaoCategoria() {
       const payload = { campo, novoValor };
 
       try {
-        const respostaPut = await fetch(`http://localhost:3000/api/categorias/${categoria.id_categ}`, {
+        const respostaPut = await fetch(`http://grafica-maxima.onrender.com/api/categorias/${categoria.id_categ}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)

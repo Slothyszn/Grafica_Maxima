@@ -11,7 +11,7 @@ export async function InserirCategoria(event) {
   const novaCategoria = { nome };
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/categorias", {
+    const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(novaCategoria)

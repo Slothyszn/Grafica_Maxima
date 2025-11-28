@@ -1,6 +1,6 @@
 export async function carregarCategoriasParaExcluir() {
   try {
-    const resposta = await fetch("http://localhost:3000/api/categorias");
+    const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias");
     const dados = await resposta.json();
     const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
@@ -26,14 +26,14 @@ export async function excluirCategoria() {
   if (!confirmacao) return;
 
   try {
-    const resposta = await fetch("http://localhost:3000/api/categorias");
+    const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias");
     const dados = await resposta.json();
     const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
     const categoria = categorias.find(c => c.nome === nome);
     if (!categoria) return alert("Categoria não encontrada");
 
-    const del = await fetch(`http://localhost:3000/api/categorias/${categoria.id_categ}`, {
+    const del = await fetch(`http://grafica-maxima.onrender.com/api/categorias/${categoria.id_categ}`, {
       method: "DELETE"
     });
 

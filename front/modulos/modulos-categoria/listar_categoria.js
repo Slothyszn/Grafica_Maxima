@@ -2,7 +2,7 @@
 
 export async function ConsultarCategorias() {
 	try {
-		const resposta = await fetch("http://localhost:3000/api/categorias");
+		const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias");
 		const dados = await resposta.json();
 		const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
@@ -34,7 +34,7 @@ export function desaparecerCategorias() {
 
 export async function carregarOpcoesCategorias() {
 	try {
-		const resposta = await fetch("http://localhost:3000/api/categorias");
+		const resposta = await fetch("http://grafica-maxima.onrender.com/api/categorias");
 		const dados = await resposta.json();
 		const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
@@ -75,7 +75,7 @@ export async function configurarBuscaCategorias() {
 
 	// Carrega todos inicialmente
 	try {
-		const resInicial = await fetch("http://localhost:3000/api/categorias");
+		const resInicial = await fetch("http://grafica-maxima.onrender.com/api/categorias");
 		const dados = await resInicial.json();
 		const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 		renderizarTabela(categorias);
@@ -88,7 +88,7 @@ export async function configurarBuscaCategorias() {
 		const termo = input.value.trim().toLowerCase();
 
 		try {
-			const res = await fetch("http://localhost:3000/api/categorias");
+			const res = await fetch("http://grafica-maxima.onrender.com/api/categorias");
 			const dados = await res.json();
 			const categorias = Array.isArray(dados) ? dados : dados.Categoria || [];
 
