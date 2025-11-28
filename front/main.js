@@ -3,121 +3,121 @@
 // ------------------------------
 
 // Papeis
-import { ConsultarPapeis, desaparecerPapeis, carregarOpcoesPapeis } from '../modulos/modulos-papeis/listar_papeis.js';
-import { InserirPapel } from '../modulos/modulos-papeis/inserir_papel.js';
-import { habilitarEdicao } from '../modulos/modulos-papeis/editar_papel.js';
-import { carregarPapeisParaExcluir, excluirPapel } from '../modulos/modulos-papeis/deletar_papel.js';
+import { ConsultarPapeis, desaparecerPapeis, carregarOpcoesPapeis } from './modulos/modulos-papeis/listar_papeis.js';
+import { InserirPapel } from './modulos/modulos-papeis/inserir_papel.js';
+import { habilitarEdicao } from './modulos/modulos-papeis/editar_papel.js';
+import { carregarPapeisParaExcluir, excluirPapel } from './modulos/modulos-papeis/deletar_papel.js';
 
 // Maquinas
 
-import { InserirMaquina } from '../modulos/modulos-maquina/inserir_maquina.js';
-import { ConsultarMaquinas, desaparecerMaquinas, carregarOpcoesMaquinas} from '../modulos/modulos-maquina/listar_maquina.js'
-import { habilitarEdicaoMaquina } from '../modulos/modulos-maquina/editar_maquina.js'
-import { carregarMaquinasParaExcluir, excluirMaquina } from '../modulos/modulos-maquina/deletar_maquina.js'
+import { InserirMaquina } from './modulos/modulos-maquina/inserir_maquina.js';
+import { ConsultarMaquinas, desaparecerMaquinas, carregarOpcoesMaquinas} from './modulos/modulos-maquina/listar_maquina.js'
+import { habilitarEdicaoMaquina } from './modulos/modulos-maquina/editar_maquina.js'
+import { carregarMaquinasParaExcluir, excluirMaquina } from './modulos/modulos-maquina/deletar_maquina.js'
 
 // Fornecedores
 
-import { carregarFornecedoresParaExcluir, excluirFornecedor} from '../modulos/modulos-fornecedor/deletar_fornecedor.js'
-import { habilitarEdicaoFornecedor } from '../modulos/modulos-fornecedor/editar_fornecedor.js'
-import { InserirFornecedor } from '../modulos/modulos-fornecedor/inserir_fornecedor.js'
-import { ConsultarFornecedores, carregarOpcoesFornecedores, desaparecerFornecedores, configurarBuscaFornecedores } from '../modulos/modulos-fornecedor/listar_fornecedor.js'
+import { carregarFornecedoresParaExcluir, excluirFornecedor} from './modulos/modulos-fornecedor/deletar_fornecedor.js'
+import { habilitarEdicaoFornecedor } from './modulos/modulos-fornecedor/editar_fornecedor.js'
+import { InserirFornecedor } from './modulos/modulos-fornecedor/inserir_fornecedor.js'
+import { ConsultarFornecedores, carregarOpcoesFornecedores, desaparecerFornecedores, configurarBuscaFornecedores } from './modulos/modulos-fornecedor/listar_fornecedor.js'
 
 // Categorias
-import { carregarCategoriasParaExcluir, excluirCategoria } from '../modulos/modulos-categoria/deletar_categoria.js'
-import { habilitarEdicaoCategoria } from '../modulos/modulos-categoria/editar_categoria.js'
-import { InserirCategoria } from '../modulos/modulos-categoria/inserir_categoria.js'
-import { ConsultarCategorias, carregarOpcoesCategorias, desaparecerCategorias, configurarBuscaCategorias } from '../modulos/modulos-categoria/listar_categoria.js'
+import { carregarCategoriasParaExcluir, excluirCategoria } from './modulos/modulos-categoria/deletar_categoria.js'
+import { habilitarEdicaoCategoria } from './modulos/modulos-categoria/editar_categoria.js'
+import { InserirCategoria } from './modulos/modulos-categoria/inserir_categoria.js'
+import { ConsultarCategorias, carregarOpcoesCategorias, desaparecerCategorias, configurarBuscaCategorias } from './modulos/modulos-categoria/listar_categoria.js'
 
 // Colorimetria
-import { carregarColorimetriaParaExcluir, excluirColorimetria } from '../modulos/modulos-colorimetria/deletar_colorimetria.js'
-import { habilitarEdicaoColorimetria } from '../modulos/modulos-colorimetria/editar_colorimetria.js'
-import { InserirColorimetria } from '../modulos/modulos-colorimetria/inserir_colorimetria.js'
-import { ConsultarColorimetria, carregarOpcoesColorimetria, desaparecerColorimetria, configurarBuscaColorimetria } from '../modulos/modulos-colorimetria/listar_colorimetria.js'
+import { carregarColorimetriaParaExcluir, excluirColorimetria } from './modulos/modulos-colorimetria/deletar_colorimetria.js'
+import { habilitarEdicaoColorimetria } from './modulos/modulos-colorimetria/editar_colorimetria.js'
+import { InserirColorimetria } from './modulos/modulos-colorimetria/inserir_colorimetria.js'
+import { ConsultarColorimetria, carregarOpcoesColorimetria, desaparecerColorimetria, configurarBuscaColorimetria } from './modulos/modulos-colorimetria/listar_colorimetria.js'
 
 // Configurações
-import { carregarConfigsParaExcluir, excluirConfig } from '../modulos/modulos-config/deletar_config.js'
-import { habilitarEdicaoConfig } from '../modulos/modulos-config/editar_config.js'
-import { InserirConfig } from '../modulos/modulos-config/inserir_config.js'
-import { ConsultarConfigs, carregarOpcoesConfigs, desaparecerConfigs, configurarBuscaConfigs, carregarTabelasExternasConfig } from '../modulos/modulos-config/listar_config.js'
+import { carregarConfigsParaExcluir, excluirConfig } from './modulos/modulos-config/deletar_config.js'
+import { habilitarEdicaoConfig } from './modulos/modulos-config/editar_config.js'
+import { InserirConfig } from './modulos/modulos-config/inserir_config.js'
+import { ConsultarConfigs, carregarOpcoesConfigs, desaparecerConfigs, configurarBuscaConfigs, carregarTabelasExternasConfig } from './modulos/modulos-config/listar_config.js'
 
 // Impressoras
-import { carregarImpressorasParaExcluir, excluirImpressora } from '../modulos/modulos-impressora/deletar_impressora.js'
-import { habilitarEdicaoImpressora } from '../modulos/modulos-impressora/editar_impressora.js'
-import { InserirImpressora } from '../modulos/modulos-impressora/inserir_impressora.js'
-import { ConsultarImpressoras, carregarOpcoesImpressoras, desaparecerImpressoras, configurarBuscaImpressoras } from '../modulos/modulos-impressora/listar_impressora.js'
+import { carregarImpressorasParaExcluir, excluirImpressora } from './modulos/modulos-impressora/deletar_impressora.js'
+import { habilitarEdicaoImpressora } from './modulos/modulos-impressora/editar_impressora.js'
+import { InserirImpressora } from './modulos/modulos-impressora/inserir_impressora.js'
+import { ConsultarImpressoras, carregarOpcoesImpressoras, desaparecerImpressoras, configurarBuscaImpressoras } from './modulos/modulos-impressora/listar_impressora.js'
 
 // Substrato
 
-import { carregarTabelasExternasSubstrato, ConsultarSubstratos, carregarOpcoesSubstratos} from '../modulos/modulos-substrato/listar_substrato.js'
-import { InserirSubstrato } from '../modulos/modulos-substrato/inserir_substrato.js'
-import { habilitarEdicaoSubstrato } from '../modulos/modulos-substrato/editar_substrato.js'
-import { excluirSubstrato } from '../modulos/modulos-substrato/deletar_substrato.js'
+import { carregarTabelasExternasSubstrato, ConsultarSubstratos, carregarOpcoesSubstratos} from './modulos/modulos-substrato/listar_substrato.js'
+import { InserirSubstrato } from './modulos/modulos-substrato/inserir_substrato.js'
+import { habilitarEdicaoSubstrato } from './modulos/modulos-substrato/editar_substrato.js'
+import { excluirSubstrato } from './modulos/modulos-substrato/deletar_substrato.js'
 
 
 // Fornecimentos 
-import { carregarFornecimentosParaExcluir, excluirFornecimento } from '../modulos/modulos-fornecimento/deletar_fornecimento.js';
-import { habilitarEdicaoFornecimento } from '../modulos/modulos-fornecimento/editar_fornecimento.js';
-import { InserirFornecimento } from '../modulos/modulos-fornecimento/inserir_fornecimento.js';
-import { ConsultarFornecimentos, desaparecerFornecimentos, carregarOpcoesFornecimentos, carregarTabelasExternasFornecimento, configurarBuscaFornecimentos } from '../modulos/modulos-fornecimento/listar_fornecimento.js';
+import { carregarFornecimentosParaExcluir, excluirFornecimento } from './modulos/modulos-fornecimento/deletar_fornecimento.js';
+import { habilitarEdicaoFornecimento } from './modulos/modulos-fornecimento/editar_fornecimento.js';
+import { InserirFornecimento } from './modulos/modulos-fornecimento/inserir_fornecimento.js';
+import { ConsultarFornecimentos, desaparecerFornecimentos, carregarOpcoesFornecimentos, carregarTabelasExternasFornecimento, configurarBuscaFornecimentos } from './modulos/modulos-fornecimento/listar_fornecimento.js';
  
 // Serviços
 
-import { carregarServicosParaExcluir, excluirServico} from '../modulos/modulos-servico/deletar_servico.js'
-import { habilitarEdicaoServico } from '../modulos/modulos-servico/editar_servico.js'
-import { InserirServico } from '../modulos/modulos-servico/inserir_servico.js'
-import { ConsultarServicos, carregarOpcoesServicos, desaparecerServicos} from '../modulos/modulos-servico/listar_servico.js'
+import { carregarServicosParaExcluir, excluirServico} from './modulos/modulos-servico/deletar_servico.js'
+import { habilitarEdicaoServico } from './modulos/modulos-servico/editar_servico.js'
+import { InserirServico } from './modulos/modulos-servico/inserir_servico.js'
+import { ConsultarServicos, carregarOpcoesServicos, desaparecerServicos} from './modulos/modulos-servico/listar_servico.js'
 
 
 // Formatos
 
-import { ConsultarFormatos, carregarOpcoesFormatos } from '../modulos/modulos-formato/listar_formatos.js'
-import { InserirFormato } from '../modulos/modulos-formato/inserir_formatos.js'
-import { habilitarEdicaoFormato } from '../modulos/modulos-formato/editar_formatos.js'
-import { excluirFormato } from '../modulos/modulos-formato/deletar_formatos.js'
+import { ConsultarFormatos, carregarOpcoesFormatos } from './modulos/modulos-formato/listar_formatos.js'
+import { InserirFormato } from './modulos/modulos-formato/inserir_formatos.js'
+import { habilitarEdicaoFormato } from './modulos/modulos-formato/editar_formatos.js'
+import { excluirFormato } from './modulos/modulos-formato/deletar_formatos.js'
 
 
 // Familias 
 
-import { ConsultarFamilias, carregarOpcoesFamilias } from '../modulos/modulos-familia/listar_familia.js'
-import {InserirFamilia } from '../modulos/modulos-familia/inserir_familia.js'
-import { habilitarEdicaoFamilia} from '../modulos/modulos-familia/editar_familia.js'
-import { excluirFamilia } from '../modulos/modulos-familia/deletar_familia.js'
+import { ConsultarFamilias, carregarOpcoesFamilias } from './modulos/modulos-familia/listar_familia.js'
+import {InserirFamilia } from './modulos/modulos-familia/inserir_familia.js'
+import { habilitarEdicaoFamilia} from './modulos/modulos-familia/editar_familia.js'
+import { excluirFamilia } from './modulos/modulos-familia/deletar_familia.js'
 
 // Itens
 
-import { ConsultarItens, carregarOpcoesItens, carregarTabelasExternasItens } from '../modulos/modulos-item/listar_item.js'
-import { InserirItem } from '../modulos/modulos-item/inserir_item.js'
-import { habilitarEdicaoItem } from '../modulos/modulos-item/editar_item.js'
-import { excluirItem } from '../modulos/modulos-item/deletar_item.js'
+import { ConsultarItens, carregarOpcoesItens, carregarTabelasExternasItens } from './modulos/modulos-item/listar_item.js'
+import { InserirItem } from './modulos/modulos-item/inserir_item.js'
+import { habilitarEdicaoItem } from './modulos/modulos-item/editar_item.js'
+import { excluirItem } from './modulos/modulos-item/deletar_item.js'
 
 
 // Dimensao 
 
-import { ConsultarDimensoes, carregarOpcoesDimensoes} from '../modulos/modulos-dimensao/listar_dimensao.js'
-import { InserirDimensao } from '../modulos/modulos-dimensao/inserir_dimensao.js'
-import { habilitarEdicaoDimensao } from '../modulos/modulos-dimensao/editar_dimensao.js'
-import { excluirDimensao } from '../modulos/modulos-dimensao/deletar_dimensao.js'
+import { ConsultarDimensoes, carregarOpcoesDimensoes} from './modulos/modulos-dimensao/listar_dimensao.js'
+import { InserirDimensao } from './modulos/modulos-dimensao/inserir_dimensao.js'
+import { habilitarEdicaoDimensao } from './modulos/modulos-dimensao/editar_dimensao.js'
+import { excluirDimensao } from './modulos/modulos-dimensao/deletar_dimensao.js'
 
 // Orcamento 
 
-import { ConsultarOrcamentos, carregarOpcoesOrcamentos} from '../modulos/modulos-orcamento/listar_orcamento.js'
-import { InserirOrcamento } from '../modulos/modulos-orcamento/inserir_orcamento.js'
-import { habilitarEdicaoOrcamento } from '../modulos/modulos-orcamento/editar_orcamento.js'
-import { excluirOrcamento } from '../modulos/modulos-orcamento/deletar_orcamento.js'
+import { ConsultarOrcamentos, carregarOpcoesOrcamentos} from './modulos/modulos-orcamento/listar_orcamento.js'
+import { InserirOrcamento } from './modulos/modulos-orcamento/inserir_orcamento.js'
+import { habilitarEdicaoOrcamento } from './modulos/modulos-orcamento/editar_orcamento.js'
+import { excluirOrcamento } from './modulos/modulos-orcamento/deletar_orcamento.js'
 
 // Produto
 
-import { ConsultarProdutos, carregarOpcoesProdutos, carregarTabelasExternasProduto } from '../modulos/modulos-produto/listar_produto.js'
-import { InserirProduto } from '../modulos/modulos-produto/inserir_produto.js'
-import { habilitarEdicaoProduto } from '../modulos/modulos-produto/editar_produto.js'
-import { excluirProduto } from '../modulos/modulos-produto/deletar_produto.js'
+import { ConsultarProdutos, carregarOpcoesProdutos, carregarTabelasExternasProduto } from './modulos/modulos-produto/listar_produto.js'
+import { InserirProduto } from './modulos/modulos-produto/inserir_produto.js'
+import { habilitarEdicaoProduto } from './modulos/modulos-produto/editar_produto.js'
+import { excluirProduto } from './modulos/modulos-produto/deletar_produto.js'
 
 // Impressao
 
-import { ConsultarImpressao, carregarOpcoesImpressao, carregarTabelasExternasImpressao, configurarBuscaImpressao } from '../modulos/modulos-impressao/listar_impressao.js'
-import { InserirImpressao } from '../modulos/modulos-impressao/inserir_impressao.js';
-import { habilitarEdicaoImpressao } from '../modulos/modulos-impressao/editar_impressao.js'
-import { excluirImpressao } from '../modulos/modulos-impressao/deletar_impressao.js'
+import { ConsultarImpressao, carregarOpcoesImpressao, carregarTabelasExternasImpressao, configurarBuscaImpressao } from './modulos/modulos-impressao/listar_impressao.js'
+import { InserirImpressao } from './modulos/modulos-impressao/inserir_impressao.js';
+import { habilitarEdicaoImpressao } from './modulos/modulos-impressao/editar_impressao.js'
+import { excluirImpressao } from './modulos/modulos-impressao/deletar_impressao.js'
 
 ////////////////////////////////////////////////////////////////
 
