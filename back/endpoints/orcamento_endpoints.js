@@ -78,8 +78,6 @@ router.post("/orcamentos/:id_orc", (req, res) => {
     const id = Number(req.params.id_orc); // string -> número
     const { tipo, custo_parcial, detalhes } = req.body;
 
-    console.log(`DEBUGGG tipo: ${tipo}, custo_parcial: ${custo_parcial}, detalhes: ${JSON.stringify(detalhes)}`);
-
     // lê todos os orçamentos
     const todosOrcamentos = JSON.parse(fs.readFileSync(caminho, "utf-8")).Orcamento;
 

@@ -161,8 +161,6 @@ export async function InserirImpressao(event) {
     cod_verso,
     id_impres,
     velo,
-    // custo_hora,
-    // custo_exced ///////// POR ENQUANTO NAO, MAS VC VAI USAR, depois que fizer o calculo
   };
 
   try {

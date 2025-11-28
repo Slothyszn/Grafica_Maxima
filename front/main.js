@@ -458,7 +458,7 @@ if (url.includes("item")) {
                   || null;
 
       const payload = {
-        id_item: Number(id_item),   // 🔥 obrigatório
+        id_item: Number(id_item),   
         tipo,
         id_ref: tipo === "impressao" ? refImpressao : Number(id_ref),
         quant,

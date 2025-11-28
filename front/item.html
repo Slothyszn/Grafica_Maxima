@@ -43,9 +43,26 @@
             <option value="servico">Serviço</option>
         </select>
 
-        <label for="id_ref">ID Referência</label>
-        <input list="listaIds" id="id_ref" placeholder="Escolha o ID correspondente" autocomplete="off" required>
-        <datalist id="listaIds"></datalist>
+        <div id="info-impressao" style="display: none; margin-top: 20px;">
+            <label>Informações:</label>
+            <label for="id_ref">ID Referência</label>
+            <input list="listaIds" id="id_ref" placeholder="Escolha o ID correspondente" autocomplete="off" required>
+            <datalist id="listaIds"></datalist>
+
+            <input list="listaSubstratos" id="tipoSubstrato" placeholder="Substrato" autocomplete="off" />
+            <datalist id="listaSubstratos"></datalist>
+
+            <input list="listaFrente" id="cod_frente" placeholder="Cor da frente" autocomplete="off" />
+            <datalist id="listaFrente"></datalist>
+
+            <input list="listaVerso" id="cod_verso" placeholder="Cor de tras" autocomplete="off" />
+            <datalist id="listaVerso"></datalist>
+
+            <input list="listaImpressoras" id="id_impres" placeholder="Impressora" autocomplete="off" />
+            <datalist id="listaImpressoras"></datalist>      
+            
+            <input id="velo" placeholder="velocidade de impressao">
+        </div>
 
         <div id="dimensao-editar" style="display: none; margin-top: 20px;">
             <label>Dimensões</label>

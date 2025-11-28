@@ -28,10 +28,6 @@ router.post('/calculo', (req, res) => {
   try {
     const item = req.body;
 
-  console.log("### RECEBI NO /calculo:", JSON.stringify(item, null, 2));
-
-
-
     if (!item.tipo || !item.quant) {
       return res.status(400).json({ mensagem: "Tipo e quantidade são obrigatórios" });
     }

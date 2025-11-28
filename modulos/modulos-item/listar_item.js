@@ -183,6 +183,8 @@ export async function carregarTabelasExternasItens() {
               if (dimensao) dimensao.style.display = "block";
               const dimensao2 = document.getElementById("impressao-dimensao");
               if (dimensao2) dimensao2.style.display = "block";
+              const dimensao5 = document.getElementById("info-impressao");
+              if (dimensao5) dimensao5.style.display = "block";
           } else {
               option.label = nome ? `${id} - ${nome}` : String(id);
           }
