@@ -16,7 +16,7 @@ import orcamento from './endpoints/orcamento_endpoints.js'
 import produtos from './endpoints/produtos_endpoints.js'
 import impressao from './endpoints/impressao_endpoint.js'
 import calculo from './endpoints/calculos.js'
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use('/api', familia);
 app.use('/api', papeis);
